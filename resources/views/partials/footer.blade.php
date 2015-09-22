@@ -1,0 +1,10 @@
+<!-- Scripts -->
+{{!! Html::script('assets/js/jquery.min.js'); !!}}
+{{!! Html::script('assets/js/jquery-ui.js'); !!}}
+{{!! Html::script('assets/js/jquery.ba-outside-events.min.js'); !!}}
+{{!! Html::script('http://maps.google.com/maps/api/js?sensor=true); !!}}
+{{!! Html::script('assets/js/gomap.js'); !!}}
+{{!! Html::script('assets/js/gmaps.js'); !!}}
+{{!! Html::script('assets/js/bootstrap.min.js'); !!}}
+{{!! Html::script('assets/js/owl.carousel.js'); !!}}
+{{!! Html::script('assets/js/scripts.js'); !!}}
