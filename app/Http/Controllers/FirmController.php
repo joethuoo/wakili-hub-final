@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Request as FirmRequest;
@@ -19,8 +19,14 @@ class FirmController extends Controller
      */
     public function index()
     {
+
          $firms = Firm::latest()->get();
-         return view('firms.index',compact('firms'));
+
+         /*$firms = DB::table('Firm')->join('firm_practice_area', 'Firm.firm_id', '=', 'firm_practice_area.firm_practice_id')
+                                   ->select('*')
+                                   ->OrderBy('firm_practice_area.firm_practice_name')
+                                   ->get();*/
+         return view('firms.index',['firms' => $firms]);
         
     }
 

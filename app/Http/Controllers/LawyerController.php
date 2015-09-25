@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Request as LawyerRequest;
@@ -19,7 +19,13 @@ class LawyerController extends Controller
     public function index()
     {
       //$lawyers = Lawyer::latest()->get();
-      return view('lawyers.index');
+       $lawyer = DB::table('Lawyer')->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id' )
+                                   ->select('*')
+                                   ->OrderBy('lawyer_law_firm.lawyer_law_firm_name')
+                                   ->get();
+      
+      return view('lawyers.index',['lawyer' => $lawyer]);
+      
     }
 
 
