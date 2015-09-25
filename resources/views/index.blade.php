@@ -1,27 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+@extends('master')
 
-  <title>Wakili Hub</title>
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css">
-
-  <!-- GOOGLE FONTS -->
-  <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,600,800%7COpen+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
-
-  <!--[if IE 9]>
-    <!--script src="js/media.match.min.js"></script--!>
-    {{asset('js/media.match.min.js')}}
-  <![endif]-->
-
-</head>
-
-<body>
-
+@section('body')
 <div id="main-wrapper">
   <header id="header">
     <div class="header-top-bar">
@@ -59,7 +38,7 @@
 
         <!-- HEADER-LOG0 -->
         <div class="header-logo text-center">
-          <h2><a href="index.html"><img src="img/logotiny.png"> WAKILI HUB</a></h2>
+          <h2><a href="index.html"><img src="assets/img/logotiny.png"> WAKILI HUB</a></h2>
         </div>
         <!-- END HEADER LOGO -->
 
@@ -194,7 +173,7 @@
 
         <div id="home-slider" class="owl-carousel owl-theme">
 
-          <div class="item"><img src="img/content/home-slide-img.jpg" alt=""><div class="slide-content">
+          <div class="item"><img src="assets/img/content/home-slide-img.jpg" alt=""><div class="slide-content">
              <!--  <a href="#"><img src="img/slider-logo.png" alt=""></a> -->
               <h1>The <span>Right</span> Place</h1>
               <h2>For Lawyers / Law Firms / Clients</h2>
@@ -203,7 +182,7 @@
 
           </div>
 
-          <div class="item"><img src="img/content/home-slider-img-two.jpg" alt=""><div class="slide-content">
+          <div class="item"><img src="assets/img/content/home-slider-img-two.jpg" alt=""><div class="slide-content">
              <!--  <a href="#"><img src="img/slider-logo.png" alt=""></a> -->
               <h1>The <span>Right</span> Place</h1>
               <h2>For Lawyers</h2>
@@ -213,7 +192,7 @@
 
           </div>
 
-          <div class="item"><img src="img/content/home-slide-img.jpg" alt=""><div class="slide-content">
+          <div class="item"><img src="assets/img/content/home-slide-img.jpg" alt=""><div class="slide-content">
              <!--  <a href="#"><img src="img/slider-logo.png" alt=""></a> -->
               <h1>The <span>Right</span> Place</h1>
               <h2>For Lawyers</h2>
@@ -316,7 +295,7 @@
                     <div class="col-sm-4 col-xs-6">
                       <div class="single-product">
                         <figure>
-                          <img src="img/content/post-img-6.jpg" alt="">
+                          <img src="assets/img/content/post-img-6.jpg" alt="">
                           <div class="rating">
 
                           <!--  <ul class="list-inline">
@@ -350,7 +329,7 @@
                     <div class="col-sm-4 col-xs-6">
                       <div class="single-product">
                         <figure>
-                          <img src="img/content/post-img-2.jpg" alt="">
+                          <img src="assets/img/content/post-img-2.jpg" alt="">
                           <div class="rating">
 
                            <!-- <ul class="list-inline">
@@ -385,7 +364,7 @@
                     <div class="col-sm-4 col-xs-6">
                       <div class="single-product">
                         <figure>
-                          <img src="img/content/post-img-4.jpg" alt="">
+                          <img src="assets/img/content/post-img-4.jpg" alt="">
 
                           <div class="rating">
                         <!--    <ul class="list-inline">
@@ -713,7 +692,7 @@
         <div class="col-md-3 col-sm-4 col-xs-6">
           <div class="single-product">
             <figure>
-              <img src="img/content/firmlogo.jpg" alt="">
+              <img src="assets/img/content/firmlogo.jpg" alt="">
 
               <div class="rating">
                 <ul class="list-inline">
@@ -746,7 +725,7 @@
 
        <div class="single-product">
             <figure>
-              <img src="img/content/firmlogo.jpg" alt="">
+              <img src="assets/img/content/firmlogo.jpg" alt="">
 
               <div class="rating">
                 <ul class="list-inline">
@@ -779,7 +758,7 @@
 
    <div class="single-product">
             <figure>
-              <img src="img/content/firmlogo.jpg" alt="">
+              <img src="assets/img/content/firmlogo.jpg" alt="">
 
               <div class="rating">
                 <ul class="list-inline">
@@ -812,7 +791,7 @@
 
             <div class="single-product">
             <figure>
-              <img src="img/content/firmlogo.jpg" alt="">
+              <img src="assets/img/content/firmlogo.jpg" alt="">
 
               <div class="rating">
                 <ul class="list-inline">
@@ -1013,17 +992,16 @@
 
 
 </div> <!-- end #main-wrapper -->
+@stop
 
-<!-- Scripts -->
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/jquery.ba-outside-events.min.js"></script>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" src="js/gomap.js"></script>
-<script type="text/javascript" src="js/gmaps.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.js"></script>
-<script src="js/scripts.js"></script>
-
-</body>
-</html>
+@section('scripts')
+{!! Html::script('assets/js/jquery.min.js') !!}
+{!! Html::script('assets/js/jquery-ui.js') !!}
+{!! Html::script('assets/js/jquery.ba-outside-events.min.js') !!}
+{!! Html::script('http://maps.google.com/maps/api/js?sensor=true') !!}
+{!! Html::script('assets/js/gomap.js') !!}
+{!! Html::script('assets/js/gmaps.js') !!}
+{!! Html::script('assets/js/bootstrap.min.js') !!}
+{!! Html::script('assets/js/owl.carousel.js') !!}
+{!! Html::script('assets/js/scripts.js') !!}
+@stop
