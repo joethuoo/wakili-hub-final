@@ -14,10 +14,10 @@ class CreateLawyerPhoto extends Migration
     {
         Schema::create('lawyer_photo',function(Blueprint $table){
             $table->increments('lawyer_photo_id');
-            $table->string('lawyer_photo_filename');
+            $table->string('lawyer_photo_name');
             
              $table->integer('lawyer_id')->unsigned();
-
+             $table->foreign('lawyer_id')->references('id')->on('Lawyer');
             /*$table->foreign('lawyer_id')
                    ->references('id')
                    ->on('Lawyer')

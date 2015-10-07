@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Request as LawyerRequest;
 use App\Lawyer;
+use DB;
 
 class LawyerController extends Controller
 {
@@ -19,19 +20,59 @@ class LawyerController extends Controller
     public function index()
     {
       //$lawyers = Lawyer::latest()->get();
-      return view('lawyers.index');
+      $lawyers = DB::table('Lawyer')->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id' )
+                                   //->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')             
+                                   ->select('*')
+                                   ->OrderBy('lawyer_law_firm.lawyer_law_firm_name')
+                                   ->get();
+
+      
+
+      $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')                        
+     ->select('*')
+     ->OrderBy('firm_practice_area.firm_practice_name')
+     ->get();
+
+
+      
+      return view('index', compact('lawyers','area'));
+      
+    }
+  /**
+     * Display collecction .
+     *
+     * @param  null
+     * @return Response
+     */
+
+     
+    public function show()
+    {
+          $areas = DB::table('Lawyer')->join('lawyer_practice_areas','Lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
+                                    ->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
+                                 //   ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')           
+                                   ->select('*')
+                                  // ->where('Lawyer.lawyer_id',$id)
+                                   ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
+                                   ->get();
+        return view('lawyers', compact('areas'));
     }
 
-
-     /**
+/**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return Response
      */
-    public function show(Lawyer $lawyer)
+      public function getLawyerById($id)
     {
-        return view('lawyer.show',compact($lawyer));
+          $areas = DB::table('Lawyer')->join('lawyer_practice_areas','Lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
+                                    ->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id')            
+                                   ->select('*')
+                                   ->where('Lawyer.lawyer_id',$id)
+                                   ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
+                                   ->get();
+        return view('lawyers', compact('areas'));
     }
 
     /**

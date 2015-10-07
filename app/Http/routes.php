@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('index');
-});
+});*/
+
+Route::get('/','LawyerController@index');
 
 /*Route::get('lawyer','LawyerController@index');
 Route::get('lawyer/create','LawyerController@create');
@@ -23,9 +25,13 @@ Route::get('lawyer/edit/{id}', 'LawyerController@edit');
 Route::get('lawyer/update/{id}', 'LawyerController@update');
 *///Route::get('lawyer/destroy/{id}', 'LawyerController@destroy');
 
+Route::get('lawyer/lawyers/{id}','LawyerController@getLawyerById');
 Route::resource('lawyer','LawyerController');
 
 
+
+Route::get('firm/profile/{id}', 'FirmController@show');
+Route::get('firm/jobs', 'FirmController@jobs');
 Route::resource('firm','FirmController');
 /*Route::get('firm', 'FirmController@index');
 Route::get('firm/create','FirmController@create');

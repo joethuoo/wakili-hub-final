@@ -20,7 +20,8 @@ class CreateFirmTable extends Migration
              $table->string('firm_verified_status');
              $table->string('firm_experience');
              $table->timestamp('firm_registered_date');
-             $table->integer('firm_mobile_number');
+
+             $table->integer('firm_mobile_number')->unsigned();
 
              $table->integer('registrant_id')->unsigned();
 

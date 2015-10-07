@@ -292,19 +292,18 @@
                   
                  
     <h3>Featured <span>Lawyers</span></h3>
+               <div class="col-lg-12 col-md-12 col-sm-4 ">
+             @if($lawyers)
+                    @foreach($lawyers as $lawyer)
                     <div class="col-sm-4 col-xs-6">
-                      <div class="single-product">
+
+                        <div class="single-product">
+                   
                         <figure>
-                          <img src="assets/img/content/post-img-6.jpg" alt="">
+                          <img src="{{asset('assets/img/content/post-img-6.jpg')}}" alt="">
                           <div class="rating">
 
-                          <!--  <ul class="list-inline">
-                              <li><a href="#"><i class="fa fa-star"></i></a></li>
-                              <li><a href="#"><i class="fa fa-star"></i></a></li>
-                              <li><a href="#"><i class="fa fa-star"></i></a></li>
-                              <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
-                              <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                            </ul>-->
+                         
                             <p>Featured</p>
                           </div> 
                           <!-- end .rating -->
@@ -316,17 +315,38 @@
                           </figcaption>
                         </figure>
 
-                        <h4><a href="#">Moses Chelanga</a></h4>
+                        <h4><a href="#">{{ $lawyer->lawyer_first_name }} {{$lawyer->lawyer_middle_name }} {{$lawyer->lawyer_last_name }} </a></h4>
 
-                        <h5><a href="#">Chelanga & Co Advocates</a></h5>
-
-                        <p>Nairobi, Business Law, Corporate Law, Real Estate Law. 20 years of Experience.</p>
+       
+                        <h5><a href="#">{{$lawyer->lawyer_law_firm_name }}</a></h5>
+         
+                        <p>Nairobi, Business Law, Corporate Law, Real Estate Law. {{$lawyer->lawyer_experience}} years of Experience.</p>
 
                         <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
+                         
                       </div> <!-- end .single-product -->
                     </div> <!-- end .grid-layout -->
+                       @endforeach
+                           @endif
+                       
+                     
+</div> 
+</div>
+                    
+                     
+                    
 
-                    <div class="col-sm-4 col-xs-6">
+                    </div> <!-- end .row -->
+                     
+                  </div> <!-- end .tabe-pane -->
+                  
+                  <div class="tab-pane" id="injurylaw">
+                    <h3>Injury Law <span class="comments">143</span></h3>
+
+                    <div class="row clearfix">
+
+                      <div class="col-sm-4 col-xs-6">
+                    <!--div class="col-sm-4 col-xs-6">
                       <div class="single-product">
                         <figure>
                           <img src="assets/img/content/post-img-2.jpg" alt="">
@@ -339,11 +359,11 @@
                               <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
                               <li><a href="#"><i class="fa fa-star-o"></i></a></li>
                             </ul>-->
-                            <p>Featured</p>
+                            <!--p>Featured</p>
                           </div> 
                           <!-- end .rating -->
 
-                          <figcaption>
+                          <!--figcaption>
                             
                             <div class="read-more">
                               <a href="#"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
@@ -359,9 +379,9 @@
                         <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
 
                       </div> <!-- end .single-product -->
-                    </div> <!-- end .grid-layout -->
+                    <!-/div> <!-- end .grid-layout -->
 
-                    <div class="col-sm-4 col-xs-6">
+                    <!--div class="col-sm-4 col-xs-6">
                       <div class="single-product">
                         <figure>
                           <img src="assets/img/content/post-img-4.jpg" alt="">
@@ -375,11 +395,11 @@
                               <li><a href="#"><i class="fa fa-star-o"></i></a></li>
                             </ul>-->
 
-                            <p>Featured</p>
+                            <!--p>Featured</p>
                           </div> 
                           <!-- end .rating -->
 
-                          <figcaption>
+                          <!--figcaption>
                             
                             <div class="read-more">
                               <a href="#"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
@@ -393,8 +413,12 @@
                         <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
 
                       </div> <!-- end .single-product -->
-                    </div> <!-- end .grid-layout -->
+                    <!/div> <!-- end .grid-layout -->
+
+
                     </div> <!-- end .row -->
+
+
                   </div> <!-- end .tabe-pane -->
                   
                   <div class="tab-pane" id="injurylaw">
@@ -688,7 +712,9 @@
     <div class="container">
       <div class="row clearfix">
         <h2><strong>Freatured</strong> Law Firms</h2>
-
+     
+       @if($area)
+          @foreach($area as $firm=> $val)
         <div class="col-md-3 col-sm-4 col-xs-6">
           <div class="single-product">
             <figure>
@@ -713,112 +739,21 @@
                   <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
               </figcaption>
             </figure>
-            <h4><a href="viewfirm.html">Chelanga & Co Advocates</a></h4>
-
-            <h5><a href="viewfirm.html">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
+            <h4><a href="viewfirm.html">{{ $val->firm_name }}</a></h4>                   
+               <h5><a href="viewfirm.html">
+                       {{ $val->firm_practice_name }} 
+              </a></h5>
           </div> <!-- end .single-product -->
-
         </div>
+        @endforeach
+    @endif
 
-        <div class="col-md-3 col-sm-4 col-xs-6">
+       
 
-       <div class="single-product">
-            <figure>
-              <img src="assets/img/content/firmlogo.jpg" alt="">
+        
+     
 
-              <div class="rating">
-                <ul class="list-inline">
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                </ul>
-
-                <p>Featured</p>
-              </div> 
-              <!-- end .rating -->
-
-              <figcaption>
-                
-                <div class="read-more">
-                  <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
-              </figcaption>
-            </figure>
-            <h4><a href="viewfirm.html">Chelanga & Co Advocates</a></h4>
-
-            <h5><a href="viewfirm.html">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-          </div> <!-- end .single-product -->
-
-        </div>
-
-        <div class="col-md-3 col-sm-4 col-xs-6">
-
-   <div class="single-product">
-            <figure>
-              <img src="assets/img/content/firmlogo.jpg" alt="">
-
-              <div class="rating">
-                <ul class="list-inline">
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                </ul>
-
-                <p>Featured</p>
-              </div> 
-              <!-- end .rating -->
-
-              <figcaption>
-                
-                <div class="read-more">
-                  <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
-              </figcaption>
-            </figure>
-            <h4><a href="viewfirm.html">Chelanga & Co Advocates</a></h4>
-
-            <h5><a href="viewfirm.html">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-          </div> <!-- end .single-product -->
-
-        </div>
-
-        <div class="col-md-3 col-sm-4 col-xs-6">
-
-            <div class="single-product">
-            <figure>
-              <img src="assets/img/content/firmlogo.jpg" alt="">
-
-              <div class="rating">
-                <ul class="list-inline">
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                </ul>
-
-                <p>Featured</p>
-              </div> 
-              <!-- end .rating -->
-
-              <figcaption>
-                
-                <div class="read-more">
-                  <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
-              </figcaption>
-            </figure>
-            <h4><a href="viewfirm.html">Chelanga & Co Advocates</a></h4>
-
-            <h5><a href="viewfirm.html">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-          </div> <!-- end .single-product -->
-
-        </div>
+       
 
       </div>  <!-- end .row -->
 
@@ -991,7 +926,7 @@
 
 
 
-</div> <!-- end #main-wrapper -->
+</div> <!-- end #main-wrapper --> 
 @stop
 
 @section('scripts')
