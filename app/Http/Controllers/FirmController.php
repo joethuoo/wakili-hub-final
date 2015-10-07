@@ -19,6 +19,7 @@ class FirmController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         // $firms = Firm::latest()->get();
 
        $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
@@ -30,6 +31,16 @@ class FirmController extends Controller
 
         
          return view('firms',compact('area'));
+=======
+
+         $firms = Firm::latest()->get();
+
+         /*$firms = DB::table('Firm')->join('firm_practice_area', 'Firm.firm_id', '=', 'firm_practice_area.firm_practice_id')
+                                   ->select('*')
+                                   ->OrderBy('firm_practice_area.firm_practice_name')
+                                   ->get();*/
+         return view('firms.index',['firms' => $firms]);
+>>>>>>> 37415ffeb2fbd498ec90476e4de70a6c3da6c165
         
     }
 
