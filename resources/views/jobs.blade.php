@@ -1,5 +1,5 @@
 @extends('master')
-       
+       @section('body')
            <div id="main-wrapper">
 
   <header id="header">

@@ -1027,7 +1027,6 @@
   
     <footer id="footer">
  <!--   <div class="main-footer">
-
       <div class="container">
         <div class="row">
 
@@ -1084,11 +1083,7 @@
                 <li><a href="#"><i class="fa fa-book"></i>Libraries &amp; Public Office</a></li>
                 <li><a href="#"><i class="fa fa-building-o"></i>Real Estate</a></li>
               </ul>
-            </div> <!-- end .popular-categories
-          </div> <!-- end Grid layout
-
-          <div class="col-md-3 col-sm-6">
-            <div class="newsletter">
+			  <div class="newsletter">
               <h3>Newsletter</h3>
 
               <form action="#">
@@ -1126,6 +1121,7 @@
     </div> 
     <!-- end .copyright-->
   </footer> <!-- end #footer -->
+
 </div> <!-- end #main-wrapper -->
    @stop
 

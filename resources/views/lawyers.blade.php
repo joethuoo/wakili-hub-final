@@ -195,6 +195,7 @@
           <button><i class="fa fa-bars"></i></button>
 
           <ul class="primary-nav list-unstyled">
+<<<<<<< HEAD
             <li ><a href="{{ url('/') }}">Home</a>            </li>
 
             <li class="bg-color"><a href="{{ url('lawyer/lawyers') }}">Lawyers</i></a>            </li>
@@ -203,6 +204,7 @@
             <li><a href="{{ url('firm/jobs') }}">Job Opportunities</a></li><li><a href="{{ url('lawyer/whyregister') }}">Why Register</a></li>
             <li><a href="{{ url('firm/about') }}">About Us</a></li>
             <li><a href="{{ url('firm/contact') }}">Contact Us</a></li>
+
           </ul>
         </nav>
       </div> <!-- end .container -->
@@ -1039,6 +1041,7 @@
           </div> <!-- end Grid layout
 
           <div class="col-md-3 col-sm-6">
+
             <h3>Latest From Blog</h3>
 
             <div class="latest-post clearfix">
@@ -1066,6 +1069,7 @@
             </div>
           </div> <!-- end Grid layout
 
+
           <div class="col-md-3 col-sm-6 clearfix">
             <div class="popular-categories">
               <h3>Popular Categories</h3>
@@ -1077,10 +1081,12 @@
                 <li><a href="#"><i class="fa fa-book"></i>Libraries &amp; Public Office</a></li>
                 <li><a href="#"><i class="fa fa-building-o"></i>Real Estate</a></li>
               </ul>
-            </div> <!-- end .popular-categories
-          </div> <!-- end Grid layout
 
-          <div class="col-md-3 col-sm-6">
+            </div> --><!-- end .popular-categories-->
+       <!--    </div> end Grid layout-->
+
+       <!--   <div class="col-md-3 col-sm-6">
+
             <div class="newsletter">
               <h3>Newsletter</h3>
 
@@ -1097,12 +1103,20 @@
                 <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                 <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
               </ul>
+
             </div> <!-- end .newsletter
           </div> <!-- end Grid layout
         </div> <!-- end .row 
       </div> <!-- end .container
     </div> -->
     <!-- end .main-footer -->
+            <!--</div> --><!-- end .newsletter
+
+          </div> <!-- end Grid layout
+        </div> <!-- end .row 
+      </div> <!-- end .container 
+    </div> <!-- end .main-footer -->
+
 
     <div class="copyright">
       <div class="container">
@@ -1118,7 +1132,9 @@
       </div> <!-- END .container -->
     </div> 
     <!-- end .copyright-->
+
   </footer> <!-- end #footer --><!-- end #footer -->
+
 
 </div> <!-- end #main-wrapper -->
      @stop

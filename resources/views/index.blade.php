@@ -312,7 +312,7 @@
                     </div> <!-- end .grid-layout -->
                        @endforeach
                            @endif
-                                 
+
 </div> 
 </div>
                     
