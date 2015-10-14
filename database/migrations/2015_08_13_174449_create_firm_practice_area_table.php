@@ -20,6 +20,8 @@ class CreateFirmPracticeAreaTable extends Migration
 
            $table->integer('firm_id')->unsigned();
 
+           $table->foreign('firm_id')->references('id')->on('Firm');
+
            /*$table->foreign('firm_id')
                    ->references('id')
                    ->on('Firm')

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Request as FirmRequest;
 use App\Firm;
-use App\Providers\RouteServiceProvider;
+//use App\Providers\RouteServiceProvider;
 
 class FirmController extends Controller
 {
@@ -19,8 +19,17 @@ class FirmController extends Controller
      */
     public function index()
     {
-         $firms = Firm::latest()->get();
-         return view('firms.index',compact('firms'));
+        // $firms = Firm::latest()->get();
+
+       $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+                                   ->select('*')
+                                   ->OrderBy('firm_practice_area.firm_practice_name')
+                                   ->get();
+
+
+
+        
+         return view('firms',compact('area'));
         
     }
 
@@ -30,10 +39,44 @@ class FirmController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show(Firm $firm)
-    {
-         return view('firm.show', compact($firm));
+    public function show($id)
+    { 
+        $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+                                 /*->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')*/
+                                   ->select('*')
+                                   ->where('Firm.firm_id',$id)
+                                   ->OrderBy('firm_practice_area.firm_practice_name')
+                                   ->get();
+
+
+
+      // $firms = DB::table('Firm')->select('*')->get();
+        
+         return view('firms',compact('area'));
     }
+
+
+    public function jobs()
+    {
+        $jobs = DB::table('jobs')->join('Firm','jobs.id','=','Firm.firm_id')
+                                 ->select('*')
+                                 ->OrderBy('jobs.job_title')
+                                 ->get();
+
+        return view('jobs',compact('jobs'));
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
+   
 
     /**
      * Show the form for creating a new resource.

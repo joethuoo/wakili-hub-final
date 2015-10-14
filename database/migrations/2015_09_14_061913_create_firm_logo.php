@@ -15,9 +15,11 @@ class CreateFirmLogo extends Migration
     {
         Schema::create('firm_logo', function(Blueprint $table){
           $table->increments('firm_logo_id');
-          $table->string('firm_photo_filename');
+          $table->string('firm_photo');
 
           $table->integer('firm_id')->unsigned();
+
+          $table->foreign('firm_id')->references('id')->on('Firm');
         });
     }
 

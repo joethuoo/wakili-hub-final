@@ -88,24 +88,7 @@
         <form action="#">
 
           <div class="search-toggle">
-            <div class="container"> <!--<div class="distance-range">
-                <p>
-                  <label for="amount-search">Distance:</label>
-                  <input type="text" id="amount-search">
-                </p>
-
-                <div class="slider-range-search"></div>
-              </div>  end #distance-range
-
-              <div class="distance-range">
-                <p>
-                  <label for="amount-search">Days published:</label>
-                  <input type="text" id="amount-search-day">
-                </p>
-
-                <div class="slider-range-search-day"></div>
-              </div>-->  <!-- end #distance-range -->
-
+            <div class="container"> 
               <p>Location:</p>
               <div class="select-country">
                 <select class="" data-placeholder="-Select County-">
@@ -217,14 +200,14 @@
           <button><i class="fa fa-bars"></i></button>
 
           <ul class="primary-nav list-unstyled">
-            <li class="bg-color"><a href="index.html">Home</a>            </li>
+            <li class="bg-color"><a href="{{ url('/') }}">Home</a>            </li>
 
-            <li class=""><a href="lawyers.html">Lawyers</i></a> </li>
+            <li class=""><a href="{{ url('lawyer/lawyers') }}">Lawyers</i></a> </li>
 
-            <li><a href="lawfirms.html">Law Firms</a></li>
-            <li><a href="jobs.html">Job Opportunities</a></li><li><a href="whyregister.html">Why Register</a></li>
-            <li><a href="about-us.html">About Us</a></li>
-            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="{{ url('firm') }}">Law Firms</a></li>
+            <li><a href="{{ url('firm/jobs') }}">Job Opportunities</a></li><li><a href="{{ url('lawyer/whyregister') }}">Why Register</a></li>
+            <li><a href="{{ url('firm/about') }}">About Us</a></li>
+            <li><a href="{{ url('firm/contact') }}">Contact Us</a></li>
           </ul>
         </nav>
       </div> 
@@ -292,19 +275,19 @@
                   
                  
     <h3>Featured <span>Lawyers</span></h3>
+               <div class="col-lg-12 col-md-12 col-sm-4 ">
+
+             @if($lawyers)
+                    @foreach($lawyers as $lawyer)
                     <div class="col-sm-4 col-xs-6">
-                      <div class="single-product">
+
+                        <div class="single-product">
+                   
                         <figure>
-                          <img src="assets/img/content/post-img-6.jpg" alt="">
+                          <img src="{{asset('/lawyers/'.$lawyer->lawyer_photo_filename)}}" alt="">
                           <div class="rating">
 
-                          <!--  <ul class="list-inline">
-                              <li><a href="#"><i class="fa fa-star"></i></a></li>
-                              <li><a href="#"><i class="fa fa-star"></i></a></li>
-                              <li><a href="#"><i class="fa fa-star"></i></a></li>
-                              <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
-                              <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                            </ul>-->
+                         
                             <p>Featured</p>
                           </div> 
                           <!-- end .rating -->
@@ -312,21 +295,41 @@
                           <figcaption>
                             
                             <div class="read-more">
-                              <a href="#"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
+                              <a href="{{ url('lawyer/lawyers/readmore') }}"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
                           </figcaption>
                         </figure>
 
-                        <h4><a href="#">Moses Chelanga</a></h4>
+                        <h4><a href="#">{{ $lawyer->lawyer_first_name }} {{$lawyer->lawyer_middle_name }} {{$lawyer->lawyer_last_name }} </a></h4>
 
-                        <h5><a href="#">Chelanga & Co Advocates</a></h5>
+       
+                        <h5><a href="#">{{$lawyer->lawyer_law_firm_name }}</a></h5>
+         
+                        <p>Nairobi, Business Law, Corporate Law, Real Estate Law. {{$lawyer->lawyer_experience}} years of Experience.</p>
 
-                        <p>Nairobi, Business Law, Corporate Law, Real Estate Law. 20 years of Experience.</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
+                        <a class="read-more" href="{{ url('lawyer/lawyers/readmore') }}"><i class="fa fa-angle-right"></i>Read More</a>
+                         
                       </div> <!-- end .single-product -->
                     </div> <!-- end .grid-layout -->
+                       @endforeach
+                           @endif
+                                 
+</div> 
+</div>
+                    
+                     
+                    
 
-                    <div class="col-sm-4 col-xs-6">
+                    </div> <!-- end .row -->
+                     
+                  </div> <!-- end .tabe-pane -->
+                  
+                  <div class="tab-pane" id="injurylaw">
+                    <h3>Injury Law <span class="comments">143</span></h3>
+
+                    <div class="row clearfix">
+
+                      <div class="col-sm-4 col-xs-6">
+                    <!--div class="col-sm-4 col-xs-6">
                       <div class="single-product">
                         <figure>
                           <img src="assets/img/content/post-img-2.jpg" alt="">
@@ -339,11 +342,11 @@
                               <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
                               <li><a href="#"><i class="fa fa-star-o"></i></a></li>
                             </ul>-->
-                            <p>Featured</p>
+                            <!--p>Featured</p>
                           </div> 
                           <!-- end .rating -->
 
-                          <figcaption>
+                          <!--figcaption>
                             
                             <div class="read-more">
                               <a href="#"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
@@ -359,9 +362,9 @@
                         <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
 
                       </div> <!-- end .single-product -->
-                    </div> <!-- end .grid-layout -->
+                    <!-/div> <!-- end .grid-layout -->
 
-                    <div class="col-sm-4 col-xs-6">
+                    <!--div class="col-sm-4 col-xs-6">
                       <div class="single-product">
                         <figure>
                           <img src="assets/img/content/post-img-4.jpg" alt="">
@@ -375,11 +378,11 @@
                               <li><a href="#"><i class="fa fa-star-o"></i></a></li>
                             </ul>-->
 
-                            <p>Featured</p>
+                            <!--p>Featured</p>
                           </div> 
                           <!-- end .rating -->
 
-                          <figcaption>
+                          <!--figcaption>
                             
                             <div class="read-more">
                               <a href="#"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
@@ -393,8 +396,12 @@
                         <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
 
                       </div> <!-- end .single-product -->
-                    </div> <!-- end .grid-layout -->
+                    <!/div> <!-- end .grid-layout -->
+
+
                     </div> <!-- end .row -->
+
+
                   </div> <!-- end .tabe-pane -->
                   
                   <div class="tab-pane" id="injurylaw">
@@ -688,7 +695,9 @@
     <div class="container">
       <div class="row clearfix">
         <h2><strong>Freatured</strong> Law Firms</h2>
-
+     
+       @if($area)
+          @foreach($area as $firm=> $val)
         <div class="col-md-3 col-sm-4 col-xs-6">
           <div class="single-product">
             <figure>
@@ -713,112 +722,21 @@
                   <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
               </figcaption>
             </figure>
-            <h4><a href="viewfirm.html">Chelanga & Co Advocates</a></h4>
-
-            <h5><a href="viewfirm.html">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
+            <h4><a href="viewfirm.html">{{ $val->firm_name }}</a></h4>                   
+               <h5><a href="viewfirm.html">
+                       {{ $val->firm_practice_name }} 
+              </a></h5>
           </div> <!-- end .single-product -->
-
         </div>
+        @endforeach
+    @endif
 
-        <div class="col-md-3 col-sm-4 col-xs-6">
+       
 
-       <div class="single-product">
-            <figure>
-              <img src="assets/img/content/firmlogo.jpg" alt="">
+        
+     
 
-              <div class="rating">
-                <ul class="list-inline">
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                </ul>
-
-                <p>Featured</p>
-              </div> 
-              <!-- end .rating -->
-
-              <figcaption>
-                
-                <div class="read-more">
-                  <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
-              </figcaption>
-            </figure>
-            <h4><a href="viewfirm.html">Chelanga & Co Advocates</a></h4>
-
-            <h5><a href="viewfirm.html">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-          </div> <!-- end .single-product -->
-
-        </div>
-
-        <div class="col-md-3 col-sm-4 col-xs-6">
-
-   <div class="single-product">
-            <figure>
-              <img src="assets/img/content/firmlogo.jpg" alt="">
-
-              <div class="rating">
-                <ul class="list-inline">
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                </ul>
-
-                <p>Featured</p>
-              </div> 
-              <!-- end .rating -->
-
-              <figcaption>
-                
-                <div class="read-more">
-                  <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
-              </figcaption>
-            </figure>
-            <h4><a href="viewfirm.html">Chelanga & Co Advocates</a></h4>
-
-            <h5><a href="viewfirm.html">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-          </div> <!-- end .single-product -->
-
-        </div>
-
-        <div class="col-md-3 col-sm-4 col-xs-6">
-
-            <div class="single-product">
-            <figure>
-              <img src="assets/img/content/firmlogo.jpg" alt="">
-
-              <div class="rating">
-                <ul class="list-inline">
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
-                  <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                </ul>
-
-                <p>Featured</p>
-              </div> 
-              <!-- end .rating -->
-
-              <figcaption>
-                
-                <div class="read-more">
-                  <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
-              </figcaption>
-            </figure>
-            <h4><a href="viewfirm.html">Chelanga & Co Advocates</a></h4>
-
-            <h5><a href="viewfirm.html">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-          </div> <!-- end .single-product -->
-
-        </div>
+       
 
       </div>  <!-- end .row -->
 
@@ -864,30 +782,9 @@
   </div>
   <!-- END REGISTER-CONTENT -->
 
-  <!-- OUR PARTNER SLIDER BEGIN -->
-   <!-- <div class="our-partners">
-      <div class="container">
-        <h4>Our Partners</h4>
+  
 
-        <div id="partners-slider" class="owl-carousel owl-theme">
-          <div class="item"><a href="#"><img src="img/content/partner1.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner2.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner3.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner4.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner5.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner6.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner1.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner2.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner3.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner4.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner5.png" alt=""></a></div>
-          <div class="item"><a href="#"><img src="img/content/partner6.png" alt=""></a></div>
-        </div>
-      </div>
-    </div>-->
-    <!-- END OUR PARTNER SLIDER -->
-
-  <footer id="footer">
+    <footer id="footer">
  <!--   <div class="main-footer">
 
       <div class="container">
@@ -991,7 +888,7 @@
 
 
 
-</div> <!-- end #main-wrapper -->
+</div> <!-- end #main-wrapper --> 
 @stop
 
 @section('scripts')
