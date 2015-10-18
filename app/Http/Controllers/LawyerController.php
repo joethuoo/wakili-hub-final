@@ -95,8 +95,9 @@ class LawyerController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function readmore()
+    public function readmore($id)
     {
+		dd($id);
       return view('readmore');
 
     }
