@@ -85,35 +85,22 @@
     <!-- HEADER SEARCH SECTION -->
     <div class="header-search slider-home">
       <div class="header-search-bar">
-        <form action="#">
-
+        <form action="/search" method="POST">
+            {!! Form::token() !!}
           <div class="search-toggle">
             <div class="container"> 
               <p>Location:</p>
               <div class="select-country">
-                <select class="" data-placeholder="-Select County-">
-                  <option value="option1">Nairobi</option>
-                  <option value="option2">Kisumu</option>
-                  <option value="option3">Mombasa</option>
+                <select name = "country" class="" data-placeholder="-Select County-">
+                  <option value=""></option>
+                  <option value="nairobi">Nairobi</option>
+                  <option value="kisumi">Kisumu</option>
+                  <option value="mombasa">Mombasa</option>
                 </select>
-              </div>
-
-              <div class="region">
-                <input type="text" placeholder="-Region-">
               </div>
 
               <div class="address">
-                <input type="text" placeholder="-Address-">
-              </div>
-
-              <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option>
-                  <option value="option3">Family Law</option>
-                  <option value="option3">Patents</option>
-                </select>
+                <input name = "address" type="text" placeholder="-Address-">
               </div>
 
               <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
@@ -126,23 +113,29 @@
 
             <div class="search-value">
               <div class="keywords">
-                <input type="text" class="form-control" placeholder="Keywords">
+                <input name = "keywords" type="text" class="form-control" placeholder="Keywords">
               </div>
 
               <div class="select-location">
-                <select class="" data-placeholder="-Select Town-">
-                  <option value="option1">Busia</option>
-                  <option value="option2">Bomet</option><option value="option4">Bondo</option>
-                  <option value="option3">Thika</option>
-                  <option value="option4">Nyeri</option><option value="option4">Muranga</option>
+                <select name = "location" class="" data-placeholder="-Select Town-">
+                  <option value=""></option>
+                  <option value="busia">Busia</option>
+                  <option value="bomet">Bomet</option>
+                  <option value="bondo">Bondo</option>
+                  <option value="thika">Thika</option>
+                  <option value="nyeri">Nyeri</option>
+                  <option value="muranga">Muranga</option>
                 </select>
               </div>
 
               <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option><option value="option3">Family Law</option><option value="option3">Patents</option>
+                <select name = "category" class="" data-placeholder="-Select Practice-">
+                  <option value=""></option>
+                  <option value="business">Business Law</option>
+                  <option value="juvenile">Juvenile</option>
+                  <option value="property">Property</option>
+                  <option value="family">Family Law</option>
+                  <option value="patents">Patents</option>
                 </select>
               </div>
 

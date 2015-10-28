@@ -3555,7 +3555,7 @@ fieldset[disabled] .btn-default-inverse.active {
 .header-search .header-search-bar .search-toggle .category-search,
 .header-search .header-search-bar .search-toggle .region,
 .header-search .header-search-bar .search-toggle .address {
-  width: 24%;
+  width: 44.29%;
   float: left;
   height: 40px;
   margin-top: 10px;
@@ -3574,7 +3574,7 @@ fieldset[disabled] .btn-default-inverse.active {
   .header-search .header-search-bar .search-toggle .category-search,
   .header-search .header-search-bar .search-toggle .region,
   .header-search .header-search-bar .search-toggle .address {
-    width: 23%;
+    width: 29%;
   }
 }
 @media (max-width: 768px) {

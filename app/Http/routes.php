@@ -27,6 +27,8 @@ Route::get('lawyer/update/{id}', 'LawyerController@update');
 
 Route::get('lawyer/lawyers/{id}','LawyerController@getLawyerById');
 
+Route::post('search','LawyerController@search');
+
 //Route::get('lawyer/lawyers/readmore/{$id}','LawyerController@readmore');
 
 Route::get('lawyer/whyregister', 'LawyerController@whyregister');
