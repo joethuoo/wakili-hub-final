@@ -27,9 +27,17 @@ class FirmController extends Controller
                                    ->get();
 
 
+        $practices = DB::table('firm_practice_area')->lists('firm_practice_name');
+        $new_practice = [];
 
-        
-         return view('firms',compact('area'));
+        foreach($practices as $practice) {
+            $new_practice = array_merge($new_practice, explode(", ", $practice));
+        }
+
+        $practices = array_unique($new_practice);
+        sort($practices);
+
+         return view('firms',compact('area', 'practices'));
         
     }
 

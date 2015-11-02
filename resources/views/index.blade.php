@@ -609,69 +609,12 @@
               <div id="categories">
                 <div class="accordion">
                   <ul class="nav nav-tabs home-tab" role="tablist">
-                    <li class="active">
-                      <a href="#all-categories"  role="tab" data-toggle="tab">Popular Practice Areas
+                      @foreach($practices as $practice)
+                    <li>
+                      <a href="#all-categories"  role="tab" data-toggle="tab">{{ $practice }}
                      </a>
                     </li>
-
-                    <li>
-                      <a href="#injurylaw" role="tab" data-toggle="tab">Injury Law
-                                         </a>
-                    </li>
-
-                    <li>
-                      <a href="#familylaw"  role="tab" data-toggle="tab">Family Law
-                      
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#estateplanning" role="tab" data-toggle="tab">Estate Planning
-                
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#realestate" role="tab" data-toggle="tab">Real Estate Law
-                    
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#intellectual" role="tab" data-toggle="tab">Intellectual Property
-                                   </a>
-                    </li>
-
-                    <li>
-                      <a href="#employement" role="tab" data-toggle="tab">Employement and Labor
-                 
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#criminal" role="tab" data-toggle="tab">Criminal Law
-                    
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#business" role="tab" data-toggle="tab">Business Law
-                                          </a>
-                    </li>
-                       <li>
-                      <a href="#immigration" role="tab" data-toggle="tab">Immigration
-        
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#foreign" role="tab" data-toggle="tab">Foreign and International
-                
-                      </a>
-                    </li>
-
-                 
-
+                      @endforeach
                   </ul>
                 </div> <!-- end .accordion -->
               </div> <!-- end #categories -->

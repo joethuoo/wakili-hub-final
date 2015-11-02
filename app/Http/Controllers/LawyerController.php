@@ -32,9 +32,17 @@ class LawyerController extends Controller
      ->OrderBy('firm_practice_area.firm_practice_name')
      ->get();
 
+        $practices = DB::table('lawyer_practice_areas')->lists('lawyer_practice_name');
+        $new_practice = [];
 
+        foreach($practices as $practice) {
+            $new_practice = array_merge($new_practice, explode(", ", $practice));
+        }
+
+        $practices = array_unique($new_practice);
+        sort($practices);
       
-      return view('index', compact('lawyers','area'));
+      return view('index', compact('lawyers','area', 'practices'));
       
     }
   /**
@@ -54,7 +62,18 @@ class LawyerController extends Controller
                                   // ->where('Lawyer.lawyer_id',$id)
                                    ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
                                    ->get();
-        return view('lawyers', compact('areas'));
+
+        $practices = DB::table('lawyer_practice_areas')->lists('lawyer_practice_name');
+        $new_practice = [];
+
+        foreach($practices as $practice) {
+            $new_practice = array_merge($new_practice, explode(", ", $practice));
+        }
+
+        $practices = array_unique($new_practice);
+        sort($practices);
+
+        return view('lawyers', compact('areas', 'practices'));
     }
 
 /**
