@@ -18,7 +18,7 @@
               <a href="#" class="btn btn-link">Forgot Password?</a>
             </form>
           </div>
-        </div> 
+        </div>
         <!-- END .HEADER-LOGIN -->
 
         <!-- HEADER REGISTER -->
@@ -33,7 +33,7 @@
               <input type="submit" class="btn btn-default" value="Register">
             </form>
           </div>
-        </div> 
+        </div>
         <!-- END .HEADER-REGISTER -->
 
         <!-- HEADER-LOG0 -->
@@ -206,19 +206,19 @@
           </ul>
         </nav>
       </div> <!-- end .container -->
-    </div> 
+    </div>
     <!-- end .header-nav-bar -->
   </header> <!-- end #header -->
 
   <div id="page-content">
     <div class="container">
-      <div class="row"> 
-     
+      <div class="row">
+
         <div class="col-md-9 col-md-push-3">
           <div class="page-content">
 
             <div class="product-details-list view-switch">
-           
+
               <div class="tab-content">
                 <div class="tab-pane active" id="all-categories">
                   <h2>All Practice Areas<span class="comments">(12345)</span></h2>
@@ -233,7 +233,7 @@
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">Name ASC</option>
                         <option value="option1">Name DESC</option>
-                        
+
                         <option value="option3">Location</option>
                         <option value="option4">Year of Experience</option>
                       </select></div>
@@ -241,7 +241,7 @@
 
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">All Practices Here</option>
-                       
+
                       </select>
                       </div>
 
@@ -254,7 +254,7 @@
                       </ul>
 
                   </div> <!-- end .change-view -->
-      
+
 
                   <div class="row clearfix">
 
@@ -269,11 +269,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -283,10 +283,10 @@
                         </figure>
 
                         <h4><a href="#">{{$firm->firm_name}}</a></h4>
-                       
+
                         <h5><a href="#">{{$firm->firm_practice_name}}</a></h5>
-                     
-                        
+
+
                         <p>{{$firm->firm_bios}}</p>
 
                         <a class="read-more" href="viewfirm.html"><i class="fa fa-angle-right"></i>Read More</a>
@@ -333,7 +333,7 @@
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">Name ASC</option>
                         <option value="option1">Name DESC</option>
-                        
+
                         <option value="option3">Location</option>
                         <option value="option4">Year of Experience</option>
                       </select></div>
@@ -341,7 +341,7 @@
 
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">All Sub Practices Here</option>
-                       
+
                       </select>
                       </div>
 
@@ -365,11 +365,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -388,7 +388,7 @@
 
                       </div> <!-- end .single-product -->
                     </div> <!-- end .col-sm-4 grid layout -->
-                    
+
                       <div class="col-sm-4 col-xs-6">
 
                       <div class="single-product">
@@ -398,11 +398,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                              
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -421,7 +421,7 @@
 
                       </div> <!-- end .single-product -->
                     </div> <!-- end .col-sm-4 grid layout -->
-                    
+
                       <div class="col-sm-4 col-xs-6">
 
                       <div class="single-product">
@@ -431,11 +431,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -484,7 +484,7 @@
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">Name ASC</option>
                         <option value="option1">Name DESC</option>
-                        
+
                         <option value="option3">Location</option>
                         <option value="option4">Year of Experience</option>
                       </select></div>
@@ -492,7 +492,7 @@
 
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">All Sub Practices Here</option>
-                       
+
                       </select>
                       </div>
 
@@ -516,11 +516,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -539,8 +539,8 @@
 
                       </div> <!-- end .single-product -->
                     </div> <!-- end .col-sm-4 grid layout -->
-                    
-                    
+
+
                    <div class="col-sm-4 col-xs-6">
 
                       <div class="single-product">
@@ -550,11 +550,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -583,11 +583,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -616,11 +616,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -669,7 +669,7 @@
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">Name ASC</option>
                         <option value="option1">Name DESC</option>
-                        
+
                         <option value="option3">Location</option>
                         <option value="option4">Year of Experience</option>
                       </select></div>
@@ -677,7 +677,7 @@
 
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">All Sub Practices Here</option>
-                       
+
                       </select>
                       </div>
 
@@ -700,11 +700,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -723,7 +723,7 @@
 
                       </div> <!-- end .single-product -->
                     </div> <!-- end .col-sm-4 grid layout -->
-                    
+
                       <div class="col-sm-4 col-xs-6">
 
                       <div class="single-product">
@@ -733,11 +733,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -756,7 +756,7 @@
 
                       </div> <!-- end .single-product -->
                     </div> <!-- end .col-sm-4 grid layout -->
-                    
+
                       <div class="col-sm-4 col-xs-6">
 
                       <div class="single-product">
@@ -766,11 +766,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -819,7 +819,7 @@
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">Name ASC</option>
                         <option value="option1">Name DESC</option>
-                        
+
                         <option value="option3">Location</option>
                         <option value="option4">Year of Experience</option>
                       </select></div>
@@ -827,7 +827,7 @@
 
                       <select class="" data-placeholder="-sort by-">
                         <option value="option1">All Sub Practices Here</option>
-                       
+
                       </select>
                       </div>
 
@@ -851,11 +851,11 @@
                           <div class="rating">
 
                             <p>Featured</p>
-                          </div> 
+                          </div>
                           <!-- end .rating -->
 
                           <figcaption>
-                            
+
 
                             <div class="read-more">
                               <a href="viewfirm.html"><i class="fa fa-angle-right"></i> Read More</a>
@@ -956,61 +956,12 @@
                 <ul class="nav nav-tabs accordion-tab" role="tablist">
                   <li>
                     <a class="active" href="#all-categories" role="tab" data-toggle="tab">All Practice Areas</a></li>
-                  <li>
-                      <a href="#injurylaw" role="tab" data-toggle="tab">Injury Law
-                                         </a>
-                    </li>
-
+                  @foreach($practices as $practice)
                     <li>
-                      <a href="#familylaw"  role="tab" data-toggle="tab">Family Law
-                      
+                      <a href="#all-categories"  role="tab" data-toggle="tab">{{ $practice }}
                       </a>
                     </li>
-
-                    <li>
-                      <a href="#estateplanning" role="tab" data-toggle="tab">Estate Planning
-                
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#realestate" role="tab" data-toggle="tab">Real Estate Law
-                    
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#intellectual" role="tab" data-toggle="tab">Intellectual Property
-                                   </a>
-                    </li>
-
-                    <li>
-                      <a href="#employement" role="tab" data-toggle="tab">Employement and Labor
-                 
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#criminal" role="tab" data-toggle="tab">Criminal Law
-                    
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#business" role="tab" data-toggle="tab">Business Law
-                                          </a>
-                    </li>
-                       <li>
-                      <a href="#immigration" role="tab" data-toggle="tab">Immigration
-        
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="#foreign" role="tab" data-toggle="tab">Foreign and International
-                
-                      </a>
-                    </li>
+                  @endforeach
 
                 </ul>
               </div> <!-- end .accordion -->
@@ -1024,7 +975,7 @@
   </div>  <!-- end #page-content -->
 
 
-  
+
     <footer id="footer">
  <!--   <div class="main-footer">
       <div class="container">
@@ -1036,12 +987,12 @@
 
               <div class="footer-logo">
                 <a href="#"><img src="img/footer_logo.png" alt=""></a>
-                <span></span> <!-- This content for overlay effect 
+                <span></span> <!-- This content for overlay effect
               </div>
 
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue,
                 suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.</p>
-            </div> <!-- End .about-globo 
+            </div> <!-- End .about-globo
           </div> <!-- end Grid layout
 
           <div class="col-md-3 col-sm-6">
@@ -1101,7 +1052,7 @@
               </ul>
             </div> <!-- end .newsletter
           </div> <!-- end Grid layout
-        </div> <!-- end .row 
+        </div> <!-- end .row
       </div> <!-- end .container
     </div> -->
     <!-- end .main-footer -->
@@ -1118,7 +1069,7 @@
           <li><a href="contact-us.html">Contact</a></li>
         </ul>
       </div> <!-- END .container -->
-    </div> 
+    </div>
     <!-- end .copyright-->
   </footer> <!-- end #footer -->
 
