@@ -21,7 +21,7 @@ class FirmController extends Controller
     {
         // $firms = Firm::latest()->get();
 
-       $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+       $areas = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
                                    ->select('*')
                                    ->OrderBy('firm_practice_area.firm_practice_name')
                                    ->get();
@@ -37,7 +37,21 @@ class FirmController extends Controller
         $practices = array_unique($new_practice);
         sort($practices);
 
-         return view('firms',compact('area', 'practices'));
+        $new_areas = [];
+
+        foreach($practices as $practice) {
+            $practice_name = strtolower(str_replace(' ', '', $practice));
+            foreach($areas as $area) {
+                if(strstr($area->firm_practice_name, $practice)) {
+                    $new_areas[$practice_name]['area'][] = $area;
+                    $new_areas[$practice_name]['title'] = $practice;
+                }
+            }
+            $new_areas[$practice_name]['count'] = count($new_areas[$practice_name]['area']);
+        }
+
+//        dd($new_areas);
+         return view('firms',compact('areas', 'new_areas'));
         
     }
 
