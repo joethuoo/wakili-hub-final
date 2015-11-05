@@ -73,7 +73,22 @@ class LawyerController extends Controller
         $practices = array_unique($new_practice);
         sort($practices);
 
-        return view('lawyers', compact('areas', 'practices'));
+        $new_areas = [];
+
+        foreach($practices as $practice) {
+            $practice_name = strtolower(str_replace(' ', '', $practice));
+            foreach($areas as $area) {
+                if(strstr($area->lawyer_practice_name, $practice)) {
+                    $new_areas[$practice_name]['area'][] = $area;
+                    $new_areas[$practice_name]['title'] = $practice;
+                }
+            }
+            $new_areas[$practice_name]['count'] = count($new_areas[$practice_name]['area']);
+        }
+
+//        dd($new_areas);
+
+        return view('lawyers', compact('areas', 'new_areas'));
     }
 
 /**
