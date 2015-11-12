@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -27,7 +29,8 @@ class LawyerController extends Controller
 
       
 
-      $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')                        
+      $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+       ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')                        
      ->select('*')
      ->OrderBy('firm_practice_area.firm_practice_name')
      ->get();
@@ -53,7 +56,7 @@ class LawyerController extends Controller
      */
 
      
-    public function show()
+public function show()
     {
           $areas = DB::table('Lawyer')->join('lawyer_practice_areas','Lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
                                     ->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
@@ -62,18 +65,26 @@ class LawyerController extends Controller
                                   // ->where('Lawyer.lawyer_id',$id)
                                    ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
                                    ->get();
-
         $practices = DB::table('lawyer_practice_areas')->lists('lawyer_practice_name');
         $new_practice = [];
-
         foreach($practices as $practice) {
             $new_practice = array_merge($new_practice, explode(", ", $practice));
         }
-
         $practices = array_unique($new_practice);
         sort($practices);
-
-        return view('lawyers', compact('areas', 'practices'));
+        $new_areas = [];
+        foreach($practices as $practice) {
+            $practice_name = strtolower(str_replace(' ', '', $practice));
+            foreach($areas as $area) {
+                if(strstr($area->lawyer_practice_name, $practice)) {
+                    $new_areas[$practice_name]['area'][] = $area;
+                    $new_areas[$practice_name]['title'] = $practice;
+                }
+            }
+            $new_areas[$practice_name]['count'] = count($new_areas[$practice_name]['area']);
+        }
+//        dd($new_areas);
+        return view('lawyers', compact('areas', 'new_areas'));
     }
 
 /**
@@ -113,10 +124,16 @@ class LawyerController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function readmore($id)
+   public function readmore($id)
     {
-		dd($id);
-      return view('readmore');
+     $more = DB::table('Lawyer')->join('lawyer_practice_areas','Lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
+                                    ->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
+                                    ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')           
+                                   ->select('*')
+                                   ->where('Lawyer.lawyer_id',$id)
+                                   ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
+                                   ->get();
+      return view('readmore',compact('more'));
 
     }
 
@@ -126,9 +143,8 @@ class LawyerController extends Controller
      *
      * @return Response
      */
-	 public function create()
-    {
-        return view('lawyer.registerLawyer');
+	 public function create()    {
+        return view('register');
     }
 
     public function search(Request $request) {
@@ -176,6 +192,39 @@ class LawyerController extends Controller
         $firms = DB::select($query_firm);
 
         return view('search', compact('lawyers', 'firms'));
+    }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  LawyerRegister  $request
+     * @return Response
+     */
+
+    public function wekalawyer(LawyerRegister $request)
+    {
+      $confirmation_code = str_random(30);
+
+      $user = Registrant::create([
+        'first_name' => $request['firstname'],
+        'last_name' => $request['lastname'],
+        'mobile_number' => $request['phonenumber'],
+        'email' => $request['email'],
+        'password' => Hash::make($request['password']),
+        'confirmation_code' => $confirmation_code
+        
+        ]);
+      
+
+      Mail::send('emails',$confirmation_code, function($message){
+             $message->to($request['email'],$request['firstname'])->subject('welcome');
+             
+      });
+
+      Flash::message('Thanks for signing up! Please check your email.');
+
+       return view('lawyers');
     }
 	
 	
