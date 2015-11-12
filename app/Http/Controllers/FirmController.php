@@ -22,7 +22,7 @@ class FirmController extends Controller
         // $firms = Firm::latest()->get();
 
        $areas = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
-	   ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
+       ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
                                    ->select('*')
                                    ->OrderBy('firm_practice_area.firm_practice_name')
                                    ->get();
@@ -111,8 +111,8 @@ class FirmController extends Controller
     {
         return view('contact');
     }
-	
-	    public function search(Request $request) {
+    
+        public function search(Request $request) {
         $keywords = $request->input('keywords');
         $location = $request->input('location');
         $category = $request->input('category');

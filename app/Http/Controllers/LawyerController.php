@@ -143,7 +143,7 @@ public function show()
      *
      * @return Response
      */
-	 public function create()    {
+   public function create()    {
         return view('register');
     }
 
@@ -226,9 +226,9 @@ public function show()
 
        return view('lawyers');
     }
-	
-	
-	  /**
+  
+  
+    /**
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
@@ -261,7 +261,7 @@ public function show()
         $lawyer_association->status = $request['status'];
         $lawyer_association->lawyer_association()->associate($lawyer);
         $lawyer_association->save();
-		               
+                   
 
           $lawyer_contact = new lawyer_contact();
           $lawyer_contact->lawyer_contact_name  = $request['lawyer_contact_name'];
