@@ -89,9 +89,9 @@ class Lawyer extends Model
       return $this->hasMany('App\lawyer_social_connection');
     }
 
-    public function registrant()
+    public function user()
     {
-      return $this->belongsTo('App\Registrant');
+      return $this->belongsTo('App\User');
     }
 
 

@@ -13,15 +13,12 @@ class CreateLawyerPhoto extends Migration
     public function up()
     {
         Schema::create('lawyer_photo',function(Blueprint $table){
-            $table->increments('lawyer_photo_id');
+            $table->increments('id');
             $table->string('lawyer_photo_name');
             
              $table->integer('lawyer_id')->unsigned();
-             $table->foreign('lawyer_id')->references('id')->on('Lawyer');
-            /*$table->foreign('lawyer_id')
-                   ->references('id')
-                   ->on('Lawyer')
-                   ->onDelete('cascade');*/
+             
+            
         });
     }
 

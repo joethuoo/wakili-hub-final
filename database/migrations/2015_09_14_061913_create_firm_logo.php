@@ -19,7 +19,7 @@ class CreateFirmLogo extends Migration
 
           $table->integer('firm_id')->unsigned();
 
-          $table->foreign('firm_id')->references('id')->on('Firm');
+          
         });
     }
 

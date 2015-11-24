@@ -48,9 +48,9 @@ class Firm extends Model
       return $this->hasMany('App\FirmAssociation');
     }
 
-    public function registrant()
+    public function user()
     {
-      return $this->hasMany('App\Registrant');
+      return $this->hasMany('App\User');
     }
 
 

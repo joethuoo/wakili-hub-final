@@ -26,11 +26,16 @@
           <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
 
           <div>
-            <form action="#">
-              <input type="text" class="form-control" placeholder="Username">
-              <input type="email" class="form-control" placeholder="Email">
-              <input type="password" class="form-control" placeholder="Password">
-              <input type="submit" class="btn btn-default" value="Register">
+            <form action="/wekalawyer" method="POST">
+               {{!! Form::token() !!}}
+             
+              <input type="text" name="first_name" class="form-control" placeholder="First Name">
+              <input type="text" name="last_name" class="form-control" placeholder="Second Name">
+              <input type="text" name="mobile_number" class="form-control" placeholder="Phone Number">
+              <input type="email" name="email" class="form-control" placeholder="Email">
+              <input type="password" name="password" class="form-control" placeholder="Password">
+              <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
+              <input type="submit" class="btn btn-default" value="register">
             </form>
           </div>
         </div> 
@@ -38,7 +43,7 @@
 
         <!-- HEADER-LOG0 -->
         <div class="header-logo text-center">
-          <h2><a href="index.html"><img src="img/logotiny.png"> WAKILI HUB</a></h2>
+          <h2><a href="{{url('/')}}"><img src="{{asset('assets/img/logotiny.png')}}"> WAKILI HUB</a></h2>
         </div>
         <!-- END HEADER LOGO -->
 
@@ -83,53 +88,23 @@
 
     <!-- HEADER SEARCH SECTION -->
     <div class="header-search map">
-      <div class="header-search-bar">
-        <form action="#">
-
+	    <div class="header-search-bar">
+        <form action="/search" method="POST">
+            {!! Form::token() !!}
           <div class="search-toggle">
-            <div class="container"> <!--<div class="distance-range">
-                <p>
-                  <label for="amount-search">Distance:</label>
-                  <input type="text" id="amount-search">
-                </p>
-
-                <div class="slider-range-search"></div>
-              </div>  end #distance-range
-
-              <div class="distance-range">
-                <p>
-                  <label for="amount-search">Days published:</label>
-                  <input type="text" id="amount-search-day">
-                </p>
-
-                <div class="slider-range-search-day"></div>
-              </div>-->  <!-- end #distance-range -->
-
+            <div class="container"> 
               <p>Location:</p>
               <div class="select-country">
-                <select class="" data-placeholder="-Select County-">
-                  <option value="option1">Nairobi</option>
-                  <option value="option2">Kisumu</option>
-                  <option value="option3">Mombasa</option>
+                <select name = "country" class="" data-placeholder="-Select County-">
+                  <option value=""></option>
+                  <option value="nairobi">Nairobi</option>
+                  <option value="kisumi">Kisumu</option>
+                  <option value="mombasa">Mombasa</option>
                 </select>
-              </div>
-
-              <div class="region">
-                <input type="text" placeholder="-Region-">
               </div>
 
               <div class="address">
-                <input type="text" placeholder="-Address-">
-              </div>
-
-              <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option>
-                  <option value="option3">Family Law</option>
-                  <option value="option3">Patents</option>
-                </select>
+                <input name = "address" type="text" placeholder="-Address-">
               </div>
 
               <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
@@ -137,29 +112,34 @@
             </div>
           </div>  <!-- END .search-toggle -->
 
-
           <div class="container">
             <button class="toggle-btn" type="submit"><i class="fa fa-bars"></i></button>
 
             <div class="search-value">
               <div class="keywords">
-                <input type="text" class="form-control" placeholder="Keywords">
+                <input name = "keywords" type="text" class="form-control" placeholder="Keywords">
               </div>
 
               <div class="select-location">
-                <select class="" data-placeholder="-Select Town-">
-                  <option value="option1">Busia</option>
-                  <option value="option2">Bomet</option><option value="option4">Bondo</option>
-                  <option value="option3">Thika</option>
-                  <option value="option4">Nyeri</option><option value="option4">Muranga</option>
+                <select name = "location" class="" data-placeholder="-Select Town-">
+                  <option value=""></option>
+                  <option value="busia">Busia</option>
+                  <option value="bomet">Bomet</option>
+                  <option value="bondo">Bondo</option>
+                  <option value="thika">Thika</option>
+                  <option value="nyeri">Nyeri</option>
+                  <option value="muranga">Muranga</option>
                 </select>
               </div>
 
               <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option><option value="option3">Family Law</option><option value="option3">Patents</option>
+                <select name = "category" class="" data-placeholder="-Select Practice-">
+                  <option value=""></option>
+                  <option value="business">Business Law</option>
+                  <option value="juvenile">Juvenile</option>
+                  <option value="property">Property</option>
+                  <option value="family">Family Law</option>
+                  <option value="patents">Patents</option>
                 </select>
               </div>
 
@@ -167,26 +147,27 @@
             </div>
           </div> <!-- END .CONTAINER -->
         </form>
-      </div> <!-- END .header-search-bar -->
+      </div>
+      <!-- END .header-search-bar -->
 
    <div class="page-heading about-us-heading">
-				<span></span> <!-- for dark-overlay on the bg -->
+        <span></span> <!-- for dark-overlay on the bg -->
 
-				<div class="container">
-					<h1>Listed<span>Lawyers</span></h1>
+        <div class="container">
+          <h1>Listed<span>Lawyers</span></h1>
 
-					<div class="heading-link">
-						<a href="#">Home</a>
+          <div class="heading-link">
+            <a href="#">Home</a>
 
-						<i>/</i>
+            <i>/</i>
 
-						<a href="#">Lawyers</a>
-					</div>
+            <a href="#">Lawyers</a>
+          </div>
 
-				</div> <!-- END .container-->
-			</div> <!-- END .about-us-heading -->
+        </div> <!-- END .container-->
+      </div> <!-- END .about-us-heading -->
 
-		</div> <!-- END .SEARCH and slide-section -->
+    </div> <!-- END .SEARCH and slide-section -->
 
     <div class="header-nav-bar">
       <div class="container">
@@ -195,10 +176,9 @@
           <button><i class="fa fa-bars"></i></button>
 
           <ul class="primary-nav list-unstyled">
-<<<<<<< HEAD
             <li ><a href="{{ url('/') }}">Home</a>            </li>
 
-            <li class="bg-color"><a href="{{ url('lawyer/lawyers') }}">Lawyers</i></a>            </li>
+            <li class="bg-color"><a href="{{ url('lawyer/lawyers') }}">Lawyers</a>            </li>
 
             <li><a href="{{ url('firm') }}">Law Firms</a></li>
             <li><a href="{{ url('firm/jobs') }}">Job Opportunities</a></li><li><a href="{{ url('lawyer/whyregister') }}">Why Register</a></li>
@@ -223,7 +203,7 @@
            
               <div class="tab-content">
                 <div class="tab-pane active" id="all-categories">
-                  <h2>All Practice Areas<span class="comments">(12345)</span></h2>
+                  <h2>All Practice Areas<span class="comments">{{count($areas)}}</span></h2>
                       <div class="change-view"> <div class="filter-input">
                       <input type="text" placeholder="Filter by Keywords">
                     </div>
@@ -256,65 +236,61 @@
                       </ul>
 
                   </div> <!-- end .change-view -->
-      
-
                   <div class="row clearfix">
+                    @foreach($areas as $lawyer)
+                      <div class="col-sm-4 col-xs-6">
+                        <div class="single-product">
+                          <figure>
+                            <img src="{{asset('/lawyers/'.$lawyer->lawyer_photo_filename)}}" alt="">
 
-                    @if($areas)
-                          @foreach($areas as $law)
-                    <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="{{asset('/lawyers/'.$law->lawyer_photo_filename)}}" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
+                            <div class="rating">
+                              <p>Featured</p>
                             </div>
+                            <!-- end .rating -->
 
-                          </figcaption>
-                        </figure>
+                            <figcaption>
 
-                        <h4><a href="#">{{$law->lawyer_first_name}} {{$law->lawyer_middle_name }}</a></h4>
-                         <h5><a href="#">{{$law->lawyer_law_firm_name}}</a></h5>
-                        <h5><a href="#">{{$law->lawyer_practice_name}}</a></h5>
-                         
-                        <p>{{$law->lawyer_bios}}</p>
 
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
+                              <div class="read-more">
+                                <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
+                              </div>
 
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-                          @endforeach
-                    @endif
+                            </figcaption>
+                          </figure>
 
-                    <div class="pagination-center">
+                          <h4><a href="#">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
 
-                      <ul class="pagination">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                      </ul>
+                          <h5><a href="#">{{$lawyer->lawyer_law_firm_name}}</a></h5>
 
-                    </div>
+                          <h5><a href="#">{{$lawyer->lawyer_practice_name}}</a></h5>
 
-                  </div> <!-- end .row -->
+                          <p>{{$lawyer->lawyer_bios}}</p>
+
+                          <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
+
+                        </div> <!-- end .single-product -->
+                      </div> <!-- end .col-sm-4 grid layout -->
+
+                      {{--<div class="pagination-center">--}}
+
+                      {{--<ul class="pagination">--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-left"></i></a></li>--}}
+                      {{--<li class="active"><a href="#">1</a></li>--}}
+                      {{--<li><a href="#">2</a></li>--}}
+                      {{--<li><a href="#">3</a></li>--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-right"></i></a></li>--}}
+                      {{--</ul>--}}
+
+                      {{--</div>--}}
+
+                    @endforeach
+                  </div>
+
                 </div> <!-- end .tabe-pane -->
 
-
-                <div class="tab-pane" id="injurylaw">
-                  <h2>Injury Law<span class="comments">69</span></h2>
+                @foreach($new_areas as $link => $area)
+                <div class="tab-pane" id="{{$link}}">
+                  <h2>{{$area['title']}}<span class="comments">{{$area['count']}}</span></h2>
 
        <div class="change-view"> <div class="filter-input">
                       <input type="text" placeholder="Filter by Keywords">
@@ -348,16 +324,14 @@
                       </ul>
 
                   </div> <!-- end .change-view -->
-
                   <div class="row clearfix">
+                  @foreach($area['area'] as $lawyer)
                      <div class="col-sm-4 col-xs-6">
-
                       <div class="single-product">
                         <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
+                          <img src="{{asset('/lawyers/'.$lawyer->lawyer_photo_filename)}}" alt="">
 
                           <div class="rating">
-
                             <p>Featured</p>
                           </div> 
                           <!-- end .rating -->
@@ -372,517 +346,35 @@
                           </figcaption>
                         </figure>
 
-                        <h4><a href="#">Moses Chelanga</a></h4>
+                        <h4><a href="#">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
 
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
+                        <h5><a href="#">{{$lawyer->lawyer_law_firm_name}}</a></h5>
 
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
+                        <h5><a href="#">{{$lawyer->lawyer_practice_name}}</a></h5>
 
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-                    
-                      <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-                    
-                      <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
+                        <p>{{$lawyer->lawyer_bios}}</p>
 
                         <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
 
                       </div> <!-- end .single-product -->
                     </div> <!-- end .col-sm-4 grid layout -->
 
-                    <div class="pagination-center">
+                    {{--<div class="pagination-center">--}}
 
-                      <ul class="pagination">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                      </ul>
+                      {{--<ul class="pagination">--}}
+                        {{--<li><a href="#"><i class="fa fa-angle-left"></i></a></li>--}}
+                        {{--<li class="active"><a href="#">1</a></li>--}}
+                        {{--<li><a href="#">2</a></li>--}}
+                        {{--<li><a href="#">3</a></li>--}}
+                        {{--<li><a href="#"><i class="fa fa-angle-right"></i></a></li>--}}
+                      {{--</ul>--}}
 
-                    </div>
+                    {{--</div>--}}
 
+                  @endforeach
                   </div> <!-- end .row -->
                 </div> <!-- end .tabe-pane -->
-
-                <div class="tab-pane" id="familylaw">
-                  <h2>Family Law <span class="comments">99</span></h2>
-
-  <div class="change-view"> <div class="filter-input">
-                      <input type="text" placeholder="Filter by Keywords">
-                    </div>
-                    <button class="grid-view"><i class="fa fa-th"></i></button>
-                    <button class="list-view active"><i class="fa fa-bars"></i></button>
-
-                    <div class="sort-by">
-
-                      <select class="" data-placeholder="-sort by-">
-                        <option value="option1">Name ASC</option>
-                        <option value="option1">Name DESC</option>
-                        <option value="option2">LSK Number</option>
-                        <option value="option3">Location</option>
-                        <option value="option4">Year of Experience</option>
-                      </select></div>
-                     &nbsp;<div class="sort-by">
-
-                      <select class="" data-placeholder="-sort by-">
-                        <option value="option1">All Sub Practices Here</option>
-                       
-                      </select>
-                      </div>
-
-                      <ul class="pagination">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                      </ul>
-
-                  </div> <!-- end .change-view -->
-
-                  <div class="row clearfix">
-                  <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-                    
-                    
-                   <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-
-                     <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-
-                    <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-
-                    <div class="pagination-center">
-
-                      <ul class="pagination">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                      </ul>
-
-                    </div>
-
-                  </div> <!-- end .row -->
-                </div> <!-- end .tabe-pane -->
-
-                <div class="tab-pane" id="estateplanning">
-                  <h2>Estate Planning <span class="comments">69</span></h2>
-
-  <div class="change-view"> <div class="filter-input">
-                      <input type="text" placeholder="Filter by Keywords">
-                    </div>
-                    <button class="grid-view"><i class="fa fa-th"></i></button>
-                    <button class="list-view active"><i class="fa fa-bars"></i></button>
-
-                    <div class="sort-by">
-
-                      <select class="" data-placeholder="-sort by-">
-                        <option value="option1">Name ASC</option>
-                        <option value="option1">Name DESC</option>
-                        <option value="option2">LSK Number</option>
-                        <option value="option3">Location</option>
-                        <option value="option4">Year of Experience</option>
-                      </select></div>
-                     &nbsp;<div class="sort-by">
-
-                      <select class="" data-placeholder="-sort by-">
-                        <option value="option1">All Sub Practices Here</option>
-                       
-                      </select>
-                      </div>
-
-                      <ul class="pagination">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                      </ul>
-
-                  </div> <!-- end .change-view -->
-                  <div class="row clearfix">
-                     <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-                    
-                      <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-                    
-                      <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-
-                    <div class="pagination-center">
-
-                      <ul class="pagination">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                      </ul>
-
-                    </div>
-
-                  </div> <!-- end .row -->
-                </div> <!-- end .tabe-pane -->
-
-                <div class="tab-pane" id="cars-motorcycles">
-                  <h2>Real Estate <span class="comments">69</span></h2>
-
-  <div class="change-view"> <div class="filter-input">
-                      <input type="text" placeholder="Filter by Keywords">
-                    </div>
-                    <button class="grid-view"><i class="fa fa-th"></i></button>
-                    <button class="list-view active"><i class="fa fa-bars"></i></button>
-
-                    <div class="sort-by">
-
-                      <select class="" data-placeholder="-sort by-">
-                        <option value="option1">Name ASC</option>
-                        <option value="option1">Name DESC</option>
-                        <option value="option2">LSK Number</option>
-                        <option value="option3">Location</option>
-                        <option value="option4">Year of Experience</option>
-                      </select></div>
-                     &nbsp;<div class="sort-by">
-
-                      <select class="" data-placeholder="-sort by-">
-                        <option value="option1">All Sub Practices Here</option>
-                       
-                      </select>
-                      </div>
-
-                      <ul class="pagination">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                      </ul>
-
-                  </div> <!-- end .change-view -->
-
-                  <div class="row clearfix">
-                      <div class="col-sm-4 col-xs-6">
-
-                      <div class="single-product">
-                        <figure>
-                          <img src="img/content/post-img-1.jpg" alt="">
-
-                          <div class="rating">
-
-                            <p>Featured</p>
-                          </div> 
-                          <!-- end .rating -->
-
-                          <figcaption>
-                            
-
-                            <div class="read-more">
-                              <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
-                            </div>
-
-                          </figcaption>
-                        </figure>
-
-                        <h4><a href="#">Moses Chelanga</a></h4>
-
-                        <h5><a href="#">Family Law, Business Law, Tax law, Injury Law</a></h5>
-
-                        <p>Mr. Moses Chelanga is a registered LSK member in Kenya. He has vast experience in the sector for over 10 Years in practice</p>
-
-                        <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
-
-                      </div> <!-- end .single-product -->
-                    </div> <!-- end .col-sm-4 grid layout -->
-
-                    <div class="pagination-center">
-
-                      <ul class="pagination">
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                      </ul>
-
-                    </div>
-
-                  </div> <!-- end .row -->
-                </div> <!-- end .tabe-pane -->
+                  @endforeach
               </div> <!-- end .tabe-content -->
 
               <div class="advertisement">
@@ -950,10 +442,10 @@
                 <ul class="nav nav-tabs accordion-tab" role="tablist">
                   <li>
                     <a class="active" href="#all-categories" role="tab" data-toggle="tab">All Practice Areas</a></li>
-                  <li>
-                  @foreach($practices as $practice)
+
+                  @foreach($new_areas as $link => $practice)
                     <li>
-                      <a href="#all-categories"  role="tab" data-toggle="tab">{{ $practice }}
+                      <a href="#{{$link}}"  role="tab" data-toggle="tab">{{ $practice['title'] }}
                       </a>
                     </li>
                   @endforeach
@@ -1075,11 +567,11 @@
         <p>Copyright 2015 &copy; Wakilihub. All rights reserved. Powered by  <a href="#">Usalama</a></p>
 
         <ul class="list-inline">
-          <li><a href="lawyers.html">Lawyers</a></li>
-          <li><a href="lawfirms.html">Firms</a></li>
+          <li><a href="{{ url('/')}}">Lawyers</a></li>
+          <li><a href="{{ url('firm')}}">Firms</a></li>
           <li><a href="policies.html">Policies</a></li>
 
-          <li><a href="contact-us.html">Contact</a></li>
+          <li><a href="{{ url('firm/contact')}}">Contact</a></li>
         </ul>
       </div> <!-- END .container -->
     </div> 

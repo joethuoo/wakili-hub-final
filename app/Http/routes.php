@@ -15,7 +15,7 @@
     return view('index');
 });*/
 
-Route::get('/','LawyerController@index');
+//Route::get('/','LawyerController@index');
 
 /*Route::get('lawyer','LawyerController@index');
 Route::get('lawyer/create','LawyerController@create');
@@ -24,18 +24,34 @@ Route::post('lawyer/store','LawyerController@store');
 Route::get('lawyer/edit/{id}', 'LawyerController@edit');
 Route::get('lawyer/update/{id}', 'LawyerController@update');
 *///Route::get('lawyer/destroy/{id}', 'LawyerController@destroy');
-
+Route::get('lawyer/lawyers/{id}/readmore', 'LawyerController@readmore');
 Route::get('lawyer/lawyers/{id}','LawyerController@getLawyerById');
 
 Route::post('search','LawyerController@search');
 
-//Route::get('lawyer/lawyers/readmore/{$id}','LawyerController@readmore');
+
+Route::get('/','LawyerController@index');
+Route::post('register', 'LawyerController@doRegister');
+
+/*Route::get('/registration/activate/{code}', [ 'as' => 'activate', 'uses' =>
+ 'LawyerController@activate']);
+*/
+/*Route::get('/form',['as' => 'register', 'uses' => '
+	LawyerController@index']);*/
+
+Route::post('/login', ['as' => 'login', 'uses' => 
+	'LawyerController@login']);
+
+Route::get('logout', ['as' => 'logout', 'uses' =>
+	'LawyerController@logout']);
+
+
 
 Route::get('lawyer/whyregister', 'LawyerController@whyregister');
 Route::resource('lawyer','LawyerController');
 
-
-
+Route::get('search', 'FirmController@search');
+Route::get('firm/{id}/readmore','FirmController@readmore');
 Route::get('firm/profile/{id}', 'FirmController@show');
 Route::get('firm/jobs', 'FirmController@jobs');
 Route::get('firm/contact', 'FirmController@contact');
