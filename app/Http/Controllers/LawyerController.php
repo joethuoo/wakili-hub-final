@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use Auth;
 use App\User;
+=======
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -145,7 +148,11 @@ public function show()
      *
      * @return Response
      */
+<<<<<<< HEAD
 	 public function create()    {
+=======
+   public function create()    {
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
         return view('register');
     }
 
@@ -204,6 +211,7 @@ public function show()
      * @return Response
      */
 
+<<<<<<< HEAD
     public function doRegister(Request $request)
     {
      // $input = $request->all();
@@ -291,6 +299,35 @@ public function show()
 	
 	
 	  /**
+=======
+    public function wekalawyer(LawyerRegister $request)
+    {
+      $confirmation_code = str_random(30);
+
+      $user = Registrant::create([
+        'first_name' => $request['firstname'],
+        'last_name' => $request['lastname'],
+        'mobile_number' => $request['phonenumber'],
+        'email' => $request['email'],
+        'password' => Hash::make($request['password']),
+        'confirmation_code' => $confirmation_code
+        
+        ]);
+      
+
+      Mail::send('emails',$confirmation_code, function($message){
+             $message->to($request['email'],$request['firstname'])->subject('welcome');
+             
+      });
+
+      Flash::message('Thanks for signing up! Please check your email.');
+
+       return view('lawyers');
+    }
+  
+  
+    /**
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
@@ -323,7 +360,7 @@ public function show()
         $lawyer_association->status = $request['status'];
         $lawyer_association->lawyer_association()->associate($lawyer);
         $lawyer_association->save();
-		               
+                   
 
           $lawyer_contact = new lawyer_contact();
           $lawyer_contact->lawyer_contact_name  = $request['lawyer_contact_name'];

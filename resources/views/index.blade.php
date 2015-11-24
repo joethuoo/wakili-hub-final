@@ -22,6 +22,7 @@
         <!-- END .HEADER-LOGIN -->
 
         <!-- HEADER REGISTER -->
+<<<<<<< HEAD
         <div class="header-register" >
           <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
 
@@ -35,6 +36,21 @@
               <input type="password" name="password" class="form-control" placeholder="Password">
               
               <input type="submit" class="btn btn-default" >
+=======
+        <div class="header-register" style="display:none;">
+          <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
+
+          <div>
+            <form action="/register_lawyer" action="POST">
+              {{!! Form::token() !!}}
+              <input type="text" class="form-control" placeholder="Username">
+              <input type="text" class="form-control" placeholder="First Name">
+              <input type="text" class="form-control" placeholder="Second Name">
+              <input type="email" class="form-control" placeholder="Email">
+              <input type="text" class="form-control" placeholder="Phonenumbere">
+              <input type="password" class="form-control" placeholder="Password">
+              <input type="submit" class="btn btn-default" value="Register">
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
             </form>   
           </div>
         </div> 

@@ -21,7 +21,7 @@
 				</div> <!-- END .HEADER-LOGIN -->
 
 				<!-- HEADER REGISTER -->
-				<div class="header-register">
+				<div class="header-register" style="display:none;">
 					<a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
 
 					<div>

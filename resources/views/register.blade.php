@@ -180,8 +180,12 @@
   </header> <!-- end #header -->
 
  <!-- Get Listed Form Here-->
+<<<<<<< HEAD
 {{!! Form::open() !!}}
 {{!! Form::close() !!}}
+=======
+
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
 
   
 

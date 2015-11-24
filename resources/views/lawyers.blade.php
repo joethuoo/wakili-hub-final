@@ -88,7 +88,11 @@
 
     <!-- HEADER SEARCH SECTION -->
     <div class="header-search map">
+<<<<<<< HEAD
 	    <div class="header-search-bar">
+=======
+      <div class="header-search-bar">
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
         <form action="/search" method="POST">
             {!! Form::token() !!}
           <div class="search-toggle">

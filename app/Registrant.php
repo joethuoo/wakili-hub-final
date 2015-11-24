@@ -10,9 +10,15 @@ class Registrant extends Model
 
      protected $fillables = [
      'first_name',
+<<<<<<< HEAD
      'second_name',
      'mobile_number',
      'email_address',
+=======
+     'last_name',
+     'email_address',
+     'mobile_number',
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
      'password',
      
     

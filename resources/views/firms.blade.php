@@ -26,8 +26,13 @@
           <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
 
           <div>
+<<<<<<< HEAD
             <form action="#" method="">
                
+=======
+            <form action="/addfirm" method="POST">
+               {{!! Form::token() !!}}
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
              
               <input type="text" name="first_name" class="form-control" placeholder="First Name">
               <input type="text" name="last_name" class="form-control" placeholder="Second Name">

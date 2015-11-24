@@ -29,6 +29,10 @@ Route::get('lawyer/lawyers/{id}','LawyerController@getLawyerById');
 
 Route::post('search','LawyerController@search');
 
+<<<<<<< HEAD
+=======
+Route::get('register','LawyerController@create');
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
 
 Route::get('/','LawyerController@index');
 Route::post('register', 'LawyerController@doRegister');
@@ -45,11 +49,14 @@ Route::post('/login', ['as' => 'login', 'uses' =>
 Route::get('logout', ['as' => 'logout', 'uses' =>
 	'LawyerController@logout']);
 
+<<<<<<< HEAD
 
 
 Route::get('lawyer/whyregister', 'LawyerController@whyregister');
 Route::resource('lawyer','LawyerController');
 
+=======
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
 Route::get('search', 'FirmController@search');
 Route::get('firm/{id}/readmore','FirmController@readmore');
 Route::get('firm/profile/{id}', 'FirmController@show');
