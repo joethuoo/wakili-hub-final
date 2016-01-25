@@ -22,7 +22,7 @@
         <!-- END .HEADER-LOGIN -->
 
         <!-- HEADER REGISTER -->
-        <div class="header-register">
+        <div class="header-register" style="display:none;">
           <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
 
           <div>
@@ -38,7 +38,7 @@
 
         <!-- HEADER-LOG0 -->
         <div class="header-logo text-center">
-          <h2><a href="index.html"><img src="img/logotiny.png"> WAKILI HUB</a></h2>
+          <h2><a href="{{url('firm/jobs')}}"><img src="{{url('assets/img/logotiny.png')}}"> WAKILI HUB</a></h2>
         </div>
         <!-- END HEADER LOGO -->
 
@@ -56,22 +56,7 @@
           </ul>
         </div>
         <!-- END HEADER-SOCIAL -->
-
-        <!-- HEADER-LANGUAGE -->
-        <!-- <div class="header-language">
-          <a href="#">
-            <span>EN</span>
-            <i class="fa fa-chevron-down"></i>
-          </a>
-
-          <ul class="list-unstyled">
-            <li class="active"><a href="#">EN</a></li>
-            <li><a href="#">FR</a></li>
-            <li><a href="#">PT</a></li>
-            <li><a href="#">IT</a></li>
-          </ul>
-        </div>--> <!-- END HEADER-LANGUAGE -->
-
+        
         <!-- CALL TO ACTION -->
         <div class="header-call-to-action">
           <a href="#" class="btn btn-default"><i class="fa fa-plus"></i> Get Listed</a>
@@ -83,53 +68,23 @@
 
     <!-- HEADER SEARCH SECTION -->
     <div class="header-search fixed-height">
-      <div class="header-search-bar">
-        <form action="#">
-
+          <div class="header-search-bar">
+        <form action="/search" method="POST">
+            {!! Form::token() !!}
           <div class="search-toggle">
-            <div class="container"> <!--<div class="distance-range">
-                <p>
-                  <label for="amount-search">Distance:</label>
-                  <input type="text" id="amount-search">
-                </p>
-
-                <div class="slider-range-search"></div>
-              </div>  end #distance-range
-
-              <div class="distance-range">
-                <p>
-                  <label for="amount-search">Days published:</label>
-                  <input type="text" id="amount-search-day">
-                </p>
-
-                <div class="slider-range-search-day"></div>
-              </div>-->  <!-- end #distance-range -->
-
+            <div class="container"> 
               <p>Location:</p>
               <div class="select-country">
-                <select class="" data-placeholder="-Select County-">
-                  <option value="option1">Nairobi</option>
-                  <option value="option2">Kisumu</option>
-                  <option value="option3">Mombasa</option>
+                <select name = "country" class="" data-placeholder="-Select County-">
+                  <option value=""></option>
+                  <option value="nairobi">Nairobi</option>
+                  <option value="kisumi">Kisumu</option>
+                  <option value="mombasa">Mombasa</option>
                 </select>
-              </div>
-
-              <div class="region">
-                <input type="text" placeholder="-Region-">
               </div>
 
               <div class="address">
-                <input type="text" placeholder="-Address-">
-              </div>
-
-              <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option>
-                  <option value="option3">Family Law</option>
-                  <option value="option3">Patents</option>
-                </select>
+                <input name = "address" type="text" placeholder="-Address-">
               </div>
 
               <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
@@ -137,29 +92,34 @@
             </div>
           </div>  <!-- END .search-toggle -->
 
-
           <div class="container">
             <button class="toggle-btn" type="submit"><i class="fa fa-bars"></i></button>
 
             <div class="search-value">
               <div class="keywords">
-                <input type="text" class="form-control" placeholder="Keywords">
+                <input name = "keywords" type="text" class="form-control" placeholder="Keywords">
               </div>
 
               <div class="select-location">
-                <select class="" data-placeholder="-Select Town-">
-                  <option value="option1">Busia</option>
-                  <option value="option2">Bomet</option><option value="option4">Bondo</option>
-                  <option value="option3">Thika</option>
-                  <option value="option4">Nyeri</option><option value="option4">Muranga</option>
+                <select name = "location" class="" data-placeholder="-Select Town-">
+                  <option value=""></option>
+                  <option value="busia">Busia</option>
+                  <option value="bomet">Bomet</option>
+                  <option value="bondo">Bondo</option>
+                  <option value="thika">Thika</option>
+                  <option value="nyeri">Nyeri</option>
+                  <option value="muranga">Muranga</option>
                 </select>
               </div>
 
               <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option><option value="option3">Family Law</option><option value="option3">Patents</option>
+                <select name = "category" class="" data-placeholder="-Select Practice-">
+                  <option value=""></option>
+                  <option value="business">Business Law</option>
+                  <option value="juvenile">Juvenile</option>
+                  <option value="property">Property</option>
+                  <option value="family">Family Law</option>
+                  <option value="patents">Patents</option>
                 </select>
               </div>
 
@@ -177,11 +137,11 @@
           <h1>Jobs</h1>
 
           <div class="heading-link">
-            <a href="#">Home</a>
+            <a href="{{ url('/')}}">Home</a>
 
             <i>/</i>
 
-            <a href="#">Job Opportunities</a>
+            <a href="{{ url('firm/jobs')}}">Job Opportunities</a>
           </div>
 
         </div> <!-- END .container-->
@@ -197,14 +157,14 @@
           <button><i class="fa fa-bars"></i></button>
 
           <ul class="primary-nav list-unstyled">
-            <li><a href="index.html">Home</a>            </li>
+            <li><a href="{{ url('/') }}">Home</a>            </li>
 
-            <li class=""><a href="lawyers.html">Lawyers</i></a> </li>
+            <li class=""><a href="{{ url('lawyer/lawyers') }}">Lawyers</i></a> </li>
 
-            <li><a href="lawfirms.html">Law Firms</a></li>
-            <li class="bg-color"><a href="jobs.html">Job Opportunities</a></li><li><a href="whyregister.html">Why Register</a></li>
-            <li><a href="about-us.html">About Us</a></li>
-            <li><a href="contact-us.html">Contact Us</a></li>
+            <li><a href="{{ url('firm') }}">Law Firms</a></li>
+            <li class="bg-color"><a href="{{ url('firm/jobs') }}">Job Opportunities</a></li><li><a href="{{ url('lawyer/whyregister')}}">Why Register</a></li>
+            <li><a href="{{ url('firm/about') }}">About Us</a></li>
+            <li><a href="{{ url('firm/contact') }}">Contact Us</a></li>
           </ul>
         </nav>
       </div> <!-- end .container -->
@@ -218,6 +178,8 @@
         <div class="row">
           <div class="col-md-8">
             <div class="blog-list">
+              @if($jobs)
+             @foreach($jobs as $job)
  <div class="post-without-image">
                 <div class="date-month">
                   <a href="#">
@@ -226,49 +188,32 @@
                   </a>
                 </div>
 
-                <h2 class="title"><a href="viewjob.html">Director Of Legal Affairs</a></h2>
+                <h2 class="title"><a href="viewjob.html">{{$job->job_title}}</a></h2>
 
                 <p class="user">
-                  <a href="#"><i class="fa fa-user"></i> Kenya Controller of Budget</a>
+                  <a href="#"><i class="fa fa-user"></i> {{$job->job_company}}</a>
                 <!--  <a href="#"><i class="fa fa-folder-open-o"></i> Design</a>
                   <a href="#"><i class="fa fa-comments-o"></i> 2 Comments</a>-->
                 </p>
 
                <div class="post">
                
-           <p>    The Office of the Controller of Budget is an independent Office established under Article 228 of the Constitution of Kenya, 2010.
-           </p>
-           <p>
+ <p>{{$job->job_company_bio}}</p>
+{{$job->job_title}}<br>
+{{ $job->job_opening }}Post<br>
 
-Its core mandate is to oversee implementation of the budgets of the National and County governments, approve withdrawals from the Consolidated Fund (Article 206), County Revenue Fund (Article 207) and Equalisation Fund (Article 204) and report on Budget Implementation to Parliament every four months.
-</p><p>
-
-Pursuant to Article 252 (1) (c) of the Constitution, the Office seeks to recruit highly qualified and competent staff to fill the following vacant positions.
-<p>
-<p>
-Director, Legal Affairs<br>
-Grade COB 3<br>
-1 Post<br>
-
-Reporting to the Controller of Budget, the officer will be responsible for formulation and implementation of Legal, Governance and Compliance policies, systems and procedures and overseeing research on legal matters.
-</p>
+{{$job->job_duty}}</p>
                
-                  <p><strong>Director Of Legal Affairs Job Responsibilities.</strong>
+                  <p><strong>{{$job->job_title}} Job Responsibilities.</strong>
                   </p>
 
 
                   <ul>
-                    <li>Head the Legal Services Directorate;</li>
-                    <li>Advise management on legal, governance and compliance issues;</li>
-                    <li>Formulate legal, governance &amp; compliance strategic direction aligned to government policies and the Constitution;</li>
-                    <li>Oversee implementation of legal, governance &amp; compliance policies, systems and procedures;</li>
-                    <li>Ensure compilation of reports on Legal, Governance &amp; Compliance;</li>
-                    <li>Initiate research on legal issues;</li>
-                    <li>Provide legal counsel on legal and legislative issues impacting on the Office;</li>
-                    <li>Advise on any legal issues that may arise in the course of executing the mandate of the office;</li>
-                    <li>Oversee drawing of contracts and agreements for the organization;</li>
-                    <li>Advise and ensure compliance with legal and regulatory requirements;</li>
-                    <li>Ensure safe custody of legal documents.</li>
+                  {{--  @if($responsibilities) 
+                    @foreach($responsibilities as $resp) --}}
+                    {{-- <li>{{ $job->job_responsibility }}</li> --}}
+                 {{--   @endforeach
+                    @endif --}}
                   </ul>
                  
 
@@ -287,10 +232,7 @@ Reporting to the Controller of Budget, the officer will be responsible for formu
 
                 <p class="tag">
                   <i class="fa fa-tag"></i>
-                  <a href="#">Masters Degree,</a>
-                  <a href="#">Good Oral and Written Skills,</a>
-                  <a href="#">Goverment,</a>
-                  <a href="#">Bima House</a>
+                  <a href="#">{{$job->job_requirements}}</a>
                 </p>
 
 
@@ -300,7 +242,8 @@ Reporting to the Controller of Budget, the officer will be responsible for formu
             
 
             </div> <!-- end .blog-list -->
-
+          @endforeach
+         @endif
 
           </div> <!-- end .grid-layout -->
 

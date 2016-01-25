@@ -38,6 +38,6 @@ class CreateLawyerLawFirmTable extends Migration
      */
     public function down()
     {
-          Shema::drop('lawyer_law_firm');
+          Schema::drop('lawyer_law_firm');
     }
 }

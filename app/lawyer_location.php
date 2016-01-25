@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class lawyer_location extends Model
+class LawyerLocation extends Model
 {
      /**
      * The database table used by the model.

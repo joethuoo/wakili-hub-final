@@ -34,6 +34,6 @@ class CreateLawyerContactTable extends Migration
      */
     public function down()
     {
-        Schema::drop('lawyer_contacts');
+        Schema::drop('lawyer_contact');
     }
 }

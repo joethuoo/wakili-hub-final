@@ -11,7 +11,7 @@
           <a href="#" class=""><i class="fa fa-power-off"></i> Login</a>
 
           <div>
-            <form action="#">
+            <form action="/login" method="POST">
               <input type="text" class="form-control" placeholder="Username">
               <input type="password" class="form-control" placeholder="Password">
               <input type="submit" class="btn btn-default" value="Login">
@@ -22,23 +22,27 @@
         <!-- END .HEADER-LOGIN -->
 
         <!-- HEADER REGISTER -->
-        <div class="header-register">
+        <div class="header-register" >
           <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
 
           <div>
-            <form action="#">
-              <input type="text" class="form-control" placeholder="Username">
-              <input type="email" class="form-control" placeholder="Email">
-              <input type="password" class="form-control" placeholder="Password">
-              <input type="submit" class="btn btn-default" value="Register">
-            </form>
+            <form action="/register" method="POST">
+              {!! csrf_field() !!}
+              <input type="text" name="first_name" class="form-control" placeholder="First Name">
+              <input type="text" name="second_name" class="form-control" placeholder="Second Name">
+              <input type="text" name="mobile_number" class="form-control" placeholder="Phone Number">
+              <input type="email" name="email" class="form-control" placeholder="Email">
+              <input type="password" name="password" class="form-control" placeholder="Password">
+              
+              <input type="submit" class="btn btn-default" >
+            </form>   
           </div>
         </div> 
         <!-- END .HEADER-REGISTER -->
 
         <!-- HEADER-LOG0 -->
         <div class="header-logo text-center">
-          <h2><a href="index.html"><img src="assets/img/logotiny.png"> WAKILI HUB</a></h2>
+          <h2><a href="{{ url('/')}}"><img src="{{asset('assets/img/logotiny.png')}}"> WAKILI HUB</a></h2>
         </div>
         <!-- END HEADER LOGO -->
 
@@ -74,7 +78,7 @@
 
         <!-- CALL TO ACTION -->
         <div class="header-call-to-action">
-          <a href="#" class="btn btn-default"><i class="fa fa-plus"></i> Get Listed</a>
+          <a href=" {{ url('lawyer/whyregister')}}" class="btn btn-default"><i class="fa fa-plus"></i> Get Listed</a>
         </div>
         <!-- END .HEADER-CALL-TO-ACTION -->
 
@@ -158,7 +162,7 @@
 
           </div>
 
-          <div class="item"><img src="assets/img/content/home-slider-img-two.jpg" alt=""><div class="slide-content">
+          <div class="item"><img src="{{asset('assets/img/content/home-slider-img-two.jpg')}}" alt=""><div class="slide-content">
              <!--  <a href="#"><img src="img/slider-logo.png" alt=""></a> -->
               <h1>The <span>Right</span> Place</h1>
               <h2>For Lawyers</h2>
@@ -168,7 +172,7 @@
 
           </div>
 
-          <div class="item"><img src="assets/img/content/home-slide-img.jpg" alt=""><div class="slide-content">
+          <div class="item"><img src="{{asset('assets/img/content/home-slide-img.jpg')}}" alt=""><div class="slide-content">
              <!--  <a href="#"><img src="img/slider-logo.png" alt=""></a> -->
               <h1>The <span>Right</span> Place</h1>
               <h2>For Lawyers</h2>
@@ -288,18 +292,18 @@
                           <figcaption>
                             
                             <div class="read-more">
-                              <a href="{{ url('lawyer/lawyers/readmore') }}"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
+                              <a href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
                           </figcaption>
                         </figure>
 
-                        <h4><a href="#">{{ $lawyer->lawyer_first_name }} {{$lawyer->lawyer_middle_name }} {{$lawyer->lawyer_last_name }} </a></h4>
+                        <h4><a href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}">{{ $lawyer->lawyer_first_name }} {{$lawyer->lawyer_middle_name }} {{$lawyer->lawyer_last_name }} </a></h4>
 
        
-                        <h5><a href="#">{{$lawyer->lawyer_law_firm_name }}</a></h5>
+                        <h5>{{$lawyer->lawyer_law_firm_name }}</h5>
          
                         <p>Nairobi, Business Law, Corporate Law, Real Estate Law. {{$lawyer->lawyer_experience}} years of Experience.</p>
 
-                        <a class="read-more" href="{{ url('lawyer/lawyers/readmore') }}"><i class="fa fa-angle-right"></i>Read More</a>
+                        <a class="read-more" href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}"><i class="fa fa-angle-right"></i>Read More</a>
                          
                       </div> <!-- end .single-product -->
                     </div> <!-- end .grid-layout -->
@@ -609,9 +613,9 @@
               <div id="categories">
                 <div class="accordion">
                   <ul class="nav nav-tabs home-tab" role="tablist">
-                      @foreach($practices as $practice)
+                      @foreach($new_areas as $link => $practice)
                     <li>
-                      <a href="#all-categories"  role="tab" data-toggle="tab">{{ $practice }}
+                      <a href="#{{$link}}"  role="tab" data-toggle="tab">{{ $practice['title'] }}
                      </a>
                     </li>
                       @endforeach
@@ -632,12 +636,12 @@
       <div class="row clearfix">
         <h2><strong>Freatured</strong> Law Firms</h2>
      
-       @if($area)
-          @foreach($area as $firm=> $val)
+       @if($firms)
+          @foreach($firms as $firm=> $val)
         <div class="col-md-3 col-sm-4 col-xs-6">
           <div class="single-product">
             <figure>
-              <img src="assets/img/content/firmlogo.jpg" alt="">
+              <img src="{{asset('/firms/'.$val->firm_photo_filename)}}" alt="">
 
               <div class="rating">
                 <ul class="list-inline">
@@ -655,13 +659,11 @@
               <figcaption>
                 
                 <div class="read-more">
-                  <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
+                  <a href="{{ url('firm/'.$val->firm_id.'/readmore')}}"><i class="fa fa-angle-right"></i> View Profile</a>                </div>
               </figcaption>
             </figure>
-            <h4><a href="viewfirm.html">{{ $val->firm_name }}</a></h4>                   
-               <h5><a href="viewfirm.html">
-                       {{ $val->firm_practice_name }} 
-              </a></h5>
+            <h4><a href="{{ url('firm/'.$val->firm_id.'/readmore')}}">{{ $val->firm_name }}</a></h4>                   
+               <h5>{{ $val->firm_practice_name }}</h5>
           </div> <!-- end .single-product -->
         </div>
         @endforeach
@@ -811,15 +813,21 @@
         <p>Copyright 2015 &copy; Wakilihub. All rights reserved. Powered by  <a href="#">Usalama</a></p>
 
         <ul class="list-inline">
-          <li><a href="lawyers.html">Lawyers</a></li>
-          <li><a href="lawfirms.html">Firms</a></li>
+          <li><a href="{{ url('lawyer/lawyers')}}">Lawyers</a></li>
+          <li><a href="{{ url('firm')}}">Firms</a></li>
           <li><a href="policies.html">Policies</a></li>
-
-          <li><a href="contact-us.html">Contact</a></li>
+          <li><a href="{{ url('firm/contact')}}">Contact</a></li>
         </ul>
       </div> <!-- END .container -->
     </div> 
     <!-- end .copyright-->
+    @if($errors)
+    <ul>
+       @foreach($errors as $error)
+       <li> $error </li>
+       @endforeach
+    </ul>
+    @endif
   </footer> <!-- end #footer -->
 
 
