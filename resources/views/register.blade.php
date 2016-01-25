@@ -163,8 +163,15 @@
 
           <ul class="primary-nav list-unstyled">
 
+<<<<<<< HEAD
             <li ><a href="{{ url('/') }}">Home</a></li>
             <li class="bg-color"><a href="{{ url('lawyer/lawyers') }}">Lawyers</i></a></li>
+=======
+            <li ><a href="{{ url('/') }}">Home</a>            </li>
+
+            <li class="bg-color"><a href="{{ url('lawyer/lawyers') }}">Lawyers</i></a>            </li>
+
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
             <li><a href="{{ url('firm') }}">Law Firms</a></li>
             <li><a href="{{ url('firm/jobs') }}">Job Opportunities</a></li><li><a href="{{ url('lawyer/whyregister') }}">Why Register</a></li>
             <li><a href="{{ url('firm/about') }}">About Us</a></li>
@@ -178,6 +185,7 @@
   </header> <!-- end #header -->
 
  <!-- Get Listed Form Here-->
+<<<<<<< HEAD
 	{!! Form::open(array('route' => '', 'class' => 'form')) !!}
           
           <div class="form-group">
@@ -188,6 +196,17 @@
               'placeholder'=>'Your name')) !!}
           </div>
   {!! Form::close() !!}
+=======
+<<<<<<< HEAD
+{{!! Form::open() !!}}
+{{!! Form::close() !!}}
+=======
+
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+
+  
+
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
     <footer id="footer">
  <!--   <div class="main-footer">
 

@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use Auth;
 use App\User;
+=======
+<<<<<<< HEAD
+use Auth;
+use App\User;
+=======
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -85,7 +93,11 @@ class LawyerController extends Controller
 
       
 
+<<<<<<< HEAD
       $firms = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+=======
+      $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
        ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')                        
      ->select('*')
      ->OrderBy('firm_practice_area.firm_practice_name')
@@ -192,6 +204,7 @@ public function show()
      */
    public function readmore($id)
     {
+<<<<<<< HEAD
      $more = DB::table('lawyer')->join('lawyer_practice_areas','lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
                                     ->join('lawyer_law_firm', 'lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
                                     ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')
@@ -205,15 +218,39 @@ public function show()
                                    ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
                                    ->get();
       return view('morelawyer',compact('more'));
+=======
+     $more = DB::table('Lawyer')->join('lawyer_practice_areas','Lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
+                                    ->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
+                                    ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')           
+                                   ->select('*')
+                                   ->where('Lawyer.lawyer_id',$id)
+                                   ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
+                                   ->get();
+      return view('readmore',compact('more'));
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
 
     }
 
 
+<<<<<<< HEAD
     public function contact()
     {
       /*$contact = DB::table('Lawyer')->join('lawyer_contact', 'Lawyer.lawyer_id', '=', 'lawyer_contact.lawyer_contact_id')
                                     ->join('lawyer_location', 'Lawyer.lawyer_id', '=', 'lawyer_location.lawyer_location_id')*/
          return view('contact');
+=======
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+<<<<<<< HEAD
+	 public function create()    {
+=======
+   public function create()    {
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+        return view('register');
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
     }
 
 
@@ -273,6 +310,7 @@ public function show()
      * @param  LawyerRegister  $request
      * @return Response
      */
+<<<<<<< HEAD
  
 
     public function doRegister(Request $request)
@@ -286,10 +324,36 @@ public function show()
               $input['activation_code'] = $request->get('email').str_random(60);
               $register = User::create($input);
          /*   } catch (\Exception $e) {
+=======
+
+<<<<<<< HEAD
+    public function doRegister(Request $request)
+    {
+     // $input = $request->all();
+      /*$user = DB::insert('insert into users (users_id,first_name,second_name,mobile_number,email,password) values
+        (?,?,?,?,?,?) ',[$request->first_name,$request->second_name,$request->mobile_number,
+          $request->email,$request->password]);
+      */
+
+             //DB::beginTransaction();
+
+            try {
+
+            User::create([
+            'first_name' => $request->get('first_name'),
+            'second_name' => $request->get('second_name'),
+            'mobile_number' => $request->get('mobile_number'),
+            'email' => $request->get('email'),
+            'password' => bcrypt($request->get('password')),
+            ]);
+
+            } catch (\Exception $e) {
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
             //DB::rollback();
 
             //dd($e);
 
+<<<<<<< HEAD
             }*/
             
 
@@ -332,6 +396,42 @@ public function show()
 
 
     /*public function login(LoginRequest $request)
+=======
+            }
+
+//DB::commit();
+  
+   /* $data = [
+       'first_name' => $input['first_name'],
+       'code' => $input['activation_code']
+    ];
+
+    $this->sendEmail($data,$input);*/ 
+
+    return 'Hello world';
+      
+    }
+
+    public function sendEmail($data,$input)
+    {
+      Mail::send('email.register',$data, function($message) use ($input){
+            $message->from('team@wakilihub.co.ke','Laravel is the best');
+            $message->to($input['email'],$input['first_name'])
+                      ->subject('Activate your account!');
+      });
+    }
+
+    public function activate($code,User $user)
+    {
+     if($user->activateAccount($code)){
+      return 'Activated';
+     }
+     return 'Fail';
+    }
+
+
+    public function login(LoginRequest $request)
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
     {
         $credentials = $request->only('email', 'password');
 
@@ -354,6 +454,7 @@ public function show()
       Auth::logout();
 
       return redirect()->route('/');
+<<<<<<< HEAD
     }*/
 
    /**
@@ -376,8 +477,43 @@ public function show()
                    $message->to()->subject('Client Query');
              });
     }
+=======
+    }
+
+   
+	
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
 	
 	  /**
+=======
+    public function wekalawyer(LawyerRegister $request)
+    {
+      $confirmation_code = str_random(30);
+
+      $user = Registrant::create([
+        'first_name' => $request['firstname'],
+        'last_name' => $request['lastname'],
+        'mobile_number' => $request['phonenumber'],
+        'email' => $request['email'],
+        'password' => Hash::make($request['password']),
+        'confirmation_code' => $confirmation_code
+        
+        ]);
+      
+
+      Mail::send('emails',$confirmation_code, function($message){
+             $message->to($request['email'],$request['firstname'])->subject('welcome');
+             
+      });
+
+      Flash::message('Thanks for signing up! Please check your email.');
+
+       return view('lawyers');
+    }
+  
+  
+    /**
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
      * Store a newly created resource in storage.
      *
      * @param  Request  $request
@@ -410,7 +546,7 @@ public function show()
         $lawyer_association->status = $request['status'];
         $lawyer_association->lawyer_association()->associate($lawyer);
         $lawyer_association->save();
-		               
+                   
 
           $lawyer_contact = new lawyer_contact();
           $lawyer_contact->lawyer_contact_name  = $request['lawyer_contact_name'];

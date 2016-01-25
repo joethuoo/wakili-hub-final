@@ -22,6 +22,10 @@
         <!-- END .HEADER-LOGIN -->
 
         <!-- HEADER REGISTER -->
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
         <div class="header-register" >
           <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
 
@@ -35,6 +39,24 @@
               <input type="password" name="password" class="form-control" placeholder="Password">
               
               <input type="submit" class="btn btn-default" >
+<<<<<<< HEAD
+=======
+=======
+        <div class="header-register" style="display:none;">
+          <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
+
+          <div>
+            <form action="/register_lawyer" action="POST">
+              {{!! Form::token() !!}}
+              <input type="text" class="form-control" placeholder="Username">
+              <input type="text" class="form-control" placeholder="First Name">
+              <input type="text" class="form-control" placeholder="Second Name">
+              <input type="email" class="form-control" placeholder="Email">
+              <input type="text" class="form-control" placeholder="Phonenumbere">
+              <input type="password" class="form-control" placeholder="Password">
+              <input type="submit" class="btn btn-default" value="Register">
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
             </form>   
           </div>
         </div> 
@@ -663,7 +685,13 @@
               </figcaption>
             </figure>
             <h4><a href="{{ url('firm/'.$val->firm_id.'/readmore')}}">{{ $val->firm_name }}</a></h4>                   
+<<<<<<< HEAD
                <h5>{{ $val->firm_practice_name }}</h5>
+=======
+               <h5><a href="{{ url('firm/'.$val->firm_id.'/readmore')}}">
+                       {{ $val->firm_practice_name }} 
+              </a></h5>
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
           </div> <!-- end .single-product -->
         </div>
         @endforeach
@@ -816,6 +844,10 @@
           <li><a href="{{ url('lawyer/lawyers')}}">Lawyers</a></li>
           <li><a href="{{ url('firm')}}">Firms</a></li>
           <li><a href="policies.html">Policies</a></li>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
           <li><a href="{{ url('firm/contact')}}">Contact</a></li>
         </ul>
       </div> <!-- END .container -->

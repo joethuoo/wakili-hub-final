@@ -16,7 +16,10 @@
 });*/
 
 //Route::get('/','LawyerController@index');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
 
 /*Route::get('lawyer/create','LawyerController@create');
 Route::get('lawyer/show/{id}','LawyerController@show');
@@ -24,13 +27,17 @@ Route::post('lawyer/store','LawyerController@store');
 Route::get('lawyer/edit/{id}', 'LawyerController@edit');
 Route::get('lawyer/update/{id}', 'LawyerController@update');
 *///Route::get('lawyer/destroy/{id}', 'LawyerController@destroy');
+<<<<<<< HEAD
 
 Route::get('/','LawyerController@index');
 Route::get('lawyer','LawyerController@index');
+=======
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
 Route::get('lawyer/lawyers/{id}/readmore', 'LawyerController@readmore');
 Route::get('lawyer/lawyers/{id}','LawyerController@getLawyerById');
 Route::post('search','LawyerController@search');
 
+<<<<<<< HEAD
 Route::post('register', 'LawyerController@doRegister');
 
 Route::get('lawyer/whyregister', 'LawyerController@whyRegister');
@@ -57,12 +64,40 @@ Route::get('logout', ['as' => 'logout', 'uses' =>
 	'LawyerController@logout']);*/
 
 
+=======
+<<<<<<< HEAD
+=======
+Route::get('register','LawyerController@create');
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+
+Route::get('/','LawyerController@index');
+Route::post('register', 'LawyerController@doRegister');
+
+/*Route::get('/registration/activate/{code}', [ 'as' => 'activate', 'uses' =>
+ 'LawyerController@activate']);
+*/
+/*Route::get('/form',['as' => 'register', 'uses' => '
+	LawyerController@index']);*/
+
+Route::post('/login', ['as' => 'login', 'uses' => 
+	'LawyerController@login']);
+
+Route::get('logout', ['as' => 'logout', 'uses' =>
+	'LawyerController@logout']);
+
+<<<<<<< HEAD
+
+<<<<<<< HEAD
+Route::get('firm', 'FirmController@index');
+=======
 
 Route::get('lawyer/whyregister', 'LawyerController@whyregister');
 Route::resource('lawyer','LawyerController');
 
-
-Route::get('firm', 'FirmController@index');
+=======
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
 Route::get('search', 'FirmController@search');
 Route::get('firm/{id}/readmore','FirmController@readmore');
 Route::get('firm/profile/{id}', 'FirmController@show');

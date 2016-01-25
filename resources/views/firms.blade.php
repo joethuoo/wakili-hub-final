@@ -26,8 +26,18 @@
           <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
 
           <div>
+<<<<<<< HEAD
             <form action="#" method="">
                
+=======
+<<<<<<< HEAD
+            <form action="#" method="">
+               
+=======
+            <form action="/addfirm" method="POST">
+               {{!! Form::token() !!}}
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
              
               <input type="text" name="first_name" class="form-control" placeholder="First Name">
               <input type="text" name="last_name" class="form-control" placeholder="Second Name">
@@ -307,10 +317,33 @@
 
                     <div class="change-view"> <div class="filter-input">
                         <input type="text" placeholder="Filter by Keywords">
+<<<<<<< HEAD
+=======
                       </div>
                       <button class="grid-view"><i class="fa fa-th"></i></button>
                       <button class="list-view active"><i class="fa fa-bars"></i></button>
 
+                      <div class="sort-by">
+
+                        <select class="" data-placeholder="-sort by-">
+                          <option value="option1">Name ASC</option>
+                          <option value="option1">Name DESC</option>
+                          <option value="option2">LSK Number</option>
+                          <option value="option3">Location</option>
+                          <option value="option4">Year of Experience</option>
+                        </select></div>
+                      &nbsp;<div class="sort-by">
+
+                        <select class="" data-placeholder="-sort by-">
+                          <option value="option1">All Sub Practices Here</option>
+
+                        </select>
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+                      </div>
+                      <button class="grid-view"><i class="fa fa-th"></i></button>
+                      <button class="list-view active"><i class="fa fa-bars"></i></button>
+
+<<<<<<< HEAD
                       <div class="sort-by">
 
                         <select class="" data-placeholder="-sort by-">
@@ -346,6 +379,26 @@
 
                               <div class="rating">
 
+=======
+                      <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                      </ul>
+
+                    </div> <!-- end .change-view -->
+                    <div class="row clearfix">
+                      @foreach($area['area'] as $firm)
+                        <div class="col-sm-4 col-xs-6">
+                          <div class="single-product">
+                            <figure>
+                              <img src="{{asset('/firms/'.$firm->firm_photo_filename)}}" alt="">
+
+                              <div class="rating">
+
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
                                 <p>Featured</p>
                               </div>
                               <!-- end .rating -->
@@ -376,12 +429,20 @@
                   </div> <!-- end .tabe-pane -->
                   @endforeach
                  <!-- end .tabe-pane -->
+<<<<<<< HEAD
+=======
+
+                 <!-- end .tabe-pane -->
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
 
                  <!-- end .tabe-pane -->
 
                  <!-- end .tabe-pane -->
+<<<<<<< HEAD
 
                  <!-- end .tabe-pane -->
+=======
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
               </div> <!-- end .tabe-content -->
 
               <div class="advertisement">
