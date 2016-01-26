@@ -88,7 +88,19 @@
 
     <!-- HEADER SEARCH SECTION -->
     <div class="header-search map">
+<<<<<<< HEAD
 	    <div class="header-search-bar">
+=======
+<<<<<<< HEAD
+	    <div class="header-search-bar">
+=======
+<<<<<<< HEAD
+	    <div class="header-search-bar">
+=======
+      <div class="header-search-bar">
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
         <form action="/search" method="POST">
             {!! Form::token() !!}
           <div class="search-toggle">
@@ -247,6 +259,7 @@
                               <p>Featured</p>
                             </div>
                             <!-- end .rating -->
+<<<<<<< HEAD
 
                             <figcaption>
 
@@ -286,6 +299,89 @@
                     @endforeach
                   </div>
 
+=======
+<<<<<<< HEAD
+
+                            <figcaption>
+
+
+                              <div class="read-more">
+                                <a href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}"><i class="fa fa-angle-right"></i> Read More</a>
+                              </div>
+
+                            </figcaption>
+                          </figure>
+
+                          <h4><a href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
+
+                          <h5>{{$lawyer->lawyer_law_firm_name}}</h5>
+
+                          <h5>{{$lawyer->lawyer_practice_name}}</h5>
+
+                          <p>{{$lawyer->lawyer_bios}}</p>
+
+                          <a class="read-more" href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}"><i class="fa fa-angle-right"></i>Read More</a>
+
+                        </div> <!-- end .single-product -->
+                      </div> <!-- end .col-sm-4 grid layout -->
+
+                      {{--<div class="pagination-center">--}}
+
+                      {{--<ul class="pagination">--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-left"></i></a></li>--}}
+                      {{--<li class="active"><a href="#">1</a></li>--}}
+                      {{--<li><a href="#">2</a></li>--}}
+                      {{--<li><a href="#">3</a></li>--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-right"></i></a></li>--}}
+                      {{--</ul>--}}
+
+                      {{--</div>--}}
+
+                    @endforeach
+                  </div>
+
+=======
+
+                            <figcaption>
+
+
+                              <div class="read-more">
+                                <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
+                              </div>
+
+                            </figcaption>
+                          </figure>
+
+                          <h4><a href="#">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
+
+                          <h5><a href="#">{{$lawyer->lawyer_law_firm_name}}</a></h5>
+
+                          <h5><a href="#">{{$lawyer->lawyer_practice_name}}</a></h5>
+
+                          <p>{{$lawyer->lawyer_bios}}</p>
+
+                          <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
+
+                        </div> <!-- end .single-product -->
+                      </div> <!-- end .col-sm-4 grid layout -->
+
+                      {{--<div class="pagination-center">--}}
+
+                      {{--<ul class="pagination">--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-left"></i></a></li>--}}
+                      {{--<li class="active"><a href="#">1</a></li>--}}
+                      {{--<li><a href="#">2</a></li>--}}
+                      {{--<li><a href="#">3</a></li>--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-right"></i></a></li>--}}
+                      {{--</ul>--}}
+
+                      {{--</div>--}}
+
+                    @endforeach
+                  </div>
+
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
                 </div> <!-- end .tabe-pane -->
 
                 @foreach($new_areas as $link => $area)
@@ -335,6 +431,8 @@
                             <p>Featured</p>
                           </div> 
                           <!-- end .rating -->
+<<<<<<< HEAD
+=======
 
                           <figcaption>
                             
@@ -347,11 +445,24 @@
                         </figure>
 
                         <h4><a href="#">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
 
                         <h5><a href="#">{{$lawyer->lawyer_law_firm_name}}</a></h5>
 
                         <h5><a href="#">{{$lawyer->lawyer_practice_name}}</a></h5>
 
+<<<<<<< HEAD
+                          </figcaption>
+                        </figure>
+
+                        <h4><a href="#">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
+
+                        <h5><a href="#">{{$lawyer->lawyer_law_firm_name}}</a></h5>
+
+                        <h5><a href="#">{{$lawyer->lawyer_practice_name}}</a></h5>
+
+=======
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
                         <p>{{$lawyer->lawyer_bios}}</p>
 
                         <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
