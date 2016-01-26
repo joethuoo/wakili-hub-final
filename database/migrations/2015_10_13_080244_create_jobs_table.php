@@ -22,9 +22,9 @@ class CreateJobsTable extends Migration
             $table->date('y-m-d');
             $table->string('category');
 
-           // $table->integer('id')->unsigned();
+            $table->integer('users_id')->unsigned();
 
-            $table->foreign('id')->references('id')->on('users');
+            
 
             
         });
@@ -37,6 +37,6 @@ class CreateJobsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('jobs');
     }
 }

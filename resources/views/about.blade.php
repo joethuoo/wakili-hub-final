@@ -37,7 +37,7 @@
 
 				<!-- HEADER-LOG0 -->
 				<div class="header-logo text-center">
-					<h2><a href="index.html"><img src="img/logotiny.png"> WAKILI HUB</a></h2>
+					<h2><a href="{{ url('firm/about') }}"><img src="{{ url('assets/img/logotiny.png') }}"> WAKILI HUB</a></h2>
 				</div>
 				<!-- END HEADER LOGO -->
 
@@ -59,7 +59,7 @@
 
 				<!-- CALL TO ACTION -->
 				<div class="header-call-to-action">
-					<a href="#" class="btn btn-default"><i class="fa fa-plus"></i> Get Listed</a>
+					<a href="{{url('lawyer/whyregister')}}" class="btn btn-default"><i class="fa fa-plus"></i> Get Listed</a>
 				</div><!-- END .HEADER-CALL-TO-ACTION -->
 
 			</div><!-- END .CONTAINER -->
@@ -68,37 +68,23 @@
 
 		<!-- HEADER SEARCH SECTION -->
 		<div class="header-search fixed-height">
-			<div class="header-search-bar">
-        <form action="#">
-
+			    <div class="header-search-bar">
+        <form action="/search" method="POST">
+            {!! Form::token() !!}
           <div class="search-toggle">
             <div class="container"> 
-
               <p>Location:</p>
               <div class="select-country">
-                <select class="" data-placeholder="-Select County-">
-                  <option value="option1">Nairobi</option>
-                  <option value="option2">Kisumu</option>
-                  <option value="option3">Mombasa</option>
+                <select name = "country" class="" data-placeholder="-Select County-">
+                  <option value=""></option>
+                  <option value="nairobi">Nairobi</option>
+                  <option value="kisumi">Kisumu</option>
+                  <option value="mombasa">Mombasa</option>
                 </select>
-              </div>
-
-              <div class="region">
-                <input type="text" placeholder="-Region-">
               </div>
 
               <div class="address">
-                <input type="text" placeholder="-Address-">
-              </div>
-
-              <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option>
-                  <option value="option3">Family Law</option>
-                  <option value="option3">Patents</option>
-                </select>
+                <input name = "address" type="text" placeholder="-Address-">
               </div>
 
               <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
@@ -106,29 +92,34 @@
             </div>
           </div>  <!-- END .search-toggle -->
 
-
           <div class="container">
             <button class="toggle-btn" type="submit"><i class="fa fa-bars"></i></button>
 
             <div class="search-value">
               <div class="keywords">
-                <input type="text" class="form-control" placeholder="Keywords">
+                <input name = "keywords" type="text" class="form-control" placeholder="Keywords">
               </div>
 
               <div class="select-location">
-                <select class="" data-placeholder="-Select Town-">
-                  <option value="option1">Busia</option>
-                  <option value="option2">Bomet</option><option value="option4">Bondo</option>
-                  <option value="option3">Thika</option>
-                  <option value="option4">Nyeri</option><option value="option4">Muranga</option>
+                <select name = "location" class="" data-placeholder="-Select Town-">
+                  <option value=""></option>
+                  <option value="busia">Busia</option>
+                  <option value="bomet">Bomet</option>
+                  <option value="bondo">Bondo</option>
+                  <option value="thika">Thika</option>
+                  <option value="nyeri">Nyeri</option>
+                  <option value="muranga">Muranga</option>
                 </select>
               </div>
 
               <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option><option value="option3">Family Law</option><option value="option3">Patents</option>
+                <select name = "category" class="" data-placeholder="-Select Practice-">
+                  <option value=""></option>
+                  <option value="business">Business Law</option>
+                  <option value="juvenile">Juvenile</option>
+                  <option value="property">Property</option>
+                  <option value="family">Family Law</option>
+                  <option value="patents">Patents</option>
                 </select>
               </div>
 
@@ -145,11 +136,11 @@
 					<h1>About <span>Us</span></h1>
 
 					<div class="heading-link">
-						<a href="#">Home</a>
+						<a href="{{ url('/') }}">Home</a>
 
 						<i>/</i>
 
-						<a href="#">About Us</a>
+						<a href="{{ url('firm/about')}}">About Us</a>
 					</div>
 
 				</div> <!-- END .container-->
@@ -294,7 +285,7 @@
 	</div> <!-- end #page-content -->
 
 
- <footer id="footer">
+ <	 id="footer">
  <!--   <div class="main-footer">
 
       <div class="container">
@@ -385,11 +376,11 @@
         <p>Copyright 2015 &copy; Wakilihub. All rights reserved. Powered by  <a href="#">Usalama</a></p>
 
         <ul class="list-inline">
-          <li><a href="lawyers.html">Lawyers</a></li>
-          <li><a href="lawfirms.html">Firms</a></li>
+          <li><a href="{{ url('lawyer/lawyers') }}">Lawyers</a></li>
+          <li><a href="{{ url('firm') }}">Firms</a></li>
           <li><a href="policies.html">Policies</a></li>
 
-          <li><a href="contact-us.html">Contact</a></li>
+          <li><a href="{{ url('firm/contact') }}">Contact</a></li>
         </ul>
       </div> <!-- END .container -->
     </div> 

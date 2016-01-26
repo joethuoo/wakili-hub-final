@@ -5,7 +5,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class lawyer_contact extends Model 
+class LawyerContact extends Model 
 {
     /**
      * The database table used by the model.
@@ -22,10 +22,12 @@ class lawyer_contact extends Model
 
 
     protected $fillable = [
-    'lawyer_contact_name',
-    'lawyer_contact',
-    'lawyer_contact_type',
-    'lawyer_contact_status'
+    'lawyer_address',
+    'lawyer_phone',
+    'lawyer_mobile_number',
+    'lawyer_email',
+    'lawyer_website',
+    'lawyer_postal_address'
     ];
 
     /*This Contact belongs to lawyer*/

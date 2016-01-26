@@ -1,5 +1,6 @@
 @extends('master')
-<div id="main-wrapper">
+    @section('body')
+    <div id="main-wrapper">
 
   <header id="header">
     <div class="header-top-bar">
@@ -21,7 +22,7 @@
         </div> <!-- END .HEADER-LOGIN -->
 
         <!-- HEADER REGISTER -->
-        <div class="header-register" style="display:none;">
+        <div class="header-register">
           <a href="#" class=""><i class="fa fa-plus-square"></i> Register</a>
 
           <div>
@@ -37,7 +38,7 @@
 
         <!-- HEADER-LOG0 -->
         <div class="header-logo text-center">
-          <h2><a href="{{ url('firm/contact')}}"><img src="{{url('assets/img/logotiny.png')}}"> WAKILI HUB</a></h2>
+          <h2><a href="{{url('/')}}"><img src="{{asset('assets/img/logotiny.png')}}"> WAKILI HUB</a></h2>
         </div>
         <!-- END HEADER LOGO -->
 
@@ -55,7 +56,23 @@
             <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
           </ul>
         </div>
-       
+        <!-- END HEADER-SOCIAL -->
+
+        <!-- HEADER-LANGUAGE -->
+        <!-- <div class="header-language">
+          <a href="#">
+            <span>EN</span>
+            <i class="fa fa-chevron-down"></i>
+          </a>
+
+          <ul class="list-unstyled">
+            <li class="active"><a href="#">EN</a></li>
+            <li><a href="#">FR</a></li>
+            <li><a href="#">PT</a></li>
+            <li><a href="#">IT</a></li>
+          </ul>
+        </div>--> <!-- END HEADER-LANGUAGE -->
+
         <!-- CALL TO ACTION -->
         <div class="header-call-to-action">
           <a href="{{url('lawyer/whyregister')}}" class="btn btn-default"><i class="fa fa-plus"></i> Get Listed</a>
@@ -67,7 +84,7 @@
 
     <!-- HEADER SEARCH SECTION -->
     <div class="header-search fixed-height">
-          <div class="header-search-bar">
+      <div class="header-search-bar">
         <form action="/search" method="POST">
             {!! Form::token() !!}
           <div class="search-toggle">
@@ -132,14 +149,14 @@
         <span></span> <!-- for dark-overlay on the bg -->
 
         <div class="container">
-          <h1>Contact <span>Us</span></h1>
+          <h1>Lawyer<span> Registration</span></h1>
 
           <div class="heading-link">
-            <a href="{{ url('/')}}">Home</a>
+            <a href="#">Home</a>
 
             <i>/</i>
 
-            <a href="{{ url('firm/contact')}}">Contact Us</a>
+            <a href="#">Contact Us</a>
           </div>
 
         </div> <!-- END .container-->
@@ -155,21 +172,14 @@
           <button><i class="fa fa-bars"></i></button>
 
           <ul class="primary-nav list-unstyled">
-            <li><a href="{{ url('/')}}">Home</a>
-              
+            <li class="bg-color"><a href="{{ url('/') }}">Home</a>            </li>
 
-            </li>
+            <li class=""><a href="{{ url('lawyer/lawyers') }}">Lawyers</i></a> </li>
 
-            <li class=""><a href="{{ url('lawyer/lawyers')}}">Lawyers</i></a>
-
-              
-
-            </li>
-
-            <li><a href="{{ url('firm')}}">Law Firms</a></li>
-            <li><a href=" {{ url('jobs') }}">Job Opportunities</a></li><li><a href="{{url('lawyer/whyregister')}}">Why Register</a></li>
+            <li><a href="{{ url('firm') }}">Law Firms</a></li>
+            <li><a href="{{ url('firm/jobs') }}">Job Opportunities</a></li><li><a href="{{ url('lawyer/whyregister') }}">Why Register</a></li>
             <li><a href="{{ url('firm/about') }}">About Us</a></li>
-            <li class="bg-color"><a href="{{ url('firm/contact') }}">Contact Us</a></li>
+            <li><a href="{{ url('firm/contact') }}">Contact Us</a></li>
           </ul>
         </nav>
       </div> <!-- end .container -->
@@ -181,87 +191,46 @@
       <div class="page-content">
         <div class="contact-us">
           <div class="row">
-            <div class="col-md-6">
-              <h3><strong>Our</strong> Offices</h3>
-{{--@if($more)
-      @foreach($more as $m)--}}
-              <div class="contacy-us-map-section">
-                <div id="contact_map_canvas">
+             <!-- end main grid layout -->
 
+            <div class="col-md-8">
+              <h3><strong>Register</strong> a Firms Profile</h3>
+                <div class="contact-form">
+                <form action="#" class="comment-form">
+                  <input type="text" placeholder="Enter LSK Registeration Number" required>
+                  &nbsp;&nbsp;<a class="btn btn-default" href="#"><i class="fa fa-envelope-o"></i>Verify Number</a>
+                </form>
                 </div>
-              </div> <!-- end .map-section -->
-
-              <div class="row">
-                <div class="col-sm-6">
-                  <h5>Address Details</h5>
-
-                  <div class="address-details clearfix">
-                    <i class="fa fa-map-marker"></i>
-
-                    <p>
-                      <span>Hurligham Plaza</span>
-                      <span>Nairobi</span>
-                      <span>Kenya</span>
-                    </p>
-                  </div>
-
-                  <div class="address-details clearfix">
-                    <i class="fa fa-phone"></i>
-
-                    <p>
-                      <span><strong>Phone:</strong> +254 723 999 999</span>
-                      <span><strong>Mobile:</strong> +254 722 878 888</span>
-                    </p>
-                  </div>
-
-                  <div class="address-details clearfix">
-                    <i class="fa fa-envelope-o"></i>
-
-                    <p>
-                      <span><strong>E-mail:</strong> customercare@wakilihub.co.ke</span>
-                      <span><span><strong>Website:</strong> www.wakilihub.co.ke</span></span>
-                    </p>
-                  </div>
-
-                </div>
-
-                <div class="col-sm-6">
-                  <h5>Openig Hours</h5>
-
-                  <div class="address-details clearfix">
-                    <i class="fa fa-clock-o"></i>
-
-                    <p>
-                      <span><strong>Mo-Fri:</strong> 9AM - 5PM</span>
-                      <span><span><strong>Saturday:</strong> 10AM - 2PM</span></span>
-                      <span><strong>Sunday:</strong> Closed</span>
-                    </p>
-                  </div>
-
-                </div>
-              </div> <!-- end .nasted row -->
-{{--@endforeach
-@endif --}}
-            </div> <!-- end main grid layout -->
-
-            <div class="col-md-6">
-              <h3><strong>Message</strong> Us</h3>
+<br/>
+This Part will be Hidden Until Lawyers LSK Number is Verified( IF already Registered give Responses already registered)
 
               <div class="contact-form">
-                <form action="#" class="comment-form">
+                <form method="POST" action="/lawyer/register" class="comment-form">
+                  <input type="text" name="lawyer_lsk_number" value="DISPLAY LSK NUMBER HERE" readonly> 
+                  
+                    <input type="text" name="lawyer_id_number" value="Display National Id/Passport Number from LSK" readonly> 
+                    
+                    <input type="text" name="lawyer_lsk_status"value="Display LSK Status( e.g ACTIVE 2016)" readonly> 
+                    
+                    <input type="text" name="lawyer_full_names" placeholder="Enter your Full Names" required>
+             
+                 <textarea name="lawyer_bios"placeholder="Short Bio Brief, What you believe in, What you stand for, Qualities." required></textarea>
+                 
+                              
+                 <input type="text" name="lawyer_postal_number" placeholder="Postal Address (P.O. Box xxxx-xxxxx" required>
+                 
+                 <input type="text" name="lawyer_town" placeholder="Town- (Nairobi)" required>
 
-                  <input type="text" placeholder="Name" required>
+                 <input type="text" name="lawyer_education" placeholder="Education- (Nairobi)" required>
 
-                  <input type="email" placeholder="Email" required>
+                  <input type="text" name="lawyer_email" placeholder="Email-(Multiple Emails separated with commas)" required>
+                  
+                  <input type="text" name="lawyer_website" placeholder="Personal Website">
+                  
+                   <input type="text" name="lawyer_mobile" placeholder="Mobile Phone (Multiple Separate with Commas)">
 
-                  <input type="text" placeholder="Website">
 
-                  <input type="text" placeholder="Subject">
-
-                  <textarea placeholder="How Can We Help You?" required></textarea>
-
-                  <a class="btn btn-default" href="#"><i class="fa fa-envelope-o"></i>Send Message</a>
-
+               <input class="btn btn-default" type="submit" href="{{url('lawyer/whyregister/register2')}}"><i class="fa fa-envelope-o"></i>Save and Next</input>
                 </form>
 
               </div> <!-- end .contact-form -->
@@ -278,98 +247,13 @@
 
  
   <footer id="footer">
- <!--   <div class="main-footer">
-
-      <div class="container">
-        <div class="row">
-
-          <div class="col-md-3 col-sm-6">
-            <div class="about-globo">
-              <h3>About Globo</h3>
-
-              <div class="footer-logo">
-                <a href="#"><img src="img/footer_logo.png" alt=""></a>
-                <span></span> <!-- This content for overlay effect 
-              </div>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue,
-                suscipit a, scelerisque sed, lacinia in, mi. Cras vel lorem.</p>
-            </div> <!-- End .about-globo 
-          </div> <!-- end Grid layout
-
-          <div class="col-md-3 col-sm-6">
-            <h3>Latest From Blog</h3>
-
-            <div class="latest-post clearfix">
-              <div class="post-image">
-                <img src="img/content/latest_post_1.jpg" alt="">
-
-                <p><span>12</span>Sep</p>
-              </div>
-
-              <h4><a href="#">Post Title Goes Here</a></h4>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-
-            <div class="latest-post clearfix">
-              <div class="post-image">
-                <img src="img/content/latest_post_2.jpg" alt="">
-
-                <p><span>09</span>Sep</p>
-              </div>
-
-              <h4><a href="#">Post Title Goes Here</a></h4>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-          </div> <!-- end Grid layout
-
-          <div class="col-md-3 col-sm-6 clearfix">
-            <div class="popular-categories">
-              <h3>Popular Categories</h3>
-
-              <ul>
-                <li><a href="#"><i class="fa fa-shopping-cart"></i>E-commerce</a></li>
-                <li><a href="#"><i class="fa fa-paper-plane-o"></i>Entertainment</a></li>
-                <li><a href="#"><i class="fa fa-cogs"></i>Industry</a></li>
-                <li><a href="#"><i class="fa fa-book"></i>Libraries &amp; Public Office</a></li>
-                <li><a href="#"><i class="fa fa-building-o"></i>Real Estate</a></li>
-              </ul>
-            </div> <!-- end .popular-categories
-          </div> <!-- end Grid layout
-
-          <div class="col-md-3 col-sm-6">
-            <div class="newsletter">
-              <h3>Newsletter</h3>
-
-              <form action="#">
-                <input type="Email" placeholder="Email address">
-                <button><i class="fa fa-plus"></i></button>
-              </form>
-
-              <h3>Keep In Touch</h3>
-
-              <ul class="list-inline">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-              </ul>
-            </div> <!-- end .newsletter
-          </div> <!-- end Grid layout
-        </div> <!-- end .row 
-      </div> <!-- end .container
-    </div> -->
-    <!-- end .main-footer -->
-
     <div class="copyright">
       <div class="container">
         <p>Copyright 2015 &copy; Wakilihub. All rights reserved. Powered by  <a href="#">Usalama</a></p>
 
         <ul class="list-inline">
           <li><a href="{{ url('lawyer/lawyers')}}">Lawyers</a></li>
-          <li><a href="{{ url('firm') }}">Firms</a></li>
+          <li><a href="{{ url('firm')}}">Firms</a></li>
           <li><a href="policies.html">Policies</a></li>
 
           <li><a href="{{ url('firm/contact')}}">Contact</a></li>
@@ -380,8 +264,9 @@
   </footer> <!-- end #footer -->
 
 </div> <!-- end #main-wrapper -->
+    @stop
 
-@section('scripts')
+    @section('scripts')
 {!! Html::script('assets/js/jquery.min.js') !!}
 {!! Html::script('assets/js/jquery-ui.js') !!}
 {!! Html::script('assets/js/jquery.ba-outside-events.min.js') !!}

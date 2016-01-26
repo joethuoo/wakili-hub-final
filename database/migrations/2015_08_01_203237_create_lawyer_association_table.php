@@ -34,6 +34,6 @@ class CreateLawyerAssociationTable extends Migration
      */
     public function down()
     {
-        Schema::drop('lawyer_associations');
+        Schema::drop('lawyer_association');
     }
 }

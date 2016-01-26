@@ -13,7 +13,7 @@ class CreateAboutTable extends Migration
     public function up()
     {
         Schema::create('about', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('about_id');
             $table->string('about_title');
             $table->string('description');
             $table->string('vision');
@@ -23,7 +23,7 @@ class CreateAboutTable extends Migration
             
            // $table->integer('id')->unsigned();
 
-            $table->foreign('id')->references('id')->on('users');
+            $table->integer('id')->unsigned();
         });
     }
 
@@ -34,6 +34,6 @@ class CreateAboutTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('about');
     }
 }

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use App\User;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Requests;
@@ -11,6 +15,59 @@ use App\Lawyer;
 
 class LawyerController extends Controller
 {
+ 
+  public function getLawyerRegister()
+  {
+    return view('lawyer-register');
+  }
+
+  public function lawyerRegister(Request $request)
+  {
+  
+    Lawyer::create([
+      'lawyer_bios' => $request->input('lawyer_bios'),
+      'lawyer_first_name'       => $request->input('names'),
+      ]);
+    
+     LawyerEducation::create([
+       'lawyer_education_certification' => $request->input('lawyer_education')
+      ]);
+
+     LawyerContact::create([
+        'lawyer_postal_address' => $request->input('lawyer_postal_address'),
+         'lawyer_email'         => $request->input('lawyer_email'),
+         'lawyer_website'        => $request->input('lawyer_website'),
+         'lawyer_mobile'         => $request->input('lawyer_mobile')
+      ]);
+
+        LawyerLocation::create([
+         'lawyer_location_town'  => $request->input('lawyer_town')
+          ]);
+
+     return view('lawyer-register2');
+  }
+
+
+
+  public function lawyerRegister2()
+  {
+    return view('lawyer-register2');
+  }
+
+  public function lawyerRegister3()
+  {
+    return view('lawyer-register3');
+  }
+
+  public function lawyerRegister4()
+  {
+    return view('lawyer-register4');
+  }
+
+  public function lawyerRegister5()
+  {
+    return view('lawyer-register5');
+  }
     /**
      * Display a listing of the resource.
      *
@@ -19,30 +76,42 @@ class LawyerController extends Controller
     public function index()
     {
       //$lawyers = Lawyer::latest()->get();
-      $lawyers = DB::table('Lawyer')->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id' )
-                                   ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')             
+      $lawyers = DB::table('lawyer')->join('lawyer_law_firm', 'lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id' )
+                                   ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','lawyer.lawyer_id') 
+                                   ->join('lawyer_practice_areas','lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')            
                                    ->select('*')
                                    ->OrderBy('lawyer_law_firm.lawyer_law_firm_name')
                                    ->get();
 
       
 
-      $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')                        
+      $firms = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+       ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')                        
      ->select('*')
      ->OrderBy('firm_practice_area.firm_practice_name')
      ->get();
 
+        
         $practices = DB::table('lawyer_practice_areas')->lists('lawyer_practice_name');
         $new_practice = [];
-
         foreach($practices as $practice) {
             $new_practice = array_merge($new_practice, explode(", ", $practice));
         }
-
         $practices = array_unique($new_practice);
         sort($practices);
+        $new_areas = [];
+        foreach($practices as $practice) {
+            $practice_name = strtolower(str_replace(' ', '', $practice));
+            foreach($lawyers as $area) {
+                if(strstr($area->lawyer_practice_name, $practice)) {
+                    $new_areas[$practice_name]['area'][] = $area;
+                    $new_areas[$practice_name]['title'] = $practice;
+                }
+            }
+            $new_areas[$practice_name]['count'] = count($new_areas[$practice_name]['area']);
+        }
       
-      return view('index', compact('lawyers','area', 'practices'));
+      return view('index', compact('lawyers','firms', 'new_areas'));
       
     }
   /**
@@ -53,7 +122,7 @@ class LawyerController extends Controller
      */
 
      
-    public function show()
+public function show()
     {
           $areas = DB::table('Lawyer')->join('lawyer_practice_areas','Lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
                                     ->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
@@ -62,18 +131,26 @@ class LawyerController extends Controller
                                   // ->where('Lawyer.lawyer_id',$id)
                                    ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
                                    ->get();
-
         $practices = DB::table('lawyer_practice_areas')->lists('lawyer_practice_name');
         $new_practice = [];
-
         foreach($practices as $practice) {
             $new_practice = array_merge($new_practice, explode(", ", $practice));
         }
-
         $practices = array_unique($new_practice);
         sort($practices);
-
-        return view('lawyers', compact('areas', 'practices'));
+        $new_areas = [];
+        foreach($practices as $practice) {
+            $practice_name = strtolower(str_replace(' ', '', $practice));
+            foreach($areas as $area) {
+                if(strstr($area->lawyer_practice_name, $practice)) {
+                    $new_areas[$practice_name]['area'][] = $area;
+                    $new_areas[$practice_name]['title'] = $practice;
+                }
+            }
+            $new_areas[$practice_name]['count'] = count($new_areas[$practice_name]['area']);
+        }
+//        dd($new_areas);
+        return view('lawyers', compact('areas', 'new_areas'));
     }
 
 /**
@@ -84,11 +161,11 @@ class LawyerController extends Controller
      */
       public function getLawyerById($id)
     {
-          $areas = DB::table('Lawyer')->join('lawyer_practice_areas','Lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
-                                    ->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
+          $areas = DB::table('lawyer')->join('lawyer_practice_areas','lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
+                                    ->join('lawyer_law_firm', 'lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
                                     ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')           
                                    ->select('*')
-                                   ->where('Lawyer.lawyer_id',$id)
+                                   ->where('lawyer.lawyer_id',$id)
                                    ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
                                    ->get();
         return view('lawyers', compact('areas'));
@@ -102,7 +179,7 @@ class LawyerController extends Controller
      * @return Response
      */
 
-    public function whyregister()
+    public function whyRegister()
     {
       return view('whyregister');
     }
@@ -113,23 +190,34 @@ class LawyerController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function readmore($id)
+   public function readmore($id)
     {
-		dd($id);
-      return view('readmore');
+     $more = DB::table('lawyer')->join('lawyer_practice_areas','lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
+                                    ->join('lawyer_law_firm', 'lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
+                                    ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')
+                                    ->join('lawyer_association','lawyer.lawyer_id', '=', 'lawyer_association.lawyer_association_id') 
+                                    ->join('lawyer_education','lawyer.lawyer_id', '=', 'lawyer_education.lawyer_education_id')
+                                    ->join('lawyer_location', 'lawyer.lawyer_id', '=', 'lawyer_location.lawyer_location_id')
+                                    ->join('lawyer_contact', 'lawyer.lawyer_id', '=', 'lawyer_contact.lawyer_contact_id')
+                                    
+                                   ->select('*')
+                                   ->where('lawyer.lawyer_id',$id)
+                                   ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
+                                   ->get();
+      return view('morelawyer',compact('more'));
 
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-	 public function create()
+    public function contact()
     {
-        return view('lawyer.registerLawyer');
+      /*$contact = DB::table('Lawyer')->join('lawyer_contact', 'Lawyer.lawyer_id', '=', 'lawyer_contact.lawyer_contact_id')
+                                    ->join('lawyer_location', 'Lawyer.lawyer_id', '=', 'lawyer_location.lawyer_location_id')*/
+         return view('contact');
     }
+
+
+  
 
     public function search(Request $request) {
         $keywords = $request->input('keywords');
@@ -177,7 +265,117 @@ class LawyerController extends Controller
 
         return view('search', compact('lawyers', 'firms'));
     }
-	
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  LawyerRegister  $request
+     * @return Response
+     */
+ 
+
+    public function doRegister(Request $request)
+    {
+             //DB::beginTransaction();
+
+           /* try {*/
+              $input= $request->all();
+              $password = bcrypt($request->get('password'));
+              $input['password'] = $password;
+              $input['activation_code'] = $request->get('email').str_random(60);
+              $register = User::create($input);
+         /*   } catch (\Exception $e) {
+            //DB::rollback();
+
+            //dd($e);
+
+            }*/
+            
+
+//DB::commit();
+            $data = [
+             'email'      => $input['email'],
+             'first_name' => $input['first_name'],
+             'code'       => $input['activation_code']
+            ];
+   
+            Mail::send('emails.activate',$data, function($message) use($data){
+             
+            $message->to($data['email'])->subject('Activate your account!');
+          });
+           
+         return view('whyregister');
+        
+    }
+
+   /* public function sendEmail($data)
+    {
+      Mail::send('emails.activate',$data, function($message) use ($input){
+            
+            $message->to($input['email'],$input['first_name'])
+                      ->subject('Activate your account!');
+      });
+    }*/
+
+    public function activate($code,User $user)
+    {
+       $user = User::where('activation_code', $code)->get();
+        
+       if($user){
+         $user = User::where('activation_code', $code)
+         ->update(['activation_code' => NULL,'active' => 1]);
+        return 'Acoounte Has Been Activated';
+       }
+       return 'Fail';
+    }
+
+
+    /*public function login(LoginRequest $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+              if (Auth::user()->active == 0) {
+                    Auth::logout();
+                    return 'Please activate your account';
+              }
+              else{
+                return 'You have been logged in!';
+              }
+        }else{
+          return 'The username and password do not match';
+        }
+    }
+
+
+    public function logout()
+    {
+      Auth::logout();
+
+      return redirect()->route('/');
+    }*/
+
+   /**
+     * Email an existing lawyer.
+     *
+     * @param  Client/Email sender Request  $request
+     * @return Response
+     */
+	      public function emailLawyer(Request $client_query)
+    {        
+             $question = $client_query->all();
+             $query = [
+              'Name' => $question['Name'],
+              'Email' => $question['Email'],
+              'Website' => $question['Website'],
+              'Comment' => $question['Comment'] 
+             ];
+             
+             Mail::send('emails.lawyerquestion',$question, function($message) use ($question){
+                   $message->to()->subject('Client Query');
+             });
+    }
 	
 	  /**
      * Store a newly created resource in storage.
@@ -185,7 +383,7 @@ class LawyerController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(LawyerRequest $request)
+  /*  public function store(LawyerRequest $request)
     {
 
         $lawyer = new Lawyer();
@@ -278,7 +476,7 @@ class LawyerController extends Controller
 
        return view('lawyer.loginLawyer');
     }     
-
+*/
    
 
     /**

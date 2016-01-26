@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLawyerPhoto extends Migration
+class CreateJobResponsibilityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,10 @@ class CreateLawyerPhoto extends Migration
      */
     public function up()
     {
-        Schema::create('lawyer_photo',function(Blueprint $table){
-            $table->increments('id');
-            $table->string('lawyer_photo_name');
-            
-             $table->integer('lawyer_id')->unsigned();
-             
-            
+        Schema::create('job_responsibility', function(Blueprint $table){
+           $table->increments('id');
+           $table->string('job_responsibility');
+           $table->integer('job_id')->unsigned();
         });
     }
 
@@ -29,6 +26,6 @@ class CreateLawyerPhoto extends Migration
      */
     public function down()
     {
-        Schema::drop('lawyer_photo');
+        Schema::drop('job_responsibility');
     }
 }
