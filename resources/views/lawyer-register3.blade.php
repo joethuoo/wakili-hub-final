@@ -198,9 +198,17 @@
                <h4> AREAS OF PRACTICE</h4> 
                <div class="contact-form">
                 
+<<<<<<< HEAD
             <form action="/lawyer/association" method="POST" class="comment-form">
                 {!! csrf_field() !!}                   
                <select class="" name="lawyer_practice_name" data-placeholder="-Select Areas of Practice-">
+=======
+                <form action="#" class="comment-form">
+       
+                   
+                     <select class="" data-placeholder="-Select Areas of Practice-">
+
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                   <option value="option1">Business Law</option>
                   <option value="option2">Juvenile</option>
                   <option value="option3">Property</option><option value="option3">Family Law</option><option value="option3">Patents</option>
@@ -209,11 +217,17 @@
            
                 <a class="btn btn-default" href="#"><i class="fa fa-envelope-o"></i>Add Another</a>
                 
+<<<<<<< HEAD
+=======
+                </form>
+                </div>
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
 <!-- end .contact-form -->
 
      <h4> PROFESSIONAL ASSOCIATIONS</h4> 
                <div class="contact-form">
                 
+<<<<<<< HEAD
                 <form action="/lawyer/association" method="POST" class="comment-form">
                              {!! csrf_field() !!}     
                    <input type="text" name="lawyer_association_institution" placeholder="Enter Asscociation Name in Full" required>
@@ -228,6 +242,33 @@
                   &nbsp;&nbsp;<a class="btn btn-default" href="{{url('lawyer/whyregister/register2')}}"><i class="fa fa-envelope-o"></i>Previous</a>
                     &nbsp;&nbsp;<a class="btn btn-default" href="{{url('lawyer/whyregister/register4')}}"><i class="fa fa-envelope-o"></i>Save and Next</a>
                 
+=======
+                <form action="#" class="comment-form">
+                                 
+                   <input type="text" placeholder="Enter Asscociation Name in Full" required>
+                   <br/> <br/> <br/>
+                   
+                     <select class="" data-placeholder="-Year From-">
+             
+                  <option>1990</option>
+                   <option>1991</option>
+                   <option>1992</option>
+                    <option>1993</option>
+                     <option>1994</option>
+                      <option>1995</option>                
+                  </select>
+                 <select class="" data-placeholder="-Year To-">
+                  <option>1990</option>
+                   <option>1991</option>
+                   <option>1992</option>
+                    <option>1993</option>
+                     <option>1994</option>
+                      <option>1995</option>                
+                  </select>
+                <a class="btn btn-default" href="#"><i class="fa fa-envelope-o"></i>Add Another</a>
+                  &nbsp;&nbsp;<a class="btn btn-default" href="{{url('lawyer/whyregister/register2')}}"><i class="fa fa-envelope-o"></i>Previous</a>
+                    &nbsp;&nbsp;<a class="btn btn-default" href="{{url('lawyer/whyregister/register4')}}"><i class="fa fa-envelope-o"></i>Save and Next</a>
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                 </form>
                 </div>
 <!-- end .contact-form -->

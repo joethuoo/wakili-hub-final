@@ -88,7 +88,23 @@
 
     <!-- HEADER SEARCH SECTION -->
     <div class="header-search map">
+<<<<<<< HEAD
 	    <div class="header-search-bar">
+=======
+<<<<<<< HEAD
+	    <div class="header-search-bar">
+=======
+<<<<<<< HEAD
+	    <div class="header-search-bar">
+=======
+<<<<<<< HEAD
+	    <div class="header-search-bar">
+=======
+      <div class="header-search-bar">
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
         <form action="/search" method="POST">
             {!! Form::token() !!}
           <div class="search-toggle">
@@ -247,6 +263,10 @@
                               <p>Featured</p>
                             </div>
                             <!-- end .rating -->
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
 
                             <figcaption>
 
@@ -286,6 +306,7 @@
                     @endforeach
                   </div>
 
+<<<<<<< HEAD
                 </div> <!-- end .tabe-pane -->
 
                 @foreach($new_areas as $link => $area)
@@ -335,6 +356,155 @@
                             <p>Featured</p>
                           </div> 
                           <!-- end .rating -->
+=======
+=======
+<<<<<<< HEAD
+
+                            <figcaption>
+
+
+                              <div class="read-more">
+                                <a href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}"><i class="fa fa-angle-right"></i> Read More</a>
+                              </div>
+
+                            </figcaption>
+                          </figure>
+
+                          <h4><a href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
+
+                          <h5>{{$lawyer->lawyer_law_firm_name}}</h5>
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
+
+                          <h5>{{$lawyer->lawyer_practice_name}}</h5>
+
+                          <p>{{$lawyer->lawyer_bios}}</p>
+
+                          <a class="read-more" href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}"><i class="fa fa-angle-right"></i>Read More</a>
+
+<<<<<<< HEAD
+                        <h4><a href="#">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
+
+                        <h5><a href="#">{{$lawyer->lawyer_law_firm_name}}</a></h5>
+
+                        <h5><a href="#">{{$lawyer->lawyer_practice_name}}</a></h5>
+
+                        <p>{{$lawyer->lawyer_bios}}</p>
+=======
+                        </div> <!-- end .single-product -->
+                      </div> <!-- end .col-sm-4 grid layout -->
+
+                      {{--<div class="pagination-center">--}}
+
+                      {{--<ul class="pagination">--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-left"></i></a></li>--}}
+                      {{--<li class="active"><a href="#">1</a></li>--}}
+                      {{--<li><a href="#">2</a></li>--}}
+                      {{--<li><a href="#">3</a></li>--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-right"></i></a></li>--}}
+                      {{--</ul>--}}
+
+                      {{--</div>--}}
+
+                    @endforeach
+                  </div>
+
+=======
+
+                            <figcaption>
+
+
+                              <div class="read-more">
+                                <a href="viewlawyer.html"><i class="fa fa-angle-right"></i> Read More</a>
+                              </div>
+
+                            </figcaption>
+                          </figure>
+
+                          <h4><a href="#">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
+
+                          <h5><a href="#">{{$lawyer->lawyer_law_firm_name}}</a></h5>
+
+                          <h5><a href="#">{{$lawyer->lawyer_practice_name}}</a></h5>
+
+                          <p>{{$lawyer->lawyer_bios}}</p>
+
+                          <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
+
+                        </div> <!-- end .single-product -->
+                      </div> <!-- end .col-sm-4 grid layout -->
+
+                      {{--<div class="pagination-center">--}}
+
+<<<<<<< HEAD
+                    
+=======
+                      {{--<ul class="pagination">--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-left"></i></a></li>--}}
+                      {{--<li class="active"><a href="#">1</a></li>--}}
+                      {{--<li><a href="#">2</a></li>--}}
+                      {{--<li><a href="#">3</a></li>--}}
+                      {{--<li><a href="#"><i class="fa fa-angle-right"></i></a></li>--}}
+                      {{--</ul>--}}
+
+                      {{--</div>--}}
+
+                    @endforeach
+                  </div>
+
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+                </div> <!-- end .tabe-pane -->
+
+                @foreach($new_areas as $link => $area)
+                <div class="tab-pane" id="{{$link}}">
+                  <h2>{{$area['title']}}<span class="comments">{{$area['count']}}</span></h2>
+
+       <div class="change-view"> <div class="filter-input">
+                      <input type="text" placeholder="Filter by Keywords">
+                    </div>
+                    <button class="grid-view"><i class="fa fa-th"></i></button>
+                    <button class="list-view active"><i class="fa fa-bars"></i></button>
+
+                    <div class="sort-by">
+
+                      <select class="" data-placeholder="-sort by-">
+                        <option value="option1">Name ASC</option>
+                        <option value="option1">Name DESC</option>
+                        <option value="option2">LSK Number</option>
+                        <option value="option3">Location</option>
+                        <option value="option4">Year of Experience</option>
+                      </select></div>
+                     &nbsp;<div class="sort-by">
+
+                      <select class="" data-placeholder="-sort by-">
+                        <option value="option1">All Sub Practices Here</option>
+                       
+                      </select>
+                      </div>
+
+                      <ul class="pagination">
+                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                      </ul>
+
+                  </div> <!-- end .change-view -->
+                  <div class="row clearfix">
+                  @foreach($area['area'] as $lawyer)
+                     <div class="col-sm-4 col-xs-6">
+                      <div class="single-product">
+                        <figure>
+                          <img src="{{asset('/lawyers/'.$lawyer->lawyer_photo_filename)}}" alt="">
+
+                          <div class="rating">
+                            <p>Featured</p>
+                          </div> 
+                          <!-- end .rating -->
+<<<<<<< HEAD
+=======
 
                           <figcaption>
                             
@@ -347,11 +517,24 @@
                         </figure>
 
                         <h4><a href="#">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
 
                         <h5><a href="#">{{$lawyer->lawyer_law_firm_name}}</a></h5>
 
                         <h5><a href="#">{{$lawyer->lawyer_practice_name}}</a></h5>
 
+<<<<<<< HEAD
+                          </figcaption>
+                        </figure>
+
+                        <h4><a href="#">{{$lawyer->lawyer_first_name}} {{$lawyer->lawyer_middle_name }}</a></h4>
+
+                        <h5><a href="#">{{$lawyer->lawyer_law_firm_name}}</a></h5>
+
+                        <h5><a href="#">{{$lawyer->lawyer_practice_name}}</a></h5>
+
+=======
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
                         <p>{{$lawyer->lawyer_bios}}</p>
 
                         <a class="read-more" href="viewlawyer.html"><i class="fa fa-angle-right"></i>Read More</a>
@@ -359,7 +542,18 @@
                       </div> <!-- end .single-product -->
                     </div> <!-- end .col-sm-4 grid layout -->
 
-                    
+                    {{--<div class="pagination-center">--}}
+
+                      {{--<ul class="pagination">--}}
+                        {{--<li><a href="#"><i class="fa fa-angle-left"></i></a></li>--}}
+                        {{--<li class="active"><a href="#">1</a></li>--}}
+                        {{--<li><a href="#">2</a></li>--}}
+                        {{--<li><a href="#">3</a></li>--}}
+                        {{--<li><a href="#"><i class="fa fa-angle-right"></i></a></li>--}}
+                      {{--</ul>--}}
+
+                    {{--</div>--}}
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
 
                   @endforeach
                   </div> <!-- end .row -->
@@ -432,6 +626,10 @@
                 <ul class="nav nav-tabs accordion-tab" role="tablist">
                   <li>
                     <a class="active" href="#all-categories" role="tab" data-toggle="tab">All Practice Areas</a></li>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                   @foreach($new_areas as $link => $practice)
                     <li>
                       <a href="#{{$link}}"  role="tab" data-toggle="tab">{{ $practice['title'] }}

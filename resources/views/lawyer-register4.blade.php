@@ -198,6 +198,7 @@
                <h4> Cases Handled</h4> 
                <div class="contact-form">
                 
+<<<<<<< HEAD
                 <form action="/lawyer/case" method="POST" class="comment-form">
                             {!!csrf_field()!!}     
                    <input type="text" placeholder="Enter Case Name in Full" name="case_name" required>
@@ -210,6 +211,18 @@
                     <textarea placeholder="Give the full brief of the Court Verdict." name="case_verdict" required></textarea>
 
                     <input type="submit" value="submit">
+=======
+                <form action="#" class="comment-form">
+                                 
+                   <input type="text" placeholder="Enter Case Name in Full" required>
+                    <input type="text" placeholder="Enter Country" required>
+                    
+                    <input type="text" placeholder="Enter Town" required>
+                   
+                     <input type="text" placeholder="Enter Date Case Started(Put a date select here)" required>
+                 
+                    <textarea placeholder="Give the full brief of the Court Verdict." required></textarea>
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                  
                 <a class="btn btn-default" href="#"><i class="fa fa-envelope-o"></i>Add Another Case</a>
                   &nbsp;&nbsp;<a class="btn btn-default" href="{{url('lawyer/whyregister/register3')}}"><i class="fa fa-envelope-o"></i>Previous</a>

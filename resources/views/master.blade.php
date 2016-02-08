@@ -12,6 +12,7 @@
   {!! Html::style('assets/css/jquery-ui.css') !!}
 
 
+
   <!-- GOOGLE FONTS -->
   <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,600,800%7COpen+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
 

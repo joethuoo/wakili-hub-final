@@ -52,7 +52,23 @@ class FirmController extends Controller
         // $firms = Firm::latest()->get();
 
        $areas = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+<<<<<<< HEAD
 	   ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
+=======
+<<<<<<< HEAD
+	   ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
+=======
+<<<<<<< HEAD
+	   ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
+=======
+<<<<<<< HEAD
+	   ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
+=======
+       ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                                    ->select('*')
                                    ->OrderBy('firm_practice_area.firm_practice_name')
                                    ->get();
@@ -174,8 +190,28 @@ class FirmController extends Controller
     {
         return view('contact');
     }
+<<<<<<< HEAD
 	
 	    public function search(Request $request) {
+=======
+<<<<<<< HEAD
+	
+	    public function search(Request $request) {
+=======
+<<<<<<< HEAD
+	
+	    public function search(Request $request) {
+=======
+<<<<<<< HEAD
+	
+	    public function search(Request $request) {
+=======
+    
+        public function search(Request $request) {
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
         $keywords = $request->input('keywords');
         $location = $request->input('location');
         $category = $request->input('category');

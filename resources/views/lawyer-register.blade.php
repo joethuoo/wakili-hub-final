@@ -194,12 +194,20 @@
              <!-- end main grid layout -->
 
             <div class="col-md-8">
+<<<<<<< HEAD
               <h3><strong>Register</strong> a Lawyer Profile</h3>
                 <div class="contact-form">
                 <form method="POST" action="/lawyer/register" class="comment-form">
                   
                   <input type="file" placeholder="LAWYER PHOTO" name="lawyer_photo" required>
                   &nbsp;&nbsp;<a class="btn btn-default" href="#"><i class="fa fa-image-o"></i>Add Image</a>
+=======
+              <h3><strong>Register</strong> a Firms Profile</h3>
+                <div class="contact-form">
+                <form action="#" class="comment-form">
+                  <input type="text" placeholder="Enter LSK Registeration Number" required>
+                  &nbsp;&nbsp;<a class="btn btn-default" href="#"><i class="fa fa-envelope-o"></i>Verify Number</a>
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                 </form>
                 </div>
 <br/>
@@ -207,12 +215,16 @@ This Part will be Hidden Until Lawyers LSK Number is Verified( IF already Regist
 
               <div class="contact-form">
                 <form method="POST" action="/lawyer/register" class="comment-form">
+<<<<<<< HEAD
                   {!! csrf_field() !!}
+=======
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                   <input type="text" name="lawyer_lsk_number" value="DISPLAY LSK NUMBER HERE" readonly> 
                   
                     <input type="text" name="lawyer_id_number" value="Display National Id/Passport Number from LSK" readonly> 
                     
                     <input type="text" name="lawyer_lsk_status"value="Display LSK Status( e.g ACTIVE 2016)" readonly> 
+<<<<<<< HEAD
 
                     <input type="text" placeholder="Enter LSK Registeration Number" name="lawyer_lsk_number" required>
                     
@@ -221,12 +233,17 @@ This Part will be Hidden Until Lawyers LSK Number is Verified( IF already Regist
                     <input type="text" name="lawyer_middle_name" placeholder="Enter your Middle Name" required>
 
                     <input type="text" name="lawyer_last_name" placeholder="Enter your Last Name" required>
+=======
+                    
+                    <input type="text" name="lawyer_full_names" placeholder="Enter your Full Names" required>
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
              
                  <textarea name="lawyer_bios"placeholder="Short Bio Brief, What you believe in, What you stand for, Qualities." required></textarea>
                  
                               
                  <input type="text" name="lawyer_postal_number" placeholder="Postal Address (P.O. Box xxxx-xxxxx" required>
                  
+<<<<<<< HEAD
                 {{--  <input type="text" name="lawyer_town" placeholder="Town- (Nairobi)" required> --}}
 
                  <input type="text" name="lawyer_email" placeholder="Email-(Multiple Emails separated with commas)" required>
@@ -239,6 +256,20 @@ This Part will be Hidden Until Lawyers LSK Number is Verified( IF already Regist
                    
                <a class="btn btn-default" href=""><i class="fa fa-envelope-o"></i>Save and Next</a>
                
+=======
+                 <input type="text" name="lawyer_town" placeholder="Town- (Nairobi)" required>
+
+                 <input type="text" name="lawyer_education" placeholder="Education- (Nairobi)" required>
+
+                  <input type="text" name="lawyer_email" placeholder="Email-(Multiple Emails separated with commas)" required>
+                  
+                  <input type="text" name="lawyer_website" placeholder="Personal Website">
+                  
+                   <input type="text" name="lawyer_mobile" placeholder="Mobile Phone (Multiple Separate with Commas)">
+
+
+               <input class="btn btn-default" type="submit" href="{{url('lawyer/whyregister/register2')}}"><i class="fa fa-envelope-o"></i>Save and Next</input>
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                 </form>
 
               </div> <!-- end .contact-form -->

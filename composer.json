@@ -9,8 +9,12 @@
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "~5.0",
         "lavary/laravel-menu": "dev-master",
+<<<<<<< HEAD
         "doctrine/dbal": "^2.5",
          "toin0u/geocoder-laravel": "@stable"
+=======
+        "doctrine/dbal": "^2.5"
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

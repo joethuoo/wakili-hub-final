@@ -2,9 +2,27 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< HEAD
 use Auth;
 use App\User;
 use Geocoder\Geocoder;
+=======
+<<<<<<< HEAD
+use Auth;
+use App\User;
+=======
+<<<<<<< HEAD
+use Auth;
+use App\User;
+=======
+<<<<<<< HEAD
+use Auth;
+use App\User;
+=======
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -17,7 +35,62 @@ use App\Lawyer;
 class LawyerController extends Controller
 {
  
+<<<<<<< HEAD
  
+=======
+  public function getLawyerRegister()
+  {
+    return view('lawyer-register');
+  }
+
+  public function lawyerRegister(Request $request)
+  {
+  
+    Lawyer::create([
+      'lawyer_bios' => $request->input('lawyer_bios'),
+      'lawyer_first_name'       => $request->input('names'),
+      ]);
+    
+     LawyerEducation::create([
+       'lawyer_education_certification' => $request->input('lawyer_education')
+      ]);
+
+     LawyerContact::create([
+        'lawyer_postal_address' => $request->input('lawyer_postal_address'),
+         'lawyer_email'         => $request->input('lawyer_email'),
+         'lawyer_website'        => $request->input('lawyer_website'),
+         'lawyer_mobile'         => $request->input('lawyer_mobile')
+      ]);
+
+        LawyerLocation::create([
+         'lawyer_location_town'  => $request->input('lawyer_town')
+          ]);
+
+     return view('lawyer-register2');
+  }
+
+
+
+  public function lawyerRegister2()
+  {
+    return view('lawyer-register2');
+  }
+
+  public function lawyerRegister3()
+  {
+    return view('lawyer-register3');
+  }
+
+  public function lawyerRegister4()
+  {
+    return view('lawyer-register4');
+  }
+
+  public function lawyerRegister5()
+  {
+    return view('lawyer-register5');
+  }
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
     /**
      * Display a listing of the resource.
      *
@@ -26,18 +99,37 @@ class LawyerController extends Controller
     public function index()
     {
       //$lawyers = Lawyer::latest()->get();
+<<<<<<< HEAD
       
        $lawyers = DB::table('lawyer')->join('lawyer_law_firm', 'lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id' )
                                    ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','lawyer.lawyer_id') 
                                    ->join('lawyer_practice_areas','lawyer_practice_areas.lawyer_practice_area_id','=','lawyer.lawyer_id')            
+=======
+      $lawyers = DB::table('lawyer')->join('lawyer_law_firm', 'lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id' )
+                                   ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','lawyer.lawyer_id') 
+                                   ->join('lawyer_practice_areas','lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')            
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                                    ->select('*')
                                    ->OrderBy('lawyer_practice_areas.lawyer_id')
                                    ->get();
 
       
 
+<<<<<<< HEAD
       $firms = DB::table('firm')->join('firm_practice_area','firm.firm_id','=', 'firm_practice_area.firm_practice_id')
        ->join('firm_logo','firm.firm_id','=','firm_logo.firm_logo_id')                        
+=======
+<<<<<<< HEAD
+      $firms = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+=======
+<<<<<<< HEAD
+      $firms = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+=======
+      $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+       ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')                        
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
      ->select('*')
      ->OrderBy('firm_practice_area.firm_practice_name')
      ->get();
@@ -61,7 +153,10 @@ class LawyerController extends Controller
             }
             $new_areas[$practice_name]['count'] = count($new_areas[$practice_name]['area']);
         }
+<<<<<<< HEAD
       
+=======
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
       
       return view('index', compact('lawyers','firms', 'new_areas'));
       
@@ -115,7 +210,11 @@ public function show()
     {
           $areas = DB::table('lawyer')->join('lawyer_practice_areas','lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
                                     ->join('lawyer_law_firm', 'lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
+<<<<<<< HEAD
                                     ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','lawyer.lawyer_id')           
+=======
+                                    ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')           
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                                    ->select('*')
                                    ->where('lawyer.lawyer_id',$id)
                                    ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
@@ -144,9 +243,19 @@ public function show()
      */
    public function readmore($id)
     {
+<<<<<<< HEAD
      $more = DB::table('lawyer')->join('lawyer_practice_areas','lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
                                     ->join('lawyer_law_firm', 'lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
                                     ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','lawyer.lawyer_id')
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+     $more = DB::table('lawyer')->join('lawyer_practice_areas','lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
+                                    ->join('lawyer_law_firm', 'lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
+                                    ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                                     ->join('lawyer_association','lawyer.lawyer_id', '=', 'lawyer_association.lawyer_association_id') 
                                     ->join('lawyer_education','lawyer.lawyer_id', '=', 'lawyer_education.lawyer_education_id')
                                     ->join('lawyer_location', 'lawyer.lawyer_id', '=', 'lawyer_location.lawyer_location_id')
@@ -154,18 +263,63 @@ public function show()
                                     
                                    ->select('*')
                                    ->where('lawyer.lawyer_id',$id)
+<<<<<<< HEAD
                                    ->OrderBy('lawyer_practice_areas.lawyer_practice_area_id')
                                    ->get();
       return view('morelawyer',compact('more'));
+=======
+                                   ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
+                                   ->get();
+      return view('morelawyer',compact('more'));
+<<<<<<< HEAD
+=======
+=======
+     $more = DB::table('Lawyer')->join('lawyer_practice_areas','Lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
+                                    ->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id') 
+                                    ->join('lawyer_photo','lawyer_photo.lawyer_photo_id','=','Lawyer.lawyer_id')           
+                                   ->select('*')
+                                   ->where('Lawyer.lawyer_id',$id)
+                                   ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
+                                   ->get();
+      return view('readmore',compact('more'));
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
 
     }
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
     public function contact()
     {
       /*$contact = DB::table('Lawyer')->join('lawyer_contact', 'Lawyer.lawyer_id', '=', 'lawyer_contact.lawyer_contact_id')
                                     ->join('lawyer_location', 'Lawyer.lawyer_id', '=', 'lawyer_location.lawyer_location_id')*/
          return view('contact');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+<<<<<<< HEAD
+	 public function create()    {
+=======
+   public function create()    {
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+        return view('register');
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
     }
 
 
@@ -220,11 +374,242 @@ public function show()
 
 
     /**
+<<<<<<< HEAD
+=======
      * Store a newly created resource in storage.
      *
      * @param  LawyerRegister  $request
      * @return Response
      */
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+ 
+
+    public function doRegister(Request $request)
+    {
+             //DB::beginTransaction();
+
+           /* try {*/
+              $input= $request->all();
+              $password = bcrypt($request->get('password'));
+              $input['password'] = $password;
+              $input['activation_code'] = $request->get('email').str_random(60);
+              $register = User::create($input);
+         /*   } catch (\Exception $e) {
+<<<<<<< HEAD
+=======
+=======
+
+<<<<<<< HEAD
+    public function doRegister(Request $request)
+    {
+     // $input = $request->all();
+      /*$user = DB::insert('insert into users (users_id,first_name,second_name,mobile_number,email,password) values
+        (?,?,?,?,?,?) ',[$request->first_name,$request->second_name,$request->mobile_number,
+          $request->email,$request->password]);
+      */
+
+             //DB::beginTransaction();
+
+            try {
+
+            User::create([
+            'first_name' => $request->get('first_name'),
+            'second_name' => $request->get('second_name'),
+            'mobile_number' => $request->get('mobile_number'),
+            'email' => $request->get('email'),
+            'password' => bcrypt($request->get('password')),
+            ]);
+
+            } catch (\Exception $e) {
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+            //DB::rollback();
+
+            //dd($e);
+
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+            }*/
+            
+
+//DB::commit();
+            $data = [
+             'email'      => $input['email'],
+             'first_name' => $input['first_name'],
+             'code'       => $input['activation_code']
+            ];
+   
+            Mail::send('emails.activate',$data, function($message) use($data){
+             
+            $message->to($data['email'])->subject('Activate your account!');
+          });
+           
+         return view('whyregister');
+        
+    }
+
+   /* public function sendEmail($data)
+    {
+      Mail::send('emails.activate',$data, function($message) use ($input){
+            
+            $message->to($input['email'],$input['first_name'])
+                      ->subject('Activate your account!');
+      });
+    }*/
+
+    public function activate($code,User $user)
+    {
+       $user = User::where('activation_code', $code)->get();
+        
+       if($user){
+         $user = User::where('activation_code', $code)
+         ->update(['activation_code' => NULL,'active' => 1]);
+        return 'Acoounte Has Been Activated';
+       }
+       return 'Fail';
+    }
+
+
+    /*public function login(LoginRequest $request)
+<<<<<<< HEAD
+=======
+=======
+            }
+
+//DB::commit();
+  
+   /* $data = [
+       'first_name' => $input['first_name'],
+       'code' => $input['activation_code']
+    ];
+
+    $this->sendEmail($data,$input);*/ 
+
+    return 'Hello world';
+      
+    }
+
+    public function sendEmail($data,$input)
+    {
+      Mail::send('email.register',$data, function($message) use ($input){
+            $message->from('team@wakilihub.co.ke','Laravel is the best');
+            $message->to($input['email'],$input['first_name'])
+                      ->subject('Activate your account!');
+      });
+    }
+
+    public function activate($code,User $user)
+    {
+     if($user->activateAccount($code)){
+      return 'Activated';
+     }
+     return 'Fail';
+    }
+
+
+    public function login(LoginRequest $request)
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+              if (Auth::user()->active == 0) {
+                    Auth::logout();
+                    return 'Please activate your account';
+              }
+              else{
+                return 'You have been logged in!';
+              }
+        }else{
+          return 'The username and password do not match';
+        }
+    }
+
+
+    public function logout()
+    {
+      Auth::logout();
+
+      return redirect()->route('/');
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+    }*/
+
+   /**
+     * Email an existing lawyer.
+     *
+     * @param  Client/Email sender Request  $request
+     * @return Response
+     */
+	      public function emailLawyer(Request $client_query)
+    {        
+             $question = $client_query->all();
+             $query = [
+              'Name' => $question['Name'],
+              'Email' => $question['Email'],
+              'Website' => $question['Website'],
+              'Comment' => $question['Comment'] 
+             ];
+             
+             Mail::send('emails.lawyerquestion',$question, function($message) use ($question){
+                   $message->to()->subject('Client Query');
+             });
+    }
+<<<<<<< HEAD
+=======
+=======
+    }
+
+   
+	
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+	
+	  /**
+=======
+    public function wekalawyer(LawyerRegister $request)
+    {
+      $confirmation_code = str_random(30);
+
+      $user = Registrant::create([
+        'first_name' => $request['firstname'],
+        'last_name' => $request['lastname'],
+        'mobile_number' => $request['phonenumber'],
+        'email' => $request['email'],
+        'password' => Hash::make($request['password']),
+        'confirmation_code' => $confirmation_code
+        
+        ]);
+      
+
+      Mail::send('emails',$confirmation_code, function($message){
+             $message->to($request['email'],$request['firstname'])->subject('welcome');
+             
+      });
+
+      Flash::message('Thanks for signing up! Please check your email.');
+
+       return view('lawyers');
+    }
+  
+  
+    /**
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
+     * Store a newly created resource in storage.
+     *
+     * @param  LawyerRegister  $request
+     * @return Response
+     */
+<<<<<<< HEAD
  
 
     public function doRegister(Request $request)
@@ -262,6 +647,9 @@ public function show()
     }
 
    /* public function sendEmail($data)
+=======
+  /*  public function store(LawyerRequest $request)
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
     {
       Mail::send('emails.activate',$data, function($message) use ($input){
             
@@ -270,9 +658,56 @@ public function show()
       });
     }*/
 
+<<<<<<< HEAD
     public function activate($code,User $user)
     {
        $user = User::where('activation_code', $code)->get();
+=======
+        $lawyer = new Lawyer();
+        $lawyer->lawyer_first_name = $request['lawyer_first_name']; 
+        $lawyer->lawyer_middle_name = $request['lawyer_middle_name'];
+        $lawyer->lawyer_last_name = $request['lawyer_last_name'];
+        $lawyer->lawyer_email_address = $request['lawyer_email_address'];
+        $lawyer->lawyer_status = $request['lawyer_status'];
+        $lawyer->lawyer_lsk_number = $request['lawyer_lsk_number'];
+        $lawyer->lawyer_national_id = $request['lawyer_national_id'];
+        $lawyer->lawyer_verified_status = $request['lawyer_verified_status'];
+        $lawyer->lawyer_experience = $request['lawyer_experience'];
+        $lawyer->lawyer_bios = $request['lawyer_bios'];
+        $lawyer->lawyer_date_registered = $request['lawyer_date_registered'];
+        $lawyer->lawyer_mobile_number = $request['lawyer_mobile_number'];
+        $lawyer->lawyer_image = $filename; 
+        $lawyer->password = $request['password'];
+        $lawyer->save();
+
+        $lawyer_association = new lawyer_association();
+        $lawyer_association->lawyer_association_institution = $request['lawyer_association_institution'];
+        $lawyer_association->lawyer_association_member = $request['lawyer_association_member'];
+        $lawyer_association->year = $request['year'];
+        $lawyer_association->status = $request['status'];
+        $lawyer_association->lawyer_association()->associate($lawyer);
+        $lawyer_association->save();
+                   
+
+          $lawyer_contact = new lawyer_contact();
+          $lawyer_contact->lawyer_contact_name  = $request['lawyer_contact_name'];
+          $lawyer_contact->lawyer_contact       = $request['lawyer_contact'];
+          $lawyer_contact->lawyer_contact_type  = $request['lawyer_contact_type'];
+          $lawyer_contact->lawyer_contact_status = $request['lawyer_contact_status']; 
+          $lawyer_contact->lawyer_contact()->associate($lawyer);
+          $lawyer_contact->save();              
+            //$lawyer->$lawyer_contact()->save($lawyer_contact);
+
+          $lawyer_education = new lawyer_education();
+          $lawyer_education->lawyer_education_institution = $request['lawyer_education_institution'];
+          $lawyer_education->lawyer_education_certification = $request['lawyer_education_certification'];
+          $lawyer_education->lawyer_education_year_from  = $request['lawyer_education_year_from'];
+          $lawyer_education->lawyer_education_year_to  = $request['lawyer_education_year_to'];
+          $lawyer_education->lawyer_education_status   = $request['lawyer_education_status'];
+          $lawyer_education->lawyer_education()->associate($lawyer);
+          $lawyer_education->save();
+            //$lawyer->$lawyer_education()->save($lawyer_education);
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
         
        if($user){
          $user = User::where('activation_code', $code)
@@ -340,6 +775,7 @@ public function show()
       
        //$extension = pathinfo(PATHINFO_EXTENSION);
 
+<<<<<<< HEAD
        $filename = $first_name;
        $destinationPath = 'lawyers/';
       // $image = file_get_contents($lawyer_photo_path);
@@ -505,6 +941,53 @@ public function show()
      * @return Response
      */
  
+=======
+          $lawyer_law_firm = new lawyer_law_firm();
+          $lawyer_law_firm->lawyer_law_firm_name = $request['lawyer_law_firm_name'];
+          $lawyer_law_firm->lawyer_law_firm_date = $request['lawyer_law_firm_date'];
+          $lawyer_law_firm->lawyer_law_firm_year_from = $request['lawyer_law_firm_year_from'];
+          $lawyer_law_firm->lawyer_law_firm_year_to = $request['lawyer_law_firm_year_to'];
+          $lawyer_law_firm->lawyer_law_firm_status = $request['lawyer_law_firm_status'];
+          $lawyer_law_firm->lawyer_law_firm()->associate($lawyer);
+          $lawyer_law_firm->save();
+
+          $lawyer_location = new lawyer_location();
+          $lawyer_location->lawyer_location_building = $request['lawyer_location_building'];
+          $lawyer_location->lawyer_location_street = $request['lawyer_location_street'];
+          $lawyer_location->lawyer_location_town = $request['lawyer_location_town'];
+          $lawyer_location->lawyer_location_county = $request['lawyer_location_county'];
+          $lawyer_location->lawyer_location_city = $request['lawyer_location_city'];
+          $lawyer_location->lawyer_location_google = $request['lawyer_location_google'];
+          $lawyer_location->lawyer_location_status = $request['lawyer_location_status'];
+          $lawyer_location->lawyer_location()->associate($lawyer);
+          $lawyer_location->save();
+
+          $lawyer_practice_areas = new lawyer_practice_areas();
+          $lawyer_practice_areas->lawyer_practice_name = $request['lawyer_practice_name'];
+          $lawyer_practice_areas->lawyer_practice_status = $request['lawyer_practice_status'];
+          $lawyer_practice_areas->lawyer_practice_level = $request['lawyer_practice_level'];
+          $lawyer_practice_areas->lawyer_practice_year_from = $request['lawyer_practice_year_from'];
+          $lawyer_practice_areas->lawyer_practice()->associate($lawyer);
+          $lawyer_practice_areas->save();
+
+          $lawyer_social_connection = new lawyer_social_connection();
+          $lawyer_social_connection->lawyer_social_name = $request['lawyer_social_name'];
+          $lawyer_social_connection->lawyer_social_account = $request['lawyer_social_account'];
+          $lawyer_social_connection->lawyer_social_type = $request['lawyer_social_type'];
+          $lawyer_social_connection->lawyer_social_status = $request['lawyer_social_status'];
+          $lawyer_social_connection->lawyer_social()->associate($lawyer);
+          $lawyer_social_connection->save();
+
+          $lawyer_photo = new lawyer_photo();
+          $lawyer_photo->lawyer_photo_filename = $request['lawyer_photo'];
+          $lawyer_photo->lawyer_photo()->associate($lawyer);
+          $lawyer_photo->save();
+
+
+       return view('lawyer.loginLawyer');
+    }     
+*/
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
    
 
     /**

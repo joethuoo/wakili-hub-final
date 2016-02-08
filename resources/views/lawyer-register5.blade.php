@@ -198,6 +198,7 @@
                <h4> Contacts</h4> 
                <div class="contact-form">
                 
+<<<<<<< HEAD
                 <form action="/lawyer/location" method="POST" class="comment-form">
                                  {!!csrf_field()!!}
                    <input type="text" name="lawyer_location_building" placeholder="Enter Building" required>
@@ -206,19 +207,37 @@
                     <input type="text" name="lawyer_location_town" placeholder="Enter Town" required>
                     
                        <select class="" name="lawyer_location_county" data-placeholder="-Select County-">
+=======
+                <form action="#" class="comment-form">
+                                 
+                   <input type="text" placeholder="Enter Building" required>
+                    <input type="text" placeholder="Enter Street" required>
+                    
+                    <input type="text" placeholder="Enter Town" required>
+                    
+                       <select class="" data-placeholder="-Select County-">
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                   <option value="option1">Nairobi</option>
                   <option value="option2">Kisumu</option>
                   <option value="option3">Mombasa</option>
                 </select>
                 
+<<<<<<< HEAD
                 <select class="" name="lawyer_location_city" data-placeholder="-Select City-">
+=======
+                <select class="" data-placeholder="-Select City-">
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                   <option value="option1">Busia</option>
                   <option value="option2">Bomet</option><option value="option4">Bondo</option>
                   <option value="option3">Thika</option>
                   <option value="option4">Nyeri</option><option value="option4">Muranga</option>
                 </select>
                 
+<<<<<<< HEAD
                     <select class="" name="lawyer_location_country" data-placeholder="-Select Country-">
+=======
+                    <select class="" data-placeholder="-Select Country-">
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                   <option value="option1">Kenya</option>
                   <option value="option2">Uganda</option>
                 </select>
@@ -227,11 +246,16 @@
                       <h5>Select Google Map Location</h5>
                       <div class="contact-map-company">
                         <div id="contact_map_canvas_one">
+<<<<<<< HEAD
                          
+=======
+
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                         </div>
                       </div>
 
                       <h5>Social Media Connections</h5>
+<<<<<<< HEAD
                     <form class="list-inline">
                       <i class="fa fa-facebook"></i><input type="text" name="lawyer_facebook"placeholder="Facebook URL" required>
                             
@@ -246,6 +270,22 @@
                       
                     </form>
                  <input type="submit" value="submit">
+=======
+                    <ul class="list-inline">
+                      <li><i class="fa fa-facebook"></i><input type="text" placeholder="Facebook URL" required></li>
+                             </ul>
+                       <ul class="list-inline">
+                      <li><i class="fa fa-twitter"></i><input type="text" placeholder="Twitter URL" required></li>
+                             </ul>
+                       <ul class="list-inline">
+                      <li><i class="fa fa-google-plus"></i><input type="text" placeholder="Google Plus URL" required></li>
+                             </ul>
+                       <ul class="list-inline">
+                      <li><i class="fa fa-linkedin"></i><input type="text" placeholder="Linkedin URL" required></li>
+                      
+                    </ul>
+                 
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                 
            <a class="btn btn-default" href="{{url('lawyer/whyregister/register4')}}"><i class="fa fa-envelope-o"></i>Previous</a>
                     &nbsp;&nbsp;<a class="btn btn-default" href=""><i class="fa fa-envelope-o"></i>Save and View Profile</a>

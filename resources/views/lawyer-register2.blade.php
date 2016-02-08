@@ -198,6 +198,7 @@
                <h4> EDUCATION</h4> 
                <div class="contact-form">
                 
+<<<<<<< HEAD
                 <form action="/lawyer/education" method="POST" class="comment-form">
                   {!! csrf_field() !!}
                   <select name="honors">
@@ -212,6 +213,20 @@
                   {{--  <input type="date" placeholder"Select Year From" name="lawyer_education_year_from" placeholder="Select School Year From Date" value="MM-DD-YYYY">
                    <input type="date" placeholder"Select Year To" name="lawyer_education_year_to" placeholder="Select School Year To Date"  pattern="\d{1,2}-\d{1,2}-\d{4}"> --}}
                     {{-- <select name="yearfrom">
+=======
+                <form action="#" class="comment-form">
+                  <select name="honors">
+                  <option>Select Certification</option>
+                  <option>Under Graduate</option>
+                  <option>Post Graduate</option>
+                  <option>PHD</option>                  
+                  </select>
+                  
+                   <input type="text" placeholder="Enter Institution Name in Full" required>
+                   
+                   
+                    <select name="yearfrom">
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                   <option>Year From</option>
                   <option>1990</option>
                    <option>1991</option>
@@ -219,9 +234,15 @@
                     <option>1993</option>
                      <option>1994</option>
                       <option>1995</option>                
+<<<<<<< HEAD
                   </select> --}}
                   
                             {{-- <select name="yearto">
+=======
+                  </select>
+                  
+                            <select name="yearto">
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                   <option>Year To</option>
                   <option>1990</option>
                    <option>1991</option>
@@ -229,8 +250,12 @@
                     <option>1993</option>
                      <option>1994</option>
                       <option>1995</option>                
+<<<<<<< HEAD
                   </select> --}}
                   <input type="submit" value="submit">
+=======
+                  </select>
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
                 <a class="btn btn-default" href="#"><i class="fa fa-envelope-o"></i>Add Another</a>
                   &nbsp;&nbsp;<a class="btn btn-default" href="{{url('lawyer/whyregister/register')}}"><i class="fa fa-envelope-o"></i>Previous</a>
                     &nbsp;&nbsp;<a class="btn btn-default" href="{{url('lawyer/whyregister/register3')}}"><i class="fa fa-envelope-o"></i>Save and Next</a>

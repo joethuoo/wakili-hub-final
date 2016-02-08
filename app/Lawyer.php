@@ -84,7 +84,11 @@ class Lawyer extends Model
 
     public function user()
     {
+<<<<<<< HEAD
       return $this->hasOne('App\User');
+=======
+      return $this->belongsTo('App\User');
+>>>>>>> 126a11abae032c212042ff75fb2fe3921b1b6da8
     }
 
 
