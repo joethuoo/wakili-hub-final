@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class lawyer_location extends Model
+class LawyerLocation extends Model
 {
      /**
      * The database table used by the model.
@@ -25,16 +25,17 @@ class lawyer_location extends Model
     'lawyer_location_town',
     'lawyer_location_county',
     'lawyer_location_city',
+    'lawyer_location_country',
     'lawyer_location_google',
-    'lawyer_location_status'
+    
     ];
     
 
-    /*This location belongs to a Lawyer*/
+    /*This location can have many Lawyers*/
 
     public function lawyer()
     {
-    	return $this->belongsTo('App\Lawyer');
+    	return $this->hasMany('App\Lawyer');
     }
 
 }

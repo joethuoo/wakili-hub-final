@@ -30,12 +30,9 @@ class CreateLawyerTable extends Migration
               $table->rememberToken();
               $table->timestamps();
 
-              $table->integer('registrant_id')->unsigned();
+              $table->integer('users_id')->unsigned();
 
-              /*$table->foreign('registrant_id')
-                   ->references('id')
-                   ->on('registrant')
-                   ->onDelete('cascade');*/
+              
 
 
 

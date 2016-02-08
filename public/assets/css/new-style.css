@@ -1,0 +1,15 @@
+.panel .large-8 span{
+	font-weight: bold;
+}
+
+.exp{
+	font-weight: bold;
+}
+
+span a{
+	on-hover:;
+}
+
+.row.panel.large-8 .small-8columns{
+	border-left: thick solid #a1a1a1;
+}

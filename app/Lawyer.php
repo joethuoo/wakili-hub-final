@@ -21,7 +21,7 @@ class Lawyer extends Model
      *
      * @var string
      */
-    protected $table = 'Lawyer';
+    protected $table = 'lawyer';
 
     /**
      * The attributes that are mass assignable.
@@ -34,15 +34,8 @@ class Lawyer extends Model
                           'lawyer_middle_name',
                           'lawyer_last_name',
                           'lawyer_email_address',
-                          'lawyer_status',
                           'lawyer_lsk_number',
-                          'lawyer_national_id',
-                          'lawyer_verified_status',
-                          'lawyer_experience',
-                          'lawyer_bios',
-                          'lawyer_date_registered',
-                          'lawyer_mobile_number', 
-                      
+                          'lawyer_bios'                    
                           ];
 
     /**
@@ -76,7 +69,7 @@ class Lawyer extends Model
 
     public function location()
     {
-      return $this->hasOne('App\lawyer_location');
+      return $this->belongsTo('App\lawyer_location');
     }
 
     public function practice_area()
@@ -89,9 +82,9 @@ class Lawyer extends Model
       return $this->hasMany('App\lawyer_social_connection');
     }
 
-    public function registrant()
+    public function user()
     {
-      return $this->belongsTo('App\Registrant');
+      return $this->hasOne('App\User');
     }
 
 

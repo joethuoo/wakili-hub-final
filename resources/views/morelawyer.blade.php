@@ -1,5 +1,6 @@
 @extends('master')
-<div id="main-wrapper">
+   @section('body')
+   <div id="main-wrapper">
 
   <header id="header">
     <div class="header-top-bar">
@@ -37,7 +38,7 @@
 
         <!-- HEADER-LOG0 -->
         <div class="header-logo text-center">
-          <h2><a href="index.html"><img src="img/logotiny.png"> WAKILI HUB</a></h2>
+          <h2><a href="{{url('/')}}"><img src="{{asset('assets/img/logotiny.png')}}"> WAKILI HUB</a></h2>
         </div>
         <!-- END HEADER LOGO -->
 
@@ -73,7 +74,7 @@
 
         <!-- CALL TO ACTION -->
         <div class="header-call-to-action">
-          <a href="#" class="btn btn-default"><i class="fa fa-plus"></i> Get Listed</a>
+          <a href="getlisted.html" class="btn btn-default"><i class="fa fa-plus"></i> Get Listed</a>
         </div><!-- END .HEADER-CALL-TO-ACTION -->
 
       </div><!-- END .CONTAINER -->
@@ -82,53 +83,23 @@
 
     <!-- HEADER SEARCH SECTION -->
     <div class="header-search company-profile-height">
-      <div class="header-search-bar">
-        <form action="#">
-
+       <div class="header-search-bar">
+        <form action="/search" method="POST">
+            {!! Form::token() !!}
           <div class="search-toggle">
-            <div class="container"> <!--<div class="distance-range">
-                <p>
-                  <label for="amount-search">Distance:</label>
-                  <input type="text" id="amount-search">
-                </p>
-
-                <div class="slider-range-search"></div>
-              </div>  end #distance-range
-
-              <div class="distance-range">
-                <p>
-                  <label for="amount-search">Days published:</label>
-                  <input type="text" id="amount-search-day">
-                </p>
-
-                <div class="slider-range-search-day"></div>
-              </div>-->  <!-- end #distance-range -->
-
+            <div class="container"> 
               <p>Location:</p>
               <div class="select-country">
-                <select class="" data-placeholder="-Select County-">
-                  <option value="option1">Nairobi</option>
-                  <option value="option2">Kisumu</option>
-                  <option value="option3">Mombasa</option>
+                <select name = "country" class="" data-placeholder="-Select County-">
+                  <option value=""></option>
+                  <option value="nairobi">Nairobi</option>
+                  <option value="kisumi">Kisumu</option>
+                  <option value="mombasa">Mombasa</option>
                 </select>
-              </div>
-
-              <div class="region">
-                <input type="text" placeholder="-Region-">
               </div>
 
               <div class="address">
-                <input type="text" placeholder="-Address-">
-              </div>
-
-              <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option>
-                  <option value="option3">Family Law</option>
-                  <option value="option3">Patents</option>
-                </select>
+                <input name = "address" type="text" placeholder="-Address-">
               </div>
 
               <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
@@ -136,29 +107,34 @@
             </div>
           </div>  <!-- END .search-toggle -->
 
-
           <div class="container">
             <button class="toggle-btn" type="submit"><i class="fa fa-bars"></i></button>
 
             <div class="search-value">
               <div class="keywords">
-                <input type="text" class="form-control" placeholder="Keywords">
+                <input name = "keywords" type="text" class="form-control" placeholder="Keywords">
               </div>
 
               <div class="select-location">
-                <select class="" data-placeholder="-Select Town-">
-                  <option value="option1">Busia</option>
-                  <option value="option2">Bomet</option><option value="option4">Bondo</option>
-                  <option value="option3">Thika</option>
-                  <option value="option4">Nyeri</option><option value="option4">Muranga</option>
+                <select name = "location" class="" data-placeholder="-Select Town-">
+                  <option value=""></option>
+                  <option value="busia">Busia</option>
+                  <option value="bomet">Bomet</option>
+                  <option value="bondo">Bondo</option>
+                  <option value="thika">Thika</option>
+                  <option value="nyeri">Nyeri</option>
+                  <option value="muranga">Muranga</option>
                 </select>
               </div>
 
               <div class="category-search">
-                <select class="" data-placeholder="-Select Practice-">
-                  <option value="option1">Business Law</option>
-                  <option value="option2">Juvenile</option>
-                  <option value="option3">Property</option><option value="option3">Family Law</option><option value="option3">Patents</option>
+                <select name = "category" class="" data-placeholder="-Select Practice-">
+                  <option value=""></option>
+                  <option value="business">Business Law</option>
+                  <option value="juvenile">Juvenile</option>
+                  <option value="property">Property</option>
+                  <option value="family">Family Law</option>
+                  <option value="patents">Patents</option>
                 </select>
               </div>
 
@@ -168,11 +144,14 @@
         </form>
       </div> <!-- END .header-search-bar -->
 
+
+@if($more)
+          @foreach($more as $l)
       <div class="company-heading-view">
         <div class="container">
           <div class="button-content">
           <div class="logo-image">
-                <img src="img/content/moses.jpg" alt="">
+                <img src="{{asset('/lawyers/'.$l->lawyer_photo_filename)}}" alt="">
               </div>
           </div>
         </div>
@@ -187,7 +166,7 @@
                 <img src="img/content/company-logo.jpg" alt="">
               </div>
 -->
-              <h1>Moses Chelanga</h1>
+              <h1>{{$l->lawyer_first_name}} {{$l->lawyer_middle_name}}</h1>
             
             </div>
           </div> <!-- END .general-view -->
@@ -213,13 +192,15 @@
 
           <button><i class="fa fa-bars"></i></button>
 
-          <ul class="primary-nav list-unstyled">
-            <li><a href="index.html">Home</a> </li>
-            <li class="bg-color"><a href="#">Lawyers</a> </li>
-            <li><a href="lawfirms.html">Law Firms</a></li>
-            <li><a href="jobs.html">Job Opportunities</a></li><li><a href="whyregister.html">Why Register</a></li>
-            <li><a href="about-us.html">About Us</a></li>
-            <li><a href="contact-us.html">Contact Us</a></li>
+                <ul class="primary-nav list-unstyled">
+            <li class="bg-color"><a href="{{ url('/') }}">Home</a>            </li>
+
+            <li class=""><a href="{{ url('lawyer/lawyers') }}">Lawyers</i></a> </li>
+
+            <li><a href="{{ url('firm') }}">Law Firms</a></li>
+            <li><a href="{{ url('firm/jobs') }}">Job Opportunities</a></li><li><a href="{{ url('lawyer/whyregister') }}">Why Register</a></li>
+            <li><a href="{{ url('firm/about') }}">About Us</a></li>
+            <li><a href="{{ url('firm/contact') }}">Contact Us</a></li>
           </ul>
         </nav>
       </div> <!-- end .container -->
@@ -237,9 +218,9 @@
               <div class="tab-pane active" id="overview">
               
               
-                 <h2>Moses Chelanga</h2>
+                 <h2>{{$l->lawyer_first_name}} {{$l->lawyer_middle_name}}</h2>
                 <h5>
-                  <a href="viewfirm.html">(Chelanga & Co Advocates)</a>
+                  <a href="viewfirm.html">({{$l->lawyer_law_firm_name}})</a>
                 </h5>
                 <div class="social-link text-right">
                   <ul class="list-inline">
@@ -252,7 +233,7 @@
 
                 <div class="company-text">
                   <p>
-                    <strong>Short Bio Brief, What you believe in, What you stand for, Qualities.</strong>
+                    <strong>{{$l->lawyer_bios}}</strong>
                   </p>
 
                  
@@ -264,10 +245,7 @@
                   <h4>Areas of Practice</h4>
 
                   <ul class="list-inline">
-                    <li>Family Law</</li>
-                    <li>Business Law</li>
-                    <li>Tax law</li>
-                    <li>Injury Law</li>
+                    <li>{{$l->lawyer_practice_name}}</</li>
                   </ul>
                 </div> <!-- end company-service -->
 
@@ -298,22 +276,23 @@
 
                   <h4>Ask a Legal Counsel question</h4>
 
-                  <form class="comment-form">
+                  <form class="comment-form" method="POST" action="/mailinglawyer">
+                    {!! csrf_field() !!}
                     <div class="row">
                       <div class="col-md-4">
-                        <input type="text" placeholder="Name *" required>
+                        <input type="text" name="Name" placeholder="Name *" required>
                       </div>
 
                       <div class="col-md-4">
-                        <input type="email" placeholder="Email *" required>
+                        <input type="email" name="Email" placeholder="Email *" required>
                       </div>
 
                       <div class="col-md-4">
-                        <input type="url" placeholder="Website">
+                        <input type="url" name="Website" placeholder="Website">
                       </div>
                     </div>
 
-                    <textarea placeholder="Your Question here ..." required></textarea>
+                    <textarea name="Comment"placeholder="Your Question here ..." required></textarea>
 
                     <button type="submit" class="btn btn-default"><i class="fa fa-envelope-o"></i> Send Question</button>
                   </form>
@@ -336,10 +315,8 @@
 
                  <div class="company-service">
                   <ul class="list-inline">
-                    <li><table width="100%"><tr><td width="80%">Under Graduate University of London, School of Law </td><td align="center"> 2000-2004</td></tr></table></</li>
-                    <li><table width="100%"><tr><td width="80%">Honors: Associate Editor. American Jurisprudence Award-Criminal Law; Moot Court Best Brief </td><td align="center">2013</td></tr></table></li>
-                    <li><table width="100%"><tr><td width="80%">Master of Law, University of California, Berkley</td><td align="center">2014</td></tr></table></li>
-                  
+                    <li><table width="100%"><tr><td width="80%">{{$l->lawyer_education_institution}} </td><td align="center">{{$l->lawyer_education_year_from}}</td> <td align="center">{{$l->lawyer_education_year_to}}</td></tr></table></</li>
+                    
                   </ul>
                 </div> <!-- end company-service -->
 
@@ -370,22 +347,23 @@
 
                   <h4>Ask a Legal Counsel question</h4>
 
-                  <form class="comment-form">
+                  <form class="comment-form" method="POST" action="/mailinglawyer">
+                    {!! csrf_field() !!}
                     <div class="row">
                       <div class="col-md-4">
-                        <input type="text" placeholder="Name *" required>
+                        <input type="text" name="Name" placeholder="Name *" required>
                       </div>
 
                       <div class="col-md-4">
-                        <input type="email" placeholder="Email *" required>
+                        <input type="email" name="Email" placeholder="Email *" required>
                       </div>
 
                       <div class="col-md-4">
-                        <input type="url" placeholder="Website">
+                        <input type="url" name="Website" placeholder="Website">
                       </div>
                     </div>
 
-                    <textarea placeholder="Your Question here ..." required></textarea>
+                    <textarea name="Comment"placeholder="Your Question here ..." required></textarea>
 
                     <button type="submit" class="btn btn-default"><i class="fa fa-envelope-o"></i> Send Question</button>
                   </form>
@@ -409,10 +387,7 @@
 
                  <div class="company-service">
                   <ul class="list-inline">
-                     <li><table width="100%"><tr><td width="80%">Association of Kenya Lawyers</td><td align="center"> 2000</td></tr></table></</li>
-                    <li><table width="100%"><tr><td width="80%">Association of Certified Lawyers of Africa</td><td align="center">2005</td></tr></table></li>
-                    <li><table width="100%"><tr><td width="80%">International Criminal Court Association</td><td align="center">2014</td></tr></table></li>
-                  
+                     <li><table width="100%"><tr><td width="80%">{{$l->lawyer_association_institution}}</td><td align="center">{{$l->lawyer_association_year}}</td></tr></table></</li>
                   </ul>
                 </div> <!-- end company-service -->
 
@@ -443,22 +418,23 @@
 
                   <h4>Ask a Legal Counsel question</h4>
 
-                  <form class="comment-form">
+                  <form class="comment-form" method="POST" action="/mailinglawyer">
+                    {!! csrf_field() !!}
                     <div class="row">
                       <div class="col-md-4">
-                        <input type="text" placeholder="Name *" required>
+                        <input type="text" name="Name" placeholder="Name *" required>
                       </div>
 
                       <div class="col-md-4">
-                        <input type="email" placeholder="Email *" required>
+                        <input type="email" name="Email" placeholder="Email *" required>
                       </div>
 
                       <div class="col-md-4">
-                        <input type="url" placeholder="Website">
+                        <input type="url" name="Website" placeholder="Website">
                       </div>
                     </div>
 
-                    <textarea placeholder="Your Question here ..." required></textarea>
+                    <textarea name="Comment" placeholder="Your Question here ..." required></textarea>
 
                     <button type="submit" class="btn btn-default"><i class="fa fa-envelope-o"></i> Send Question</button>
                   </form>
@@ -587,7 +563,7 @@
                         <i class="fa fa-map-marker"></i>
 
                         <p>
-                          <span>Hurligham Plaza 2nd Floor</span>
+                          <span>{{$l->lawyer_address}}</span>
                           <span>Nairobi</span>
                           <span>Kenya</span>
                         </p>
@@ -597,8 +573,8 @@
                         <i class="fa fa-phone"></i>
 
                         <p>
-                          <span><strong>Phone:</strong> +254 723-456-890</span>
-                          <span><strong>Mobile:</strong> +254 733-456-891</span>
+                          <span><strong>Phone:</strong> {{$l->lawyer_phone}}</span>
+                          <span><strong>Mobile:</strong>{{$l->lawyer_mobile_number}}</span>
                         </p>
                       </div>
 
@@ -606,8 +582,8 @@
                         <i class="fa fa-envelope-o"></i>
 
                         <p>
-                          <span><strong>E-mail:</strong> example@example.com</span>
-                          <span><span><strong>Website:</strong> www.example.com</span></span>
+                          <span><strong>E-mail:</strong>{{$l->lawyer_email}}</span>
+                          <span><span><strong>Website:</strong>{{$l->lawyer_website}}</span></span>
                         </p>
                       </div>
 
@@ -628,22 +604,23 @@
                   </div> <!-- end .row -->
 
                   <h3>Send me a Message</h3>
-                  <form class="comment-form">
+                  <form class="comment-form" method="POST" action="/mailinglawyer">
+                    {!! csrf_field() !!}
                     <div class="row">
                       <div class="col-md-4">
-                        <input type="text" placeholder="Name *" required>
+                        <input type="text" name="Name" placeholder="Name *" required>
                       </div>
 
                       <div class="col-md-4">
-                        <input type="email" placeholder="Email *" required>
+                        <input type="email" name="Email" placeholder="Email *" required>
                       </div>
 
                       <div class="col-md-4">
-                        <input type="url" placeholder="Website">
+                        <input type="url" name="Website" placeholder="Website">
                       </div>
                     </div>
 
-                    <textarea placeholder="Your Comment ..." required></textarea>
+                    <textarea name"Comment"placeholder="Your Comment ..." required></textarea>
 
                     <button type="submit" class="btn btn-default"><i class="fa fa-envelope-o"></i> Send Message</button>
                   </form>
@@ -692,7 +669,7 @@
               <ul class="list-unstyled">
                   <li>
                   <strong>LSK Number:</strong>
-                  <span>LSK/2345/015</span>
+                  <span>{{$l->lawyer_lsk_number}}</span>
                 </li>
 
                 <li>
@@ -702,17 +679,17 @@
              
                 <li>
                   <strong>Address:</strong>
-                  <span>P.O. Box 504-00515</span>
+                  <span>{{$l->lawyer_postal_address}}</span>
                 </li>
 
                 <li>
                   <strong>Town:</strong>
-                  <span>Nairobi</span>
+                  <span>{{$l->lawyer_location_town}}</span>
                 </li>
 
                 <li>
                   <strong>Mobile:</strong>
-                  <span>+254 738 999 999</span>
+                  <span>{{$l->lawyer_mobile_number}}</span>
                 </li>
 
               </ul>
@@ -754,7 +731,8 @@
 
   </div> <!-- end #page-content -->
 
-
+@endforeach
+@endif
   <footer id="footer">
   <!--   <div class="main-footer">
 
@@ -846,11 +824,11 @@
         <p>Copyright 2015 &copy; Wakilihub. All rights reserved. Powered by  <a href="#">Usalama</a></p>
 
         <ul class="list-inline">
-          <li><a href="lawyers.html">Lawyers</a></li>
-          <li><a href="lawfirms.html">Firms</a></li>
+          <li><a href="{{url('lawyer/lawyers')}}">Lawyers</a></li>
+          <li><a href="{{url('firm')}}">Firms</a></li>
           <li><a href="policies.html">Policies</a></li>
 
-          <li><a href="contact-us.html">Contact</a></li>
+          <li><a href="{{ url('firm/contact') }}">Contact</a></li>
         </ul>
       </div> <!-- END .container -->
     </div> 
@@ -859,9 +837,10 @@
 
 
 </div> <!-- end #main-wrapper -->
+
  @stop
 
-@section('scripts')
+  @section('scripts')
 {!! Html::script('assets/js/jquery.min.js') !!}
 {!! Html::script('assets/js/jquery-ui.js') !!}
 {!! Html::script('assets/js/jquery.ba-outside-events.min.js') !!}

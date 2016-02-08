@@ -12,16 +12,47 @@ use App\Firm;
 
 class FirmController extends Controller
 {
+
+    public function firmRegister()
+    {
+        return view('firm-register');
+    }
+
+  public function firmRegister2()
+  {
+    return view('firm-register2');
+  }
+
+  public function firmRegister3()
+  {
+    return view('firm-register3');
+  }
+
+  public function firmRegister4()
+  {
+    return view('firm-register4');
+  }
+
+  public function firmRegister5()
+  {
+    return view('firm-register5');
+  }
+
+  public function whyRegister()
+  {
+    return view('whyregister');
+  }
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
+     public function index()
     {
         // $firms = Firm::latest()->get();
 
-       $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+       $areas = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+	   ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
                                    ->select('*')
                                    ->OrderBy('firm_practice_area.firm_practice_name')
                                    ->get();
@@ -37,7 +68,21 @@ class FirmController extends Controller
         $practices = array_unique($new_practice);
         sort($practices);
 
-         return view('firms',compact('area', 'practices'));
+        $new_areas = [];
+
+        foreach($practices as $practice) {
+            $practice_name = strtolower(str_replace(' ', '', $practice));
+            foreach($areas as $area) {
+                if(strstr($area->firm_practice_name, $practice)) {
+                    $new_areas[$practice_name]['area'][] = $area;
+                    $new_areas[$practice_name]['title'] = $practice;
+                }
+            }
+            $new_areas[$practice_name]['count'] = count($new_areas[$practice_name]['area']);
+        }
+
+//        dd($new_areas);
+         return view('firms',compact('areas', 'new_areas'));
         
     }
 
@@ -50,7 +95,7 @@ class FirmController extends Controller
     public function show($id)
     { 
         $area = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
-                                 /*->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')*/
+                                 ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
                                    ->select('*')
                                    ->where('Firm.firm_id',$id)
                                    ->OrderBy('firm_practice_area.firm_practice_name')
@@ -63,15 +108,61 @@ class FirmController extends Controller
          return view('firms',compact('area'));
     }
 
+     public function readmore($id)
+    {
+        $more = DB::table('Firm')->join('firm_practice_area','Firm.firm_id','=', 'firm_practice_area.firm_practice_id')
+                                 ->join('firm_logo','Firm.firm_id','=','firm_logo.firm_logo_id')
+                                 ->join('firm_association', 'Firm.firm_id', '=', 'firm_association.firm_association_id')
+                                   ->select('*')
+                                   ->where('Firm.firm_id',$id)
+                                   ->OrderBy('firm_practice_area.firm_practice_name')
+                                   ->get();
+        return view('morefirm', compact('more'));
+    }
+
+
 
     public function jobs()
     {
-        $jobs = DB::table('jobs')->join('Firm','jobs.id','=','Firm.firm_id')
+        $jobs = DB::table('jobs')->join('users','jobs.job_id','=','users.users_id')
                                  ->select('*')
-                                 ->OrderBy('jobs.job_title')
+                                 ->OrderBy('jobs.job_id')
                                  ->get();
 
         return view('jobs',compact('jobs'));
+    }
+
+    public function viewjob()
+    {
+        $jobs = DB::table('jobs')->join('users','jobs.job_id','=','users.users_id')
+                                 ->join('job_responsibility','jobs.job_id', '=', 'job_responsibility.id')
+                                 ->select('*')
+                                 ->OrderBy('jobs.job_id')
+                                 ->get();
+
+         $responsibility = DB::table('job_responsibility')->lists('job_responsibility');
+          $new_responsibility = [];
+
+         foreach ($responsibility as $response) {
+             $new_responsibility = array_merge($new_responsibility, explode("; ", $response));
+         }
+         $responsibilities = array_unique($new_responsibility);
+         sort($responsibilities);
+
+         /*$new_jobs = [];
+
+         foreach ($responsiblities as $respose) {
+             $response_list = strtolower(str_replace('', '', $response));
+             foreach ($jobs as $job) {
+                      if (strstr($job->title, $response)) {
+                        $new_jobs[$response_list]['title'][] = $title;
+                        $new_jobs[$response_list]['name'][] = $responsible; 
+                      }
+                 }
+                 $new_jobs[$response_list]['count'] = count($new_areas[$response_list]['title']);
+         }*/
+     
+        return view('viewjob',compact('jobs'));
     }
 
     public function about()
@@ -82,6 +173,53 @@ class FirmController extends Controller
     public function contact()
     {
         return view('contact');
+    }
+	
+	    public function search(Request $request) {
+        $keywords = $request->input('keywords');
+        $location = $request->input('location');
+        $category = $request->input('category');
+        $country = $request->input('country');
+        $address = $request->input('address');
+
+        if($keywords == "" && $location == "" && $category == "" && $country == "" && $address == "")
+            return redirect("/");
+
+//        $lawyer = DB::table('Lawyer')
+//            ->join('lawyer_practice_areas','Lawyer.lawyer_id', '=', 'lawyer_practice_areas.lawyer_practice_area_id')
+//            ->join('lawyer_law_firm', 'Lawyer.lawyer_id', '=', 'lawyer_law_firm.lawyer_law_firm_id')
+//            ->join('lawyer_location','lawyer_location.lawyer_id','=','Lawyer.lawyer_id')
+//            ->select('*')
+//            ->where('Lawyer.lawyer_id',$id)
+//            ->OrderBy('lawyer_practice_areas.lawyer_practice_name')
+//            ->get();
+        $query_lawyer = "SELECT * FROM lawyer l
+                          LEFT JOIN lawyer_practice_areas lpa ON l.lawyer_id = lpa.lawyer_practice_area_id
+                          LEFT JOIN lawyer_location ll ON l.lawyer_id = ll.lawyer_id
+                          LEFT JOIN lawyer_photo lp ON l.lawyer_id = lp.lawyer_photo_id
+                          LEFT JOIN lawyer_law_firm llf ON l.lawyer_id = llf.lawyer_law_firm_id
+                          WHERE (l.lawyer_first_name LIKE '%$keywords%' OR l.lawyer_middle_name LIKE '%$keywords%' OR l.lawyer_last_name LIKE '%$keywords%')
+                          AND (ll.lawyer_location_town LIKE '%$location%' OR ll.lawyer_location_town IS NULL)
+                          AND (lpa.lawyer_practice_name LIKE '%$category%' OR lpa.lawyer_practice_name IS NULL)
+                          AND (ll.lawyer_location_country LIKE '%$country%' OR ll.lawyer_location_country IS NULL)
+                          AND (ll.lawyer_location_street LIKE '%$address%' OR ll.lawyer_location_street IS NULL)
+                          ";
+
+        $query_firm = "SELECT * FROM firm f
+                      LEFT JOIN firm_practice_area fpa ON f.firm_id = fpa.firm_practice_id
+                      LEFT JOIN firm_location fl ON f.firm_id = fl.firm_id
+                      LEFT JOIN firm_logo fp ON f.firm_id = fp.firm_id
+                      WHERE (f.firm_name LIKE '%$keywords%')
+                      AND (fl.firm_location_town LIKE '%$location%' OR fl.firm_location_town IS NULL)
+                      AND (fpa.firm_practice_name LIKE '%$category%' OR fpa.firm_practice_name IS NULL)
+                      AND (fl.firm_location_country LIKE '%$country%' OR fl.firm_location_country IS NULL)
+                      AND (fl.firm_location_street LIKE '%$address%' OR fl.firm_location_street IS NULL)
+                      ";
+
+        $lawyers = DB::select($query_lawyer);
+        $firms = DB::select($query_firm);
+
+        return view('search', compact('lawyers', 'firms'));
     }
 
    

@@ -16,12 +16,11 @@ class CreateRegistrantTable extends Migration
             $table->increments('registrant_id');
             $table->string('registrant_first_name');
             $table->string('registrant_last_name');
-            $table->string('registrant_email_address');
             $table->integer('registrant_mobile_number');
+            $table->string('registrant_email_address');
             $table->string('registrant_password');
-            $table->string('registrant_status');
-            $table->date('registrant_date_added');
-            $table->string('registrant_verified_account');
+            $table->boolean('confirmation')->default(0);
+            $table->string('confirmation_code')->nullable();
 
              $table->integer('lawyer_id')->unsigned();
 

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class lawyer_social_connection extends Model
+class LawyerSocialConnection extends Model
 {
     /**
      * The database table used by the model.
@@ -20,10 +20,10 @@ class lawyer_social_connection extends Model
      */
 
      protected $fillable = [
-     'lawyer_social_name',
-     'lawyer_social_account',
-     'lawyer_social_type',
-     'lawyer_social_status'
+     'lawyer_facebook',
+     'lawyer_twitter',
+     'lawyer_google_plus',
+     'lawyer_linkedin'
      ];
 
      /*This social connection belongs to lawyer*/

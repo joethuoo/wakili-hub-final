@@ -9,14 +9,31 @@ class Registrant extends Model
      protected $table = 'registrant';
 
      protected $fillables = [
-     'registrant_first_name',
-     'registrant_last_name',
-     'registrant_email_address',
-     'registrant_mobile_number',
-     'registrant_password',
-     'registrant_status',
-     'regstrant_date_added',
-     'registrant_verified_account'
+     'first_name',
+<<<<<<< HEAD
+     'second_name',
+     'mobile_number',
+     'email_address',
+=======
+<<<<<<< HEAD
+     'second_name',
+     'mobile_number',
+     'email_address',
+=======
+<<<<<<< HEAD
+     'second_name',
+     'mobile_number',
+     'email_address',
+=======
+     'last_name',
+     'email_address',
+     'mobile_number',
+>>>>>>> 9564e1e41622f8a142c739c48a2627944d53163c
+>>>>>>> 337af3db5d98aafd17b6cd5b2d0eefcc63163183
+>>>>>>> 481eaf2e9e601d4811357506cd1880f56a6d0f45
+     'password',
+     
+    
      ];
 
      /*

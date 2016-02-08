@@ -24,20 +24,20 @@ class LawyerRequest extends Request
     public function rules()
     {
         return [
-	    'lawyer_image'  => 'required|max:255', 
+	     
       'lawyer_first_name' => 'required|max:255', 
       'lawyer_middle_name'=> 'required|max:255',
       'lawyer_last_name'  => 'required|max:255',
-      'lawyer_email_address' => 'required|email|max:255|unique:users',
-      'lawyer_status' => 'required|true',
       'lawyer_lsk_number'  => 'required|numeric|max:20',
-      'lawyer_national_id'  => 'required|numeric|max:40',
-      'lawyer_verified_status' => 'required|true',
-      'lawyer_experience'  => 'required|max:10',
       'lawyer_bios'  => 'required|max:400',
-      'lawyer_date_registered'  => 'required|date_format',
-      'lawyer_mobile_number'  => 'required|numeric|max:20',
-      'password'   => 'required|confirmed|min:6'
+
+       'lawyer_postal_number' => 'required|numeric|max:6',
+      'lawyer_email' => 'required|email',
+       'lawyer_email_address' => 'required|email',
+      'lawyer_mobile'  => 'required|numeric|max:15',
+      'lawyer_office_number' => 'required|numeric|max:15'
+     
+     
                           
 
                           ];

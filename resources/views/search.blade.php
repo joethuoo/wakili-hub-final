@@ -288,7 +288,7 @@
                                                                         <figcaption>
 
                                                                             <div class="read-more">
-                                                                                <a href="{{ url('lawyer/lawyers/readmore') }}"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
+                                                                                <a href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}"><i class="fa fa-angle-right"></i> Read More</a>                            </div>
                                                                         </figcaption>
                                                                     </figure>
 
@@ -299,7 +299,7 @@
 
                                                                     <p>Nairobi, Business Law, Corporate Law, Real Estate Law. {{$lawyer->lawyer_experience}} years of Experience.</p>
 
-                                                                    <a class="read-more" href="{{ url('lawyer/lawyers/readmore') }}"><i class="fa fa-angle-right"></i>Read More</a>
+                                                                    <a class="read-more" href="{{ url('lawyer/lawyers/'.$lawyer->lawyer_id.'/readmore') }}"><i class="fa fa-angle-right"></i>Read More</a>
 
                                                                 </div> <!-- end .single-product -->
                                                             </div> <!-- end .grid-layout -->
@@ -336,12 +336,12 @@
                                                                         <figcaption>
 
                                                                             <div class="read-more">
-                                                                                <a href="viewfirm.html"><i class="fa fa-angle-right"></i> View Profile</a>
+                                                                                <a href="{{ url('firm/'.$firm->firm_id.'/readmore')}}"><i class="fa fa-angle-right"></i> View Profile</a>
                                                                             </div>
                                                                         </figcaption>
                                                                     </figure>
-                                                                    <h4><a href="viewfirm.html">{{ $firm->firm_name }}</a></h4>
-                                                                    <h5><a href="viewfirm.html">
+                                                                    <h4><a href="{{ url('firm/'.$firm->firm_id.'/readmore')}}">{{ $firm->firm_name }}</a></h4>
+                                                                    <h5><a href="{{ url('firm/'.$firm->firm_id.'/readmore')}}">
                                                                             {{ $firm->firm_practice_name }}
                                                                         </a></h5>
                                                                 </div>
